@@ -172,7 +172,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-10-29 11:08:02 / 修改时间：16:56:37" itemprop="dateCreated datePublished" datetime="2021-10-29T11:08:02+08:00">2021-10-29</time>
+              <time title="创建时间：2021-10-29 11:08:02 / 修改时间：18:29:09" itemprop="dateCreated datePublished" datetime="2021-10-29T11:08:02+08:00">2021-10-29</time>
             </span>
 
           
@@ -186,17 +186,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="let，mut，const关键字"><a href="#let，mut，const关键字" class="headerlink" title="let，mut，const关键字"></a>let，mut，const关键字</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">123</span>;<span class="comment">//不可变变量</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="string">&quot;abc&quot;</span>; <span class="comment">//能被重影(shadowing)</span></span><br><span class="line">a=<span class="string">&quot;bcd&quot;</span>; <span class="comment">//禁止，不能被赋值</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">mut</span> a = <span class="string">&quot;abc&quot;</span>;<span class="comment">//可变变量</span></span><br><span class="line">a=<span class="string">&quot;bcd&quot;</span>; <span class="comment">//能被赋值了</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="string">&quot;abc&quot;</span>;<span class="comment">//常量</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;<span class="comment">//禁止，不能被重影</span></span><br></pre></td></tr></table></figure>
+          <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">123_4</span>; <span class="comment">//整数中可以出现下划线</span></span><br><span class="line"><span class="keyword">let</span> tup:(<span class="built_in">i32</span>,<span class="built_in">f64</span>,<span class="built_in">u8</span>) = (<span class="number">500</span>,<span class="number">6.4</span>,<span class="number">1</span>);<span class="comment">//元组可以包含不同种类的数据</span></span><br><span class="line"><span class="comment">//tup.0等于500。。。</span></span><br><span class="line"><span class="keyword">let</span> (x,y,z) = tup;<span class="comment">//y等于6.4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];<span class="comment">//数组包含同类型数据</span></span><br><span class="line"><span class="comment">//a[0]等于1。。。</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">add_function</span></span>(a: <span class="built_in">i32</span>, b: <span class="built_in">i32</span>) -&gt; <span class="built_in">i32</span>&#123;<span class="comment">//函数名称是小写字母以下划线分割,&quot;-&gt;&quot;后接返回类型</span></span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">another_function</span></span>(x: <span class="built_in">i32</span>,y: <span class="built_in">i32</span>)&#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of x is &#123;&#125;&quot;</span>,x);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>,y);</span><br><span class="line">    <span class="keyword">let</span> a = &#123;</span><br><span class="line">        <span class="keyword">let</span> z = <span class="number">5</span>;</span><br><span class="line">        z+x</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//可以在&#123;&#125;包括的块里编写函数体表达式，注意最后一个是表达式，不能加分号，也不能有return</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">123_4</span>; <span class="comment">//整数中可以出现下划线</span></span><br><span class="line"><span class="keyword">let</span> tup:(<span class="built_in">i32</span>,<span class="built_in">f64</span>,<span class="built_in">u8</span>)=(<span class="number">500</span>,<span class="number">6.4</span>,<span class="number">1</span>);<span class="comment">//元组可以包含不同种类的数据</span></span><br><span class="line"><span class="comment">//tup.0等于500。。。</span></span><br><span class="line"><span class="keyword">let</span> (x,y,z)=tup;<span class="comment">//y等于6.4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];<span class="comment">//数组包含同类型数据</span></span><br><span class="line"><span class="comment">//a[0]等于1。。。</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">add_function</span></span>(a: <span class="built_in">i32</span>, b:<span class="built_in">i32</span>) -&gt; <span class="built_in">i32</span>&#123;<span class="comment">//函数名称是小写字母以下划线分割,&quot;-&gt;&quot;后接返回类型</span></span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">another_function</span></span>(x: <span class="built_in">i32</span>,y: <span class="built_in">i32</span>)&#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of x is &#123;&#125;&quot;</span>,x);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of y is &#123;&#125;&quot;</span>,y);</span><br><span class="line">    <span class="keyword">let</span> a = &#123;</span><br><span class="line">        <span class="keyword">let</span> z = <span class="number">5</span>;</span><br><span class="line">        z+x</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//可以在&#123;&#125;包括的块里编写函数体表达式，注意最后一个是表达式，不能加分号，也不能有return</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">if</span> num &lt; <span class="number">5</span>&#123;<span class="comment">//不需要但是可以加小括号，单语句也必须加花括号</span></span><br><span class="line">	<span class="built_in">println!</span>(<span class="string">&quot;true&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="built_in">println!</span>(<span class="string">&quot;false&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="lf-else-作为表达式"><a href="#lf-else-作为表达式" class="headerlink" title="lf-else 作为表达式"></a>lf-else 作为表达式</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">println!</span>(<span class="string">&quot;the max num in &#123;&#125; and &#123;&#125; is &#123;&#125;&quot;</span>,a,b,<span class="keyword">if</span> a &gt; b &#123;a&#125; <span class="keyword">else</span> &#123;b&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><h3 id="lf-else-作为表达式"><a href="#lf-else-作为表达式" class="headerlink" title="lf-else 作为表达式"></a>lf-else 作为表达式</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">println!</span>(<span class="string">&quot;the max num in &#123;&#125; and &#123;&#125; is &#123;&#125;&quot;</span>,a,b,<span class="keyword">if</span> a &gt; b &#123;a&#125; <span class="keyword">else</span> &#123;b&#125;);</span><br></pre></td></tr></table></figure>
 
 
 
@@ -244,6 +238,12 @@
 <p>凡是用双引号包括的字符串常量的类型都是&amp;str</p>
 <p>String 则有更完善的功能</p>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="built_in">String</span>::from(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> s2 = &amp;s1[..];<span class="comment">//从String类型转为&amp;str类型</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用parse或turbo fish语法实现从字符串到其他类型的转换</span></span><br><span class="line"><span class="comment">//只要目标类型实现了FromStr特性</span></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>()&#123;</span><br><span class="line">    <span class="keyword">let</span> parsed: <span class="built_in">i32</span> = <span class="string">&quot;5&quot;</span>.parse().unwrap();</span><br><span class="line">    <span class="keyword">let</span> turbo_parsed = <span class="string">&quot;10&quot;</span>.parse::&lt;<span class="built_in">i32</span>&gt;().unwrap();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> sum = parsed + turbo_parsed;</span><br><span class="line">    <span class="built_in">println!</span>&#123;<span class="string">&quot;Sum: &#123;:?&#125;&quot;</span>,sum&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 <h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><p>元组常用于非定义的多值传递，而结构体用于定义对象规范，结构体的每个成员叫做“字段”</p>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一个结构体定义</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Site</span></span>&#123;</span><br><span class="line">    domain: <span class="built_in">String</span>,</span><br><span class="line">    name: <span class="built_in">String</span>,</span><br><span class="line">    nation: <span class="built_in">String</span>,</span><br><span class="line">    found: <span class="built_in">u32</span></span><br><span class="line">    <span class="comment">//每个字段定义后用&quot;,&quot;分隔</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -346,7 +346,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-29 10:24:51" itemprop="dateModified" datetime="2021-10-29T10:24:51+08:00">2021-10-29</time>
+                <time title="修改时间：2021-10-29 23:22:48" itemprop="dateModified" datetime="2021-10-29T23:22:48+08:00">2021-10-29</time>
               </span>
 
           
@@ -360,27 +360,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="功能性动作与抗阻训练模块与分期"><a href="#功能性动作与抗阻训练模块与分期" class="headerlink" title="功能性动作与抗阻训练模块与分期"></a>功能性动作与抗阻训练模块与分期</h1><h2 id="第一期：-稳定性与灵活性训练"><a href="#第一期：-稳定性与灵活性训练" class="headerlink" title="第一期： 稳定性与灵活性训练"></a>第一期： 稳定性与灵活性训练</h2><p>用低强度运动方案改善肌肉平衡、深层肌肉耐力、核心功能、柔韧性、静态及动态体姿的平衡</p>
-<p>学会如何恢复并维持中立位</p>
-<h2 id="第二期：动作训练"><a href="#第二期：动作训练" class="headerlink" title="第二期：动作训练"></a>第二期：动作训练</h2><p>基本动作模式</p>
-<ul>
-<li>屈髋提起（如深蹲）</li>
-<li>单腿动作（如箭步蹲）</li>
-<li>旋转</li>
-</ul>
-<p>该期主要通过自重负荷</p>
-<h2 id="第三期：负荷训练"><a href="#第三期：负荷训练" class="headerlink" title="第三期：负荷训练"></a>第三期：负荷训练</h2><p>负荷来源多种多样（挂片、杠铃、哑铃、轮胎、注水容器等），无论哪种训练动作或负荷形式，重点始终是正确的动作模式以及发力水平，保证肌肉发力水平足够的情况下进入四期训练以减少受伤风险</p>
-<h2 id="第四期：爆发力训练"><a href="#第四期：爆发力训练" class="headerlink" title="第四期：爆发力训练"></a>第四期：爆发力训练</h2><p>第三期能够强化肌肉发力水平，但无法提升发力速度。爆发力训练能够提高肌肉在较短时间内发力的水平。所有包含加速及减速过程的体育运动，都需要参与者具备一定的爆发力水平。</p>
-<p>通过包含瞬间加速与减速的不同负荷训练技术，控制肌肉发力时间，爆发力可以得到相应提升。爆发力来源于下肢与躯干的肌肉，随着肌肉从离心负载到向心发力，拉长的结缔组织弹性回跳，力量迅速从足部传递至腿部再到躯干。出于这个原因，我们在进行爆发力训练时应使用全身性动作，提高腿、髋、肩、臂的爆发力，如果无法调动全身协同发力，受伤风险就会加大</p>
-<h1 id="心肺训练模块与分期"><a href="#心肺训练模块与分期" class="headerlink" title="心肺训练模块与分期"></a>心肺训练模块与分期</h1><h2 id="第一期：有氧基础训练"><a href="#第一期：有氧基础训练" class="headerlink" title="第一期：有氧基础训练"></a>第一期：有氧基础训练</h2><p>主要训练目的在于提高有氧适能基础及健康水平，为进入第二期训练奠定基础</p>
-<p>基础较好的个体可以跳过这一分期</p>
-<p>这一分期不执行任何评估</p>
-<h2 id="第二期：有氧效率训练"><a href="#第二期：有氧效率训练" class="headerlink" title="第二期：有氧效率训练"></a>第二期：有氧效率训练</h2><p>引入间歇式有氧训练法</p>
-<h2 id="第三期：无氧耐力训练"><a href="#第三期：无氧耐力训练" class="headerlink" title="第三期：无氧耐力训练"></a>第三期：无氧耐力训练</h2><p>该期引入高强度间歇式训练，合理分配中低强度及乳酸阈训练</p>
-<p>高强度间歇训练会增加自身疲劳程度，需要保证在热身及组间休息时的强度都控制在中低水平，为高强度训练做准备，训练次数并非越多越好，而是要保证身体恢复到一定水平后继续训练</p>
-<p>当产生如静态心率提升，睡眠质量不佳或长时间食欲不振等训练过度迹象时应当适当减少训练频率及强度，通过低强度到中等强度的心肺训练作为恢复手段</p>
-<p>训练频率在每周三到七天，每天时长20分钟到几个小时。高强度训练只需占10%~20%即可</p>
-<h2 id="第四期：无氧爆发式训练"><a href="#第四期：无氧爆发式训练" class="headerlink" title="第四期：无氧爆发式训练"></a>第四期：无氧爆发式训练</h2><h3 id="所有动作都需要感受臀部发力！！！"><a href="#所有动作都需要感受臀部发力！！！" class="headerlink" title="所有动作都需要感受臀部发力！！！"></a>所有动作都需要感受臀部发力！！！</h3><table>
+          <h3 id="所有动作都需要感受臀部发力！！！"><a href="#所有动作都需要感受臀部发力！！！" class="headerlink" title="所有动作都需要感受臀部发力！！！"></a>所有动作都需要感受臀部发力！！！</h3><table>
 <thead>
 <tr>
 <th>动作</th>
@@ -447,7 +427,6 @@
 <td></td>
 </tr>
 </tbody></table>
-<p><strong>平板支撑抬腿</strong>：增强臀大肌及大腿后侧肌群，训练过程中注意加速减，着重训练爆发力以提高</p>
 
       
     </div>
