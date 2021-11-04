@@ -147,6 +147,165 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/04/RSA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%9D%E8%80%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/04/RSA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%9D%E8%80%83/" class="post-title-link" itemprop="url">RSA学习与思考</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-04 21:35:49 / 修改时间：23:12:22" itemprop="dateCreated datePublished" datetime="2021-11-04T21:35:49+08:00">2021-11-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p> 废话少说，先把RSA的处理过程摆上来</p>
+<h1 id="RSA流程（简单）"><a href="#RSA流程（简单）" class="headerlink" title="RSA流程（简单）"></a>RSA流程（简单）</h1><p>RSA是一种非常广泛使用的<strong>非对称加密算法</strong>，如其名，这种算法首先是一种加密算法。加密算法可不止是加密，而是包括密钥准备、加密、解密等等全过程的一种算法。那么加密解密为何如此重要呢？</p>
+<p>在网络上，信息是可以完美复制的，节点与节点在信号发送上没有区别，这就导致了一个问题，<strong>我怎么知道某段冷冰冰的01信号是谁发给我的？</strong>同样的，由于信号传递过程中难免要经过其他节点，<strong>如果我不想让其他节点知道我发送的信息我又要怎么办呢？</strong></p>
+<p>这些问题就可以通过理想的公私钥加密体系完美解决。公钥私钥的区别只在于是否公开，而两者都可以用来加密，只是用公钥加密后的信息只能被私钥解密，被私钥加密后的信息也只能被公钥解密。这就对应了上面两个问题的解决方法。</p>
+<p>首先，公钥完全公开透明，每个人都可以用公钥加密，但是产生的密文却只有私钥才能解密成明文，这样保证了有用情报只会被拥有私钥的人接收，我们就能把信息发给拥有私钥的那个人而不用担心被别人得知了。反过来呢？拥有私钥的人对某段信息用私钥加密之后，产生的密文能被所有人解密成明文，而这样又有什么效果呢？在这种情况下，密文与加密者产生了对应关系，即某段信息能通过被公钥解密来确认是由私钥拥有者发布的。这种私钥加密的过程也称为<strong>签名</strong></p>
+<p>“ 非对称加密 ”本身没什么厉害的，我们可以随便设计一个非对称的加密算法，就让乘私钥作为加密，乘公钥作为解密，那么整个原理就是<code>message * privatekey * publickey = message</code>，在这里，公钥与私钥的对应关系就是<code>privatekey = 1 / publickey</code>。你应该能发现，这样的加密解密似乎没啥保密性可言，任何学过小学数学的人都能很快地从公钥推出私钥，也就能随意冒充你来发布消息了。因此，“似乎”保证私钥与公钥难以互相推导是非常重要的</p>
+<p>不能让公钥简单推到私钥是显然的，但为什么说也不能让私钥简单推到公钥呢？这里我们要明确一点，公钥与私钥只是互成一对，并没有形式上的区别，我既能用公钥加密，也能用私钥加密。那如果算法保证了只知道公钥的时候难以推出私钥的话，反过来也是一样的。在<strong>只知道私钥</strong>的情况下也难以推出公钥</p>
+<p>注意！是<strong>只知道私钥</strong>，而产生这一对公私钥的非对称加密算法是有很多<strong>过程变量</strong>的，这些过程变量就是其产生公私钥对的依据。</p>
+<p>非对称指的是加密与解密的不对称，并且这种不对称指的是<strong>密钥不对称</strong>而不是算法不对称，算法本身对不对称没啥意义，反正设计出来也是要让大家知道的，真正能起到安全作用的还是难以被破解的密钥。而密钥按是否公开分为公钥跟私钥，其中私钥必须好好保管，保证只有自己知道，不然前人设计的加密算法再安全也救不了你。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/04/%E5%8D%95%E8%AF%8D%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/04/%E5%8D%95%E8%AF%8D%E6%9C%AC/" class="post-title-link" itemprop="url">单词本</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-04 18:49:53 / 修改时间：20:18:06" itemprop="dateCreated datePublished" datetime="2021-11-04T18:49:53+08:00">2021-11-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p><strong>periodical</strong>, a magazine or newspaper, especially on a serious subject, that is published regularly</p>
+</li>
+<li><p><strong>pharmaceutical</strong>, (ceu-&gt;su:),relating to the production of medicines</p>
+</li>
+<li><p><strong>substantial</strong>, large in size, value, or importance;</p>
+</li>
+<li><p><strong>dues</strong>, the official payments that you make to an organization you belong to</p>
+</li>
+<li><p><strong>evasion</strong>, the act of avoiding something or someone</p>
+<p>eg: tax evasion</p>
+</li>
+<li><p><strong>ballot</strong>, a piece of paper on which you write your vote</p>
+</li>
+<li><p><strong>implement</strong>, to put a plan into action</p>
+</li>
+<li><p><strong>slip</strong>, a small piece of paper</p>
+</li>
+<li><p><strong>overlapping</strong>, having some parts that are the same of happen at the same time</p>
+<p>eg: She had several overlapping commitments that day</p>
+</li>
+<li><p><strong>commutative</strong>, (of a calculation) giving the same result whatever order the values are in</p>
+</li>
+<li><p><strong>redundancy</strong>, a situation in which something is unnecessary because it is more than is needed</p>
+</li>
+<li><p><strong>predicate</strong>, to state that something is true</p>
+<p>If and idea or argument is **predicated on ** something, it depends on the existence or truth of that thing</p>
+</li>
+<li><p><strong>reminiscent</strong> -&gt; <strong>reminiscent of sb/sth</strong>, making you remember a particular person, event, or thing</p>
+<p>eg: That sons is so reminiscent of my adolescence</p>
+</li>
+<li><p><strong>debit</strong>, (a record of) money taken out of a bank account</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/01/golang%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -178,7 +337,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-04 10:59:18" itemprop="dateModified" datetime="2021-11-04T10:59:18+08:00">2021-11-04</time>
+                <time title="修改时间：2021-11-04 12:39:58" itemprop="dateModified" datetime="2021-11-04T12:39:58+08:00">2021-11-04</time>
               </span>
 
           
@@ -351,9 +510,10 @@
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数可以返回多个值</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span> <span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>)</span> <span class="params">(<span class="keyword">int</span>,<span class="keyword">string</span>)</span></span>&#123;</span><br><span class="line">    c := a + b</span><br><span class="line">    <span class="keyword">return</span> c, <span class="string">&quot;successfully added&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>Go 的接口是一系列方法的集合。接口有助于将类型的属性组合在一起。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">type</span> animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    description() <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> cat <span class="keyword">string</span>&#123;</span><br><span class="line">    Type <span class="keyword">string</span></span><br><span class="line">    Sound <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> snake <span class="keyword">struct</span> &#123;</span><br><span class="line">    Type <span class="keyword">string</span></span><br><span class="line">    Poisonous <span class="keyword">bool</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s snake)</span> <span class="title">description</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fmt.Sprintf(<span class="string">&quot;Poisonous: %v&quot;</span>,s.Poisonous)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c cat)</span> <span class="title">description</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fmt.Sprintf(<span class="string">&quot;Sound: %v&quot;</span>, c.Sound)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a animal<span class="comment">//创建animal接口类型的变量a</span></span><br><span class="line">    a = snake &#123;Poisonous: <span class="literal">true</span>&#125;</span><br><span class="line">    fmt.Println(a.description())<span class="comment">//=&gt; Poisonous: true</span></span><br><span class="line">    a = cat &#123;Sound: <span class="string">&quot;Meow!!!&quot;</span>&#125;</span><br><span class="line">    fmt.Println(a.descriptoin())<span class="comment">//=&gt; Sound: Meow!!!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数的返回值也可以预先定义</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ad</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>)</span> <span class="params">(c <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    c = a + b</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>方法能给用户自定义的类型添加新的行为。它和函数的区别在于方法有一个接收者。接收者可以是值，也可以是指针</p>
 <h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><h3 id="panic函数"><a href="#panic函数" class="headerlink" title="panic函数"></a>panic函数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">panic</span>(<span class="string">&quot;Some error here&quot;</span>)<span class="comment">//panic: Some error here</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="recover函数"><a href="#recover函数" class="headerlink" title="recover函数"></a>recover函数</h3><p>recover函数可以捕获异常，恢复程序或做收尾工作</p>
@@ -370,7 +530,7 @@
 
 
 
-<h2 id="接口-1"><a href="#接口-1" class="headerlink" title="接口"></a>接口</h2><p>接口指定了一个类型应该具有的方法，并由该类型决定如何实现这些方法</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口指定了一个类型应该具有的方法，并由该类型决定如何实现这些方法</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Nokia <span class="keyword">struct</span> &#123;</span><br><span class="line">    name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Phone <span class="keyword">interface</span> &#123;</span><br><span class="line">    call()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(phone Nokia )</span> <span class="title">call</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;I&#x27;m a phone called Nokia&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="空接口"><a href="#空接口" class="headerlink" title="空接口"></a>空接口</h3><p>普通的接口都有方法，而空接口没有定义任何方法，因此我们可以说所有类型都至少实现了空接口</p>
@@ -427,6 +587,7 @@
 <p><code>Value</code>类型也有一些类似于<code>Int</code>、<code>Float</code>的方法，用来提取底层的数据</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x <span class="keyword">float64</span> = <span class="number">3.4</span></span><br><span class="line">v := reflect.ValueOf(x)</span><br><span class="line">fmt.Println(<span class="string">&quot;type:&quot;</span>, v.Type())</span><br><span class="line">fmt.Println(<span class="string">&quot;kind is float64:&quot;</span>, v.Kind() == reflect.Float64)</span><br><span class="line">fmt.Println(<span class="string">&quot;value:&quot;</span>, v.Float())</span><br></pre></td></tr></table></figure>
 
+<h3 id="Slice"><a href="#Slice" class="headerlink" title="Slice()"></a>Slice()</h3><p><code>Slice()</code>跟其他类型转换的函数不一样，它返回的还是<code>reflect.Value</code>反射对象</p>
 <h3 id="Interface方法"><a href="#Interface方法" class="headerlink" title="Interface方法"></a>Interface方法</h3><p>可以根据一个<code>reflect.Value</code>类型的变量恢复其接口类型的值，事实上，这个方法会把type和value信息打包并填充到一个接口变量中，然后返回</p>
 <p>其函数声明如下：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v Value)</span> <span class="title">Interface</span><span class="params">()</span> <span class="title">interface</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
@@ -1295,7 +1456,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -20,17 +20,19 @@
     var CONFIG = {"hostname":"ajsoabk.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="我在我心的孤寂里，听见你的叹息了">
-<meta property="og:type" content="website">
-<meta property="og:title" content="归因">
-<meta property="og:url" content="http://ajsoabk.xyz/archives/2021/09/index.html">
+  <meta name="description" content="废话少说，先把RSA的处理过程摆上来 RSA流程（简单）RSA是一种非常广泛使用的非对称加密算法，如其名，这种算法首先是一种加密算法。加密算法可不止是加密，而是包括密钥准备、加密、解密等等全过程的一种算法。那么加密解密为何如此重要呢？ 在网络上，信息是可以完美复制的，节点与节点在信号发送上没有区别，这就导致了一个问题，我怎么知道某段冷冰冰的01信号是谁发给我的？同样的，由于信号传递过程中难免要经">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RSA学习与思考">
+<meta property="og:url" content="http://ajsoabk.xyz/2021/11/04/RSA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%9D%E8%80%83/index.html">
 <meta property="og:site_name" content="归因">
-<meta property="og:description" content="我在我心的孤寂里，听见你的叹息了">
+<meta property="og:description" content="废话少说，先把RSA的处理过程摆上来 RSA流程（简单）RSA是一种非常广泛使用的非对称加密算法，如其名，这种算法首先是一种加密算法。加密算法可不止是加密，而是包括密钥准备、加密、解密等等全过程的一种算法。那么加密解密为何如此重要呢？ 在网络上，信息是可以完美复制的，节点与节点在信号发送上没有区别，这就导致了一个问题，我怎么知道某段冷冰冰的01信号是谁发给我的？同样的，由于信号传递过程中难免要经">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-04T13:35:49.000Z">
+<meta property="article:modified_time" content="2021-11-04T15:12:22.833Z">
 <meta property="article:author" content="Ajsoabk">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://ajsoabk.xyz/archives/2021/09/">
+<link rel="canonical" href="http://ajsoabk.xyz/2021/11/04/RSA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%9D%E8%80%83/">
 
 
 <script id="page-configurations">
@@ -38,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | 归因</title>
+  <title>RSA学习与思考 | 归因</title>
   
 
 
@@ -141,70 +143,85 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 10 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/04/RSA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%9D%E8%80%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RSA学习与思考
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-04 21:35:49 / 修改时间：23:12:22" itemprop="dateCreated datePublished" datetime="2021-11-04T21:35:49+08:00">2021-11-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-09-29T17:52:35+08:00"
-              content="2021-09-29">
-          09-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/29/%E6%AF%8F%E6%97%A5%E5%85%B3%E9%94%AE%E8%AF%8D/" itemprop="url">
-            <span itemprop="name">每日关键词</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-09-11T15:03:18+08:00"
-              content="2021-09-11">
-          09-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/11/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">程序设计语言及其原理笔记</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <p> 废话少说，先把RSA的处理过程摆上来</p>
+<h1 id="RSA流程（简单）"><a href="#RSA流程（简单）" class="headerlink" title="RSA流程（简单）"></a>RSA流程（简单）</h1><p>RSA是一种非常广泛使用的<strong>非对称加密算法</strong>，如其名，这种算法首先是一种加密算法。加密算法可不止是加密，而是包括密钥准备、加密、解密等等全过程的一种算法。那么加密解密为何如此重要呢？</p>
+<p>在网络上，信息是可以完美复制的，节点与节点在信号发送上没有区别，这就导致了一个问题，<strong>我怎么知道某段冷冰冰的01信号是谁发给我的？</strong>同样的，由于信号传递过程中难免要经过其他节点，<strong>如果我不想让其他节点知道我发送的信息我又要怎么办呢？</strong></p>
+<p>这些问题就可以通过理想的公私钥加密体系完美解决。公钥私钥的区别只在于是否公开，而两者都可以用来加密，只是用公钥加密后的信息只能被私钥解密，被私钥加密后的信息也只能被公钥解密。这就对应了上面两个问题的解决方法。</p>
+<p>首先，公钥完全公开透明，每个人都可以用公钥加密，但是产生的密文却只有私钥才能解密成明文，这样保证了有用情报只会被拥有私钥的人接收，我们就能把信息发给拥有私钥的那个人而不用担心被别人得知了。反过来呢？拥有私钥的人对某段信息用私钥加密之后，产生的密文能被所有人解密成明文，而这样又有什么效果呢？在这种情况下，密文与加密者产生了对应关系，即某段信息能通过被公钥解密来确认是由私钥拥有者发布的。这种私钥加密的过程也称为<strong>签名</strong></p>
+<p>“ 非对称加密 ”本身没什么厉害的，我们可以随便设计一个非对称的加密算法，就让乘私钥作为加密，乘公钥作为解密，那么整个原理就是<code>message * privatekey * publickey = message</code>，在这里，公钥与私钥的对应关系就是<code>privatekey = 1 / publickey</code>。你应该能发现，这样的加密解密似乎没啥保密性可言，任何学过小学数学的人都能很快地从公钥推出私钥，也就能随意冒充你来发布消息了。因此，“似乎”保证私钥与公钥难以互相推导是非常重要的</p>
+<p>不能让公钥简单推到私钥是显然的，但为什么说也不能让私钥简单推到公钥呢？这里我们要明确一点，公钥与私钥只是互成一对，并没有形式上的区别，我既能用公钥加密，也能用私钥加密。那如果算法保证了只知道公钥的时候难以推出私钥的话，反过来也是一样的。在<strong>只知道私钥</strong>的情况下也难以推出公钥</p>
+<p>注意！是<strong>只知道私钥</strong>，而产生这一对公私钥的非对称加密算法是有很多<strong>过程变量</strong>的，这些过程变量就是其产生公私钥对的依据。</p>
+<p>非对称指的是加密与解密的不对称，并且这种不对称指的是<strong>密钥不对称</strong>而不是算法不对称，算法本身对不对称没啥意义，反正设计出来也是要让大家知道的，真正能起到安全作用的还是难以被破解的密钥。而密钥按是否公开分为公钥跟私钥，其中私钥必须好好保管，保证只有自己知道，不然前人设计的加密算法再安全也救不了你。</p>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/04/%E5%8D%95%E8%AF%8D%E6%9C%AC/" rel="prev" title="单词本">
+      <i class="fa fa-chevron-left"></i> 单词本
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -257,6 +274,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RSA%E6%B5%81%E7%A8%8B%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">RSA流程（简单）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
