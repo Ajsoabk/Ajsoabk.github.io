@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ajsoabk.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="比特币的经典文章必须好好研读一下 交易转出者将该币的前一个交易地址与转入者的公钥打包后签名 首要的问题当然是转入者没法验证转出者是否双花，传统的解决方法是让可信任的权威机构或银行来检查每笔交易以防止双花，每笔交易的币都需要由转出者给到银行、再由银行给到转入者。这一方法的问题是整个系统都高度依赖于中央银行。 我们需要让转入者能独立验证交易的合法性，这要求转入者知道所有的交易信息，因此每笔交易都需要在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文精读之比特币-一种点对点的电子现金系统">
+<meta property="og:url" content="http://ajsoabk.xyz/2021/11/05/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E4%B9%8B%E6%AF%94%E7%89%B9%E5%B8%81-%E4%B8%80%E7%A7%8D%E7%82%B9%E5%AF%B9%E7%82%B9%E7%9A%84%E7%94%B5%E5%AD%90%E7%8E%B0%E9%87%91%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="归因">
+<meta property="og:description" content="比特币的经典文章必须好好研读一下 交易转出者将该币的前一个交易地址与转入者的公钥打包后签名 首要的问题当然是转入者没法验证转出者是否双花，传统的解决方法是让可信任的权威机构或银行来检查每笔交易以防止双花，每笔交易的币都需要由转出者给到银行、再由银行给到转入者。这一方法的问题是整个系统都高度依赖于中央银行。 我们需要让转入者能独立验证交易的合法性，这要求转入者知道所有的交易信息，因此每笔交易都需要在">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-05T11:59:47.000Z">
+<meta property="article:modified_time" content="2021-11-06T04:55:24.699Z">
+<meta property="article:author" content="Ajsoabk">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://ajsoabk.xyz/2021/11/05/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E4%B9%8B%E6%AF%94%E7%89%B9%E5%B8%81-%E4%B8%80%E7%A7%8D%E7%82%B9%E5%AF%B9%E7%82%B9%E7%9A%84%E7%94%B5%E5%AD%90%E7%8E%B0%E9%87%91%E7%B3%BB%E7%BB%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>论文精读之比特币-一种点对点的电子现金系统 | 归因</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">归因</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/05/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E4%B9%8B%E6%AF%94%E7%89%B9%E5%B8%81-%E4%B8%80%E7%A7%8D%E7%82%B9%E5%AF%B9%E7%82%B9%E7%9A%84%E7%94%B5%E5%AD%90%E7%8E%B0%E9%87%91%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论文精读之比特币-一种点对点的电子现金系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-05 19:59:47" itemprop="dateCreated datePublished" datetime="2021-11-05T19:59:47+08:00">2021-11-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-06 12:55:24" itemprop="dateModified" datetime="2021-11-06T12:55:24+08:00">2021-11-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>比特币的经典文章必须好好研读一下</p>
+<h2 id="交易"><a href="#交易" class="headerlink" title="交易"></a>交易</h2><p>转出者将该币的前一个交易地址与转入者的公钥打包后签名</p>
+<p>首要的问题当然是转入者没法验证转出者是否双花，传统的解决方法是让可信任的权威机构或银行来检查每笔交易以防止双花，每笔交易的币都需要由转出者给到银行、再由银行给到转入者。这一方法的问题是整个系统都高度依赖于中央银行。</p>
+<p>我们需要让转入者能独立验证交易的合法性，这要求转入者知道所有的交易信息，因此每笔交易都需要在网络上公开。我们还需要让所有参与这笔交易的人对这笔钱的历史交易信息有共识。转出者需要让每笔交易都能被大部分节点承认。</p>
+<h2 id="timestamp-server"><a href="#timestamp-server" class="headerlink" title="timestamp server"></a>timestamp server</h2><p>timestamp server记录一系列的包含时间戳的区块并将其哈希值广泛公开。每个时间戳都包含了前一个区块的哈希值。在这样的一条链上，每加入一个新区块都会巩固前面的区块</p>
+<h2 id="Proof-of-Work"><a href="#Proof-of-Work" class="headerlink" title="Proof-of-Work"></a>Proof-of-Work</h2><p>为了在点对点的基础上实现这样的分布式timestamp server，我们需要使用工作量证明（Pow）机制。工作量证明机制需要通过枚举找到一个值，这个值在被某些哈希算法转换后（如SHA-256）得到的哈希值以数个连续的零开头。找这个值所需要的时间与零值的个数要求呈指数关系。但一旦找到，其他节点验证这个值的合法性则很快。（跑一遍SHA-256即可）</p>
+<p>在这样的一个时间戳网络内，我们不断枚举nonce值直到这个区块的哈希值以一连串符合要求的0值开头。有了这样的算力投入，要想篡改区块就必须付出同等的代价。由于后面的区块包含了前面区块的哈希，因此篡改单个区块后还需要篡改其后面的所有区块。</p>
+<p>Pow机制帮助大家形成对代表的共识。如果每个IP地址都有一个投票权（<strong>one-IP-address-one-vote</strong>)，那么投票肯定会被购买了大量IP地址的人所操控。Pow本质上是（<strong>one-CPU-one-vote</strong>)。系统中的最长链就是大家的共识，大家在这条链上投入了最多的算力。只要主要的算力由诚实节点所控制，那么合法的链条就一定会增长得最快。为了修改一个过去的区块，攻击者必须投入该区块以及其后所有区块上曾被投入的算力，并且必须赶超诚实节点所维护的最长合法链。我们将稍后展示一个稍慢一步的攻击者（指没来得及挖出最新区块）追上最长合法链的可能性将随着后续区块的增加指数下降</p>
+<p>为了适应增长迅速的硬件处理速度和随时间变化的挖矿收益，挖矿难度是随过去一段时间内每小时挖出区块的平均值决定的。如果区块产生的速度过快，挖矿难度将自动升高</p>
+<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><p>这个网络的运行有以下步骤：</p>
+<ol>
+<li>给所有节点广播新的交易信息</li>
+<li>每个节点将自己收到的交易信息放进区块中</li>
+<li>每个节点投入算力来找到符合工作量证明难度的哈希值（挖矿）</li>
+<li>当一个节点挖到了矿，它将其广播给其他所有节点</li>
+<li>只有一个区块内的所有交易都是合法且有效的时候，节点才会认为这个区块合法并承认它</li>
+<li>一个节点承认一个区块的表现是它在这个区块后挖矿</li>
+</ol>
+<p>节点总是承认最长合法链并一直投入算力来延长它。如果两个节点同时广播了两个不同的区块，其他节点分别会率先接收到其中一个。这样的话，这些节点就会在自己第一个接收到的区块后挖矿，这样的平衡不会维持很久，因为总会有新的区块被率先挖出来，这样的话其中一个分支就会变得更长，工作在更短分支上的节点也会立刻转入新的最长合法链</p>
+<p>新的交易信息不需要直接发送到所有节点。只要它被发送到了足够多的节点，这些信息很快就会被写入区块。这样的广播也能适应丢失消息的情况。如果一个节点没有接收到某个区块，在接收到下一个区块的时候它会发现自己少接收了一个</p>
+<h2 id="Incentive"><a href="#Incentive" class="headerlink" title="Incentive"></a>Incentive</h2><p>按照惯例，区块内的第一笔交易是一笔铸币交易，给新区块的创造者发行了新的币。这样的设计能给节点更大动力来维持比特币网络的运行，并且提供了一种发行货币并流通的方式，这样不需要任何中央机构就能发行新的比特币了</p>
+<p>交易费同样也是动力之一。如果一笔交易的输出小于输入，其差额就是支付给区块挖出者的交易费。只要一个预先确定的定量金额的比特币进入了市场，挖矿的动力就完全转换成了交易费，系统也就不会再有通胀了</p>
+<h2 id="Reclaiming-Disk-Space"><a href="#Reclaiming-Disk-Space" class="headerlink" title="Reclaiming Disk Space"></a>Reclaiming Disk Space</h2><p>只要一个币的最近一次交易被写入了足够多的区块，为了节约磁盘空间，在其之前的交易信息就可以被抛弃。为了尽量节约空间而不打破区块的哈希，交易将被以哈希形式存储在默克尔树上，只有根哈希被包含进了区块头的哈希。过去的区块能通过将除了根哈希外的所有分支都除去从而大大节约磁盘空间，因为这些分支上的哈希都没有存储的必要</p>
+<p>一个不包含具体交易信息的区块头大约是80字节。我们假设每十分钟挖出一个区块，80 bytes * 6 * 24 * 365 = 4.2MB/year。2008年的计算机基本都有2GB的内存，并且摩尔定律预测现在的增长速度可能是1.2GB/year，因而就算区块头必须被放在内存中，也并没有存储问题</p>
+<h2 id="Simplified-Payment-Verification"><a href="#Simplified-Payment-Verification" class="headerlink" title="Simplified Payment Verification"></a>Simplified Payment Verification</h2><p> 不运行一个全节点也是可以验证交易合法性的。一个用户只需要通过询问网络中的其他节点来获得最长合法链的所有区块头，并且获得这个交易所在的默克尔树的区块及其路径。用户不能自己检查交易是否正确，但只要这个区块后接了足够多的区块，他就能确定整个网络承认了这个交易</p>
+<p>实际上，只要诚实节点控制着网络，这样的验证就是可信赖的，但如果恶意节点掌控了整个网络，它就会变得很脆弱。网络上的节点可以自己验证交易合法性，但只要攻击者一直掌控着网络，上面这种简化的验证过程则很容易被攻击者所伪造的交易信息所欺骗。对抗攻击者的其中一个策略是从网络上其他节点中接收警报，这驱使用户的软件下载下全节点的信息以及危险的交易来确认警报。一些经常处理交易的公司可能会想运行自己的全节点来保证独立性和安全性，还能保证更快的验证</p>
+<h2 id="Combining-and-Splitting-Value"><a href="#Combining-and-Splitting-Value" class="headerlink" title="Combining and Splitting Value"></a>Combining and Splitting Value</h2><p>尽管控制单个币的流动是可行的，但在交易中写明每个币的流向将会很累赘。为了让价值能够被拆分与合并，每笔交易都能包含多个输入与输出。一般情况下既可以让一笔大交易的输出成为当前交易的唯一输入，也可以让多笔小交易的输出成为当前交易的多个输入。最多只能有两个输出，一个用于支付，另一个用于返还，如果需要的话，返还给转出者</p>
+<p>需要注意的是依赖于之前多笔交易的扇入过程并不麻烦，因为不需要将前向交易的完整信息复制到当前交易中来</p>
+<h2 id="Privacy"><a href="#Privacy" class="headerlink" title="Privacy"></a>Privacy</h2><p>传统的银行模式通过限制人们获取其他人的信息来实现某种程度的隐私保护。由于比特币网络天然需要公开所有交易，因而这样的方法无法复用，但是隐私仍然可以通过打破信息在某个地方的流通来实现保护：保持公钥的匿名性。公众能看到某个节点给另一个节点转了帐，但不能将这笔交易联系到任何具体的人身上。这有点像股票交易的信息流通方式-每笔买入或卖出的时间与数额都是公开的，但不能得知是谁进行了这样的交易</p>
+<p>除此之外，每笔交易都可以通过引入新的公私钥对来防止某些交易跟一个共同的拥有者相联系。在一些扇入交易中有些联系仍然是不可避免的，因为这会揭示这些输入的交易所在节点被同一个人所拥有。其中的风险在于如果某人与其公钥对应起来了，这样的联系会告诉我们其他的很多交易也是属于同一个拥有者的</p>
+<h2 id="Calculation"><a href="#Calculation" class="headerlink" title="Calculation"></a>Calculation</h2><p>数学证明略。。。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/04/RSA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%9D%E8%80%83/" rel="prev" title="RSA学习与思考">
+      <i class="fa fa-chevron-left"></i> RSA学习与思考
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%98%93"><span class="nav-number">1.</span> <span class="nav-text">交易</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#timestamp-server"><span class="nav-number">2.</span> <span class="nav-text">timestamp server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proof-of-Work"><span class="nav-number">3.</span> <span class="nav-text">Proof-of-Work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network"><span class="nav-number">4.</span> <span class="nav-text">Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Incentive"><span class="nav-number">5.</span> <span class="nav-text">Incentive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reclaiming-Disk-Space"><span class="nav-number">6.</span> <span class="nav-text">Reclaiming Disk Space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Simplified-Payment-Verification"><span class="nav-number">7.</span> <span class="nav-text">Simplified Payment Verification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Combining-and-Splitting-Value"><span class="nav-number">8.</span> <span class="nav-text">Combining and Splitting Value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Privacy"><span class="nav-number">9.</span> <span class="nav-text">Privacy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Calculation"><span class="nav-number">10.</span> <span class="nav-text">Calculation</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ajsoabk</p>
+  <div class="site-description" itemprop="description">我在我心的孤寂里，听见你的叹息了</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ajsoabk</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

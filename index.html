@@ -147,6 +147,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/05/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E4%B9%8B%E6%AF%94%E7%89%B9%E5%B8%81-%E4%B8%80%E7%A7%8D%E7%82%B9%E5%AF%B9%E7%82%B9%E7%9A%84%E7%94%B5%E5%AD%90%E7%8E%B0%E9%87%91%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/05/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E4%B9%8B%E6%AF%94%E7%89%B9%E5%B8%81-%E4%B8%80%E7%A7%8D%E7%82%B9%E5%AF%B9%E7%82%B9%E7%9A%84%E7%94%B5%E5%AD%90%E7%8E%B0%E9%87%91%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">论文精读之比特币-一种点对点的电子现金系统</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-05 19:59:47" itemprop="dateCreated datePublished" datetime="2021-11-05T19:59:47+08:00">2021-11-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-06 12:55:24" itemprop="dateModified" datetime="2021-11-06T12:55:24+08:00">2021-11-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>比特币的经典文章必须好好研读一下</p>
+<h2 id="交易"><a href="#交易" class="headerlink" title="交易"></a>交易</h2><p>转出者将该币的前一个交易地址与转入者的公钥打包后签名</p>
+<p>首要的问题当然是转入者没法验证转出者是否双花，传统的解决方法是让可信任的权威机构或银行来检查每笔交易以防止双花，每笔交易的币都需要由转出者给到银行、再由银行给到转入者。这一方法的问题是整个系统都高度依赖于中央银行。</p>
+<p>我们需要让转入者能独立验证交易的合法性，这要求转入者知道所有的交易信息，因此每笔交易都需要在网络上公开。我们还需要让所有参与这笔交易的人对这笔钱的历史交易信息有共识。转出者需要让每笔交易都能被大部分节点承认。</p>
+<h2 id="timestamp-server"><a href="#timestamp-server" class="headerlink" title="timestamp server"></a>timestamp server</h2><p>timestamp server记录一系列的包含时间戳的区块并将其哈希值广泛公开。每个时间戳都包含了前一个区块的哈希值。在这样的一条链上，每加入一个新区块都会巩固前面的区块</p>
+<h2 id="Proof-of-Work"><a href="#Proof-of-Work" class="headerlink" title="Proof-of-Work"></a>Proof-of-Work</h2><p>为了在点对点的基础上实现这样的分布式timestamp server，我们需要使用工作量证明（Pow）机制。工作量证明机制需要通过枚举找到一个值，这个值在被某些哈希算法转换后（如SHA-256）得到的哈希值以数个连续的零开头。找这个值所需要的时间与零值的个数要求呈指数关系。但一旦找到，其他节点验证这个值的合法性则很快。（跑一遍SHA-256即可）</p>
+<p>在这样的一个时间戳网络内，我们不断枚举nonce值直到这个区块的哈希值以一连串符合要求的0值开头。有了这样的算力投入，要想篡改区块就必须付出同等的代价。由于后面的区块包含了前面区块的哈希，因此篡改单个区块后还需要篡改其后面的所有区块。</p>
+<p>Pow机制帮助大家形成对代表的共识。如果每个IP地址都有一个投票权（<strong>one-IP-address-one-vote</strong>)，那么投票肯定会被购买了大量IP地址的人所操控。Pow本质上是（<strong>one-CPU-one-vote</strong>)。系统中的最长链就是大家的共识，大家在这条链上投入了最多的算力。只要主要的算力由诚实节点所控制，那么合法的链条就一定会增长得最快。为了修改一个过去的区块，攻击者必须投入该区块以及其后所有区块上曾被投入的算力，并且必须赶超诚实节点所维护的最长合法链。我们将稍后展示一个稍慢一步的攻击者（指没来得及挖出最新区块）追上最长合法链的可能性将随着后续区块的增加指数下降</p>
+<p>为了适应增长迅速的硬件处理速度和随时间变化的挖矿收益，挖矿难度是随过去一段时间内每小时挖出区块的平均值决定的。如果区块产生的速度过快，挖矿难度将自动升高</p>
+<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><p>这个网络的运行有以下步骤：</p>
+<ol>
+<li>给所有节点广播新的交易信息</li>
+<li>每个节点将自己收到的交易信息放进区块中</li>
+<li>每个节点投入算力来找到符合工作量证明难度的哈希值（挖矿）</li>
+<li>当一个节点挖到了矿，它将其广播给其他所有节点</li>
+<li>只有一个区块内的所有交易都是合法且有效的时候，节点才会认为这个区块合法并承认它</li>
+<li>一个节点承认一个区块的表现是它在这个区块后挖矿</li>
+</ol>
+<p>节点总是承认最长合法链并一直投入算力来延长它。如果两个节点同时广播了两个不同的区块，其他节点分别会率先接收到其中一个。这样的话，这些节点就会在自己第一个接收到的区块后挖矿，这样的平衡不会维持很久，因为总会有新的区块被率先挖出来，这样的话其中一个分支就会变得更长，工作在更短分支上的节点也会立刻转入新的最长合法链</p>
+<p>新的交易信息不需要直接发送到所有节点。只要它被发送到了足够多的节点，这些信息很快就会被写入区块。这样的广播也能适应丢失消息的情况。如果一个节点没有接收到某个区块，在接收到下一个区块的时候它会发现自己少接收了一个</p>
+<h2 id="Incentive"><a href="#Incentive" class="headerlink" title="Incentive"></a>Incentive</h2><p>按照惯例，区块内的第一笔交易是一笔铸币交易，给新区块的创造者发行了新的币。这样的设计能给节点更大动力来维持比特币网络的运行，并且提供了一种发行货币并流通的方式，这样不需要任何中央机构就能发行新的比特币了</p>
+<p>交易费同样也是动力之一。如果一笔交易的输出小于输入，其差额就是支付给区块挖出者的交易费。只要一个预先确定的定量金额的比特币进入了市场，挖矿的动力就完全转换成了交易费，系统也就不会再有通胀了</p>
+<h2 id="Reclaiming-Disk-Space"><a href="#Reclaiming-Disk-Space" class="headerlink" title="Reclaiming Disk Space"></a>Reclaiming Disk Space</h2><p>只要一个币的最近一次交易被写入了足够多的区块，为了节约磁盘空间，在其之前的交易信息就可以被抛弃。为了尽量节约空间而不打破区块的哈希，交易将被以哈希形式存储在默克尔树上，只有根哈希被包含进了区块头的哈希。过去的区块能通过将除了根哈希外的所有分支都除去从而大大节约磁盘空间，因为这些分支上的哈希都没有存储的必要</p>
+<p>一个不包含具体交易信息的区块头大约是80字节。我们假设每十分钟挖出一个区块，80 bytes * 6 * 24 * 365 = 4.2MB/year。2008年的计算机基本都有2GB的内存，并且摩尔定律预测现在的增长速度可能是1.2GB/year，因而就算区块头必须被放在内存中，也并没有存储问题</p>
+<h2 id="Simplified-Payment-Verification"><a href="#Simplified-Payment-Verification" class="headerlink" title="Simplified Payment Verification"></a>Simplified Payment Verification</h2><p> 不运行一个全节点也是可以验证交易合法性的。一个用户只需要通过询问网络中的其他节点来获得最长合法链的所有区块头，并且获得这个交易所在的默克尔树的区块及其路径。用户不能自己检查交易是否正确，但只要这个区块后接了足够多的区块，他就能确定整个网络承认了这个交易</p>
+<p>实际上，只要诚实节点控制着网络，这样的验证就是可信赖的，但如果恶意节点掌控了整个网络，它就会变得很脆弱。网络上的节点可以自己验证交易合法性，但只要攻击者一直掌控着网络，上面这种简化的验证过程则很容易被攻击者所伪造的交易信息所欺骗。对抗攻击者的其中一个策略是从网络上其他节点中接收警报，这驱使用户的软件下载下全节点的信息以及危险的交易来确认警报。一些经常处理交易的公司可能会想运行自己的全节点来保证独立性和安全性，还能保证更快的验证</p>
+<h2 id="Combining-and-Splitting-Value"><a href="#Combining-and-Splitting-Value" class="headerlink" title="Combining and Splitting Value"></a>Combining and Splitting Value</h2><p>尽管控制单个币的流动是可行的，但在交易中写明每个币的流向将会很累赘。为了让价值能够被拆分与合并，每笔交易都能包含多个输入与输出。一般情况下既可以让一笔大交易的输出成为当前交易的唯一输入，也可以让多笔小交易的输出成为当前交易的多个输入。最多只能有两个输出，一个用于支付，另一个用于返还，如果需要的话，返还给转出者</p>
+<p>需要注意的是依赖于之前多笔交易的扇入过程并不麻烦，因为不需要将前向交易的完整信息复制到当前交易中来</p>
+<h2 id="Privacy"><a href="#Privacy" class="headerlink" title="Privacy"></a>Privacy</h2><p>传统的银行模式通过限制人们获取其他人的信息来实现某种程度的隐私保护。由于比特币网络天然需要公开所有交易，因而这样的方法无法复用，但是隐私仍然可以通过打破信息在某个地方的流通来实现保护：保持公钥的匿名性。公众能看到某个节点给另一个节点转了帐，但不能将这笔交易联系到任何具体的人身上。这有点像股票交易的信息流通方式-每笔买入或卖出的时间与数额都是公开的，但不能得知是谁进行了这样的交易</p>
+<p>除此之外，每笔交易都可以通过引入新的公私钥对来防止某些交易跟一个共同的拥有者相联系。在一些扇入交易中有些联系仍然是不可避免的，因为这会揭示这些输入的交易所在节点被同一个人所拥有。其中的风险在于如果某人与其公钥对应起来了，这样的联系会告诉我们其他的很多交易也是属于同一个拥有者的</p>
+<h2 id="Calculation"><a href="#Calculation" class="headerlink" title="Calculation"></a>Calculation</h2><p>数学证明略。。。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/04/RSA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%9D%E8%80%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -170,10 +265,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-11-04 21:35:49 / 修改时间：23:26:11" itemprop="dateCreated datePublished" datetime="2021-11-04T21:35:49+08:00">2021-11-04</time>
+              <time title="创建时间：2021-11-04 21:35:49" itemprop="dateCreated datePublished" datetime="2021-11-04T21:35:49+08:00">2021-11-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-05 16:30:56" itemprop="dateModified" datetime="2021-11-05T16:30:56+08:00">2021-11-05</time>
+              </span>
 
           
 
@@ -193,10 +294,20 @@
 <p>RSA是一种非常广泛使用的<strong>非对称加密算法</strong>，如其名，这种算法首先是一种加密算法。加密算法可不止是加密，而是包括密钥准备、加密、解密等等全过程的一种算法。那么加密解密为何如此重要呢？</p>
 <p>在网络上，信息是可以完美复制的，节点与节点在信号发送上没有区别，这就导致了一个问题，<strong>我怎么知道某段冷冰冰的01信号是谁发给我的？</strong>同样的，由于信号传递过程中难免要经过其他节点，<strong>如果我不想让其他节点知道我发送的信息我又要怎么办呢？</strong></p>
 <p>这些问题就可以通过理想的公私钥加密体系完美解决。公钥私钥的区别只在于是否公开，而两者都可以用来加密，只是用公钥加密后的信息只能被私钥解密，被私钥加密后的信息也只能被公钥解密。这就对应了上面两个问题的解决方法。</p>
-<p>首先，公钥完全公开透明，每个人都可以用公钥加密，但是产生的密文却只有私钥才能解密成明文，这样保证了有用情报只会被拥有私钥的人接收，我们就能把信息发给拥有私钥的那个人而不用担心被别人得知了。反过来呢？拥有私钥的人对某段信息用私钥加密之后，产生的密文能被所有人解密成明文，而这样又有什么效果呢？在这种情况下，密文与加密者产生了对应关系，即某段信息能通过被公钥解密来确认是由私钥拥有者发布的。这种私钥加密的过程也称为<strong>签名</strong></p>
+<p>首先，公钥完全公开透明，每个人都可以用公钥加密，但是产生的密文却只有私钥才能解密成明文，这样保证了有用情报只会被拥有私钥的人接收，我们就能把信息发给拥有私钥的那个人而不用担心被别人得知了。</p>
+<p>反过来呢？拥有私钥的人对某段信息用私钥加密之后，产生的密文能被所有人解密成明文，这样又有什么效果呢？为了把明文和无效信息区分开来，假设我们约定了明文中至少要包含的有效信息（比如发布时间等等），那么密文就与加密者产生了对应关系，我们只需用加密者发布的公钥做一下解密，再验证一下明文中是否有这些有效信息，就能确认这段信息是不是由私钥拥有者发布的了。这样信息就有了归属，我们就能确认某段信息是我们想要的人发给我们的了。而这种私钥加密的过程也称为<strong>签名</strong>。</p>
 <h2 id="“非对称”并非核心"><a href="#“非对称”并非核心" class="headerlink" title="“非对称”并非核心"></a>“非对称”并非核心</h2><p>“ 非对称加密 ”本身没什么厉害的，我们可以随便设计一个非对称的加密算法，就让乘私钥作为加密，乘公钥作为解密，那么整个原理就是<code>message * privatekey * publickey = message</code>，在这里，公钥与私钥的对应关系就是<code>privatekey = 1 / publickey</code>。你应该能发现，这样的加密解密似乎没啥保密性可言，任何学过小学数学的人都能很快地从公钥推出私钥，也就能随意冒充你来发布消息了。因此，“似乎”保证私钥与公钥难以互相推导是非常重要的</p>
 <p>不能让公钥简单推到私钥是显然的，但为什么说也不能让私钥简单推到公钥呢？这里我们要明确一点，公钥与私钥只是互成一对，并没有形式上的区别，我既能用公钥加密，也能用私钥加密。那如果算法保证了只知道公钥的时候难以推出私钥的话，反过来也是一样的。在<strong>只知道私钥</strong>的情况下也难以推出公钥，注意！是<strong>只知道私钥</strong>！而生成这一对公私钥的过程中是产生了很多过程变量的，这些过程变量才是算法生成公私钥对的某种依据</p>
-<p>总结来说，RSA等一众非对称加密算法通过某个数学过程产生了互成一对的公钥与私钥，然后大家就能愉快地用公私钥来在网络上加密通信了。</p>
+<p>总结来说，RSA等一众非对称加密算法通过某个数学过程产生了互成一对但难以相互推导的公钥与私钥，然后大家就能愉快地用公私钥来在网络上加密通信了。</p>
+<h1 id="取模"><a href="#取模" class="headerlink" title="取模"></a>取模</h1><p>求余，一个小学就接触到的数学运算，那时候我们把除法得到的整数后加几个点，再接上一个数表示余数:</p>
+<p>$$ 5 \div 3 = 1 \dots 2$$</p>
+<p>这样的写法中，余数表现得就像它的名字一样——有点多余。当时的我们可没想到，这么简单的一个余数及其相关的运算，竟然能在数论中爆发出那么强大的力量</p>
+<p>废话少说，让我们再多多观察观察这个运算，为了不考虑向下取整与向0取整，我们忽略负数的情况</p>
+<p>在上面的例子中，如果我们不关注商而只关注余数，那么包括2、5、8等等在内的一系列数对3求余结果都是2，包括1、4、7在内的一系列数对3求余结果都是1，类似的，如果我们只关注整数n对m求余后的结果，那么所有的n就能根据这个结果分成m个集合，我们把这样划分后在同一个集合内的两个数称为<strong>模m同余</strong>，这样的集合称为<strong>同余类</strong>，求余运算的新形式也就这么出现了</p>
+<blockquote>
+<p>两个整数a,b，若它们除以正整数m所得的余数相等，则称a，b对于模数m同余，记作:$$a \equiv b\ (\ mod\ m)$$</p>
+</blockquote>
+<p>对于一个运算符，最重要的概念是什么？</p>
 
       
     </div>
@@ -239,10 +350,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-11-04 18:49:53 / 修改时间：20:18:06" itemprop="dateCreated datePublished" datetime="2021-11-04T18:49:53+08:00">2021-11-04</time>
+              <time title="创建时间：2021-11-04 18:49:53" itemprop="dateCreated datePublished" datetime="2021-11-04T18:49:53+08:00">2021-11-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-06 12:17:28" itemprop="dateModified" datetime="2021-11-06T12:17:28+08:00">2021-11-06</time>
+              </span>
 
           
 
@@ -256,8 +373,6 @@
 
       
           <ul>
-<li><p><strong>periodical</strong>, a magazine or newspaper, especially on a serious subject, that is published regularly</p>
-</li>
 <li><p><strong>pharmaceutical</strong>, (ceu-&gt;su:),relating to the production of medicines</p>
 </li>
 <li><p><strong>substantial</strong>, large in size, value, or importance;</p>
@@ -276,8 +391,6 @@
 <li><p><strong>overlapping</strong>, having some parts that are the same of happen at the same time</p>
 <p>eg: She had several overlapping commitments that day</p>
 </li>
-<li><p><strong>commutative</strong>, (of a calculation) giving the same result whatever order the values are in</p>
-</li>
 <li><p><strong>redundancy</strong>, a situation in which something is unnecessary because it is more than is needed</p>
 </li>
 <li><p><strong>predicate</strong>, to state that something is true</p>
@@ -287,6 +400,30 @@
 <p>eg: That sons is so reminiscent of my adolescence</p>
 </li>
 <li><p><strong>debit</strong>, (a record of) money taken out of a bank account</p>
+</li>
+<li><p><strong>mediate</strong>, to talk to two separate people or groups involved in a disagreement to try to help them to agree or find a solution to their problems</p>
+</li>
+<li><p><strong>hassle</strong>, to annoy someone, especially y repeatedly asking them something</p>
+</li>
+<li><p><strong>escrow</strong>, an agreement between two people or organizations in which money or property is kept by a third person or organization until a particular condition is met</p>
+</li>
+<li><p><strong>mint</strong>, a place where the new coins of a country are made</p>
+</li>
+<li><p><strong>subvert</strong>, to try to destroy or damage something, especially an established political system</p>
+</li>
+<li><p><strong>analogous</strong>, having similar features to another thing and there fore able to be compared with it</p>
+</li>
+<li><p><strong>inflation</strong>, a general, continuous increase in prices</p>
+</li>
+<li><p><strong>preclude</strong>, to prevent something or make it impossible, or prevent someone from doing something.</p>
+</li>
+<li><p><strong>deficit</strong>, the total amount by which money spent is more than money received.</p>
+</li>
+<li><p><strong>lunge</strong>, to move forward suddenly and with force, especially in order to attack someone.</p>
+</li>
+<li><p><strong>issue</strong>, to produce or provide something official</p>
+</li>
+<li><p><strong>compact</strong>, to press something together in a tight and solid way.</p>
 </li>
 </ul>
 
@@ -1323,77 +1460,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/08/12/HelloWorld/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ajsoabk">
-      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="归因">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/12/HelloWorld/" class="post-title-link" itemprop="url">HelloWorld</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-12 10:50:25" itemprop="dateCreated datePublished" datetime="2021-08-12T10:50:25+08:00">2021-08-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-11 15:02:30" itemprop="dateModified" datetime="2021-09-11T15:02:30+08:00">2021-09-11</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote><p>千里之行,始于足下</p>
-<footer><strong>老子</strong></footer></blockquote>
-
-<p>一直在思考如何将自己学习到的知识用最简单快捷的方式记录下来，不论是每日学习记录，每日胡思乱想，还是总结性的日记我都曾尝试过，但懒惰的我总是无法从一而终，我也一直在思考是否要将过去的记录中暂显不重要的部分给删去，却总是没有满意的答案，或许我的终极目标就是写一个既能以日期形式表现，也能以内容分类形式展现的博客平台</p>
-<p>在此我决定，随想类型的文章永不删减，笔记类型的文章每周一删</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1458,7 +1529,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
