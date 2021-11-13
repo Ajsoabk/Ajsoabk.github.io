@@ -147,6 +147,406 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/12/geth-commands/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/12/geth-commands/" class="post-title-link" itemprop="url">geth-commands</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-12 10:16:14 / 修改时间：11:03:03" itemprop="dateCreated datePublished" datetime="2021-11-12T10:16:14+08:00">2021-11-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p> <strong>console和attach</strong></p>
+<p><code>geth console</code>与<code>geth attach</code>都可以打开一个JavaScript并与节点交互，但是前者是启动新的节点，而后者则是通过rpc或者ipc与已经启动的节点交互。因而前者可以使用所有api，但后者只能时候已经打开的模块的api</p>
+<p>使用<code>geth console</code>的时候你会发现控制台一直在输出信息，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO [08-12|13:24:11.607] Upgrading chain index         type=bloobits percentage=88</span><br></pre></td></tr></table></figure>
+
+<p>使用命令<code>--verbosity</code>来调整信息详细度（0=silent，1=error，2=warn，3=info，4=debug，5=detail），默认为3</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geth --verbosity 0 console</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/11/Linuxcommands/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/11/Linuxcommands/" class="post-title-link" itemprop="url">Bash学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-11 16:27:21" itemprop="dateCreated datePublished" datetime="2021-11-11T16:27:21+08:00">2021-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-13 01:06:48" itemprop="dateModified" datetime="2021-11-13T01:06:48+08:00">2021-11-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="基本内容"><a href="#基本内容" class="headerlink" title="基本内容"></a>基本内容</h2><p>bash命令基本都是下面格式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">command</span> [ arg1 ... [ argN ]]</span><br></pre></td></tr></table></figure>
+
+<p><code>command</code>是具体的命令或者一个可执行文件，<code>arg1...argN</code>是传递给命令或文件的参数</p>
+<p>有些参数是命令的配置项，这些配置项一般都以一个连词线开头，比如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l</span><br></pre></td></tr></table></figure>
+
+<p>同一个配置项往往有长和短两种形式，比如<code>-l</code>是短形式，<code>--list</code>是长形式，它们的作用完全相同。短形式便于手动输入，长形式一般用在脚本之中，可读性更好，利于解释自身的含义</p>
+<p>Bash单个命令一般都是一行，用户按下回车就开始执行，有些命令比较长，写成多行有利于阅读，这时就可以在每一行结尾加上<code>\</code>（反斜杠），Bash就会将下一行跟当前行放在一起解释</p>
+<h2 id="命令组合"><a href="#命令组合" class="headerlink" title="命令组合"></a>命令组合</h2><p><code>;</code>可以用来在同一行中分隔不同命令，此时不管分号前的命令执行成功或失败，分号后的命令都会执行</p>
+<p><code>&amp;&amp;</code>与<code>||</code>可以用于控制命令间的继发关系，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果command1 命令运行成功，则运行command2命令</span></span><br><span class="line">command1 &amp;&amp; command2</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果command1 命令运行失败，则运行command2命令</span></span><br><span class="line">command1 || command2</span><br></pre></td></tr></table></figure>
+
+<h2 id="echo命令"><a href="#echo命令" class="headerlink" title="echo命令"></a>echo命令</h2><p>使用<code>echo</code>命令输出一行文本可以不用双引号包含，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> Hello world!</span><br><span class="line">Hello world!</span><br></pre></td></tr></table></figure>
+
+<p>如果想输出多行文本，则需要用单引号或双引号包含，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;&lt;HTML&gt;</span></span><br><span class="line"><span class="string">	&lt;head&gt;</span></span><br><span class="line"><span class="string">		&lt;title&gt; Page Title&lt;/title&gt;</span></span><br><span class="line"><span class="string">	&lt;/head&gt;</span></span><br><span class="line"><span class="string">	&lt;body&gt;</span></span><br><span class="line"><span class="string">		Page body.</span></span><br><span class="line"><span class="string">	&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/HTML&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>echo</code>命令输出的文本末尾会自带一个回车符，可以用<code>-n</code>参数取消末尾的回车符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> -n a; <span class="built_in">echo</span> b</span><br><span class="line">ab</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>-e</code>参数可以将引号中的转义字符（如<code>\n</code>）转义</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;Hello\nAjsoabk!&quot;</span></span><br><span class="line">Hello\nAjsoabk!</span><br><span class="line">$ <span class="built_in">echo</span> -e <span class="string">&quot;Hello\nAjsoabk!&quot;</span></span><br><span class="line">Hello</span><br><span class="line">Ajsoabk!</span><br></pre></td></tr></table></figure>
+
+<h2 id="判断内置命令"><a href="#判断内置命令" class="headerlink" title="判断内置命令"></a>判断内置命令</h2><p><code>type</code>命令用于判断某个命令是内置命令还是外部程序，如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">type</span> <span class="built_in">echo</span> </span><br><span class="line"><span class="built_in">echo</span> is a shell <span class="built_in">builtin</span></span><br><span class="line">$ <span class="built_in">type</span> ls</span><br><span class="line">ls is hashed (/bin/ls)</span><br></pre></td></tr></table></figure>
+
+<p>如果要查看一个命令的所有定义，可以使用<code>type</code>命令的<code>-a</code>参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">type</span> -a <span class="built_in">echo</span> </span><br><span class="line"><span class="built_in">echo</span> is shell <span class="built_in">builtin</span></span><br><span class="line"><span class="built_in">echo</span> is /usr/bin/<span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> is /bin/<span class="built_in">echo</span></span><br><span class="line"><span class="comment">#说明echo既是内置命令，也有对应的外部程序</span></span><br></pre></td></tr></table></figure>
+
+<p><code>type</code>命令的<code>-t</code>参数，可以返回一个命令的类型（<code>alias</code>别名，<code>keyword</code>关键词，<code>function</code>函数，<code>builtin</code>内置命令，<code>file</code>文件）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">type</span> -t bash</span><br><span class="line">file</span><br><span class="line">$ <span class="built_in">type</span> -t <span class="keyword">if</span></span><br><span class="line">keyword</span><br></pre></td></tr></table></figure>
+
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li><code>ctrl</code>+<code>l</code>，清屏</li>
+<li><code>ctrl</code>+<code>c</code>，中止当前命令的执行</li>
+<li><code>shift</code>+<code>PageUp</code>/<code>PageDown</code>，向上/下滚动</li>
+<li><code>ctrl</code>+<code>u</code> /<code>k</code>，从光标位置删除到行首/行尾</li>
+<li><code>ctrl</code>+<code>d</code>，关闭shell对话</li>
+</ul>
+<p>除了上面这些快捷键，Bash还有自动补全功能。命令输入到一半的时候，可以按下<code>Tab</code>键自动补全，路径也支持自动补全。如果有多个可能的选择，只需要按两次<code>Tab</code>，Bash会显示所有选项让你选择</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>注释的方式有很多</p>
+<ul>
+<li><code>#</code>开头的一行会被当成注释</li>
+<li><code>&lt;&lt;BLOCK</code>和<code>BLOCK</code>之间的内容会被当成注释</li>
+<li><code>:&#39;</code>和<code>&#39;</code>之间的内容会被当成注释</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>变量名规则与c相同，大小写敏感</p>
+<p>变量定义规则:</p>
+<ul>
+<li>变量名与值之间的<code>=</code>两侧都不能有空格</li>
+<li>读取或打印变量时需要使用<code>$</code>+变量名</li>
+<li>不需要指定数据类型，bash会自动判断数据类型</li>
+</ul>
+<h2 id="模式拓展"><a href="#模式拓展" class="headerlink" title="模式拓展"></a>模式拓展</h2><p>Shell接收到用户输入的命令以后，会根据空格将用户的输入拆分成一个个词元。然后Shell会将词元里面的特殊字符进行拓展，拓展完成后才会调用相应的命令</p>
+<p>Bash允许用户关闭拓展：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">set</span> -o <span class="built_in">noglob</span></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">$ <span class="built_in">set</span> -f</span><br><span class="line"><span class="comment">#重新打开拓展</span></span><br><span class="line">$ <span class="built_in">set</span> +o <span class="built_in">noglob</span></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">$ <span class="built_in">set</span> +f</span><br></pre></td></tr></table></figure>
+
+<p>拓展有许多种，当文件名中包含通配符的时候需要将文件名放在单引号或双引号里面</p>
+<h3 id="目录拓展"><a href="#目录拓展" class="headerlink" title="~目录拓展"></a><code>~</code>目录拓展</h3><p><code>~</code>会自动拓展成当前用户的主目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> ~</span><br><span class="line">/home/ajsoabk</span><br></pre></td></tr></table></figure>
+
+<p><code>~user</code>，表示拓展成用户<code>user</code>的主目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> ~ajsoabk</span><br><span class="line">/home/ajsoabk</span><br><span class="line"><span class="comment">#如果后面的用户名是不存在的用户名，则拓展不起作用</span></span><br><span class="line">$ <span class="built_in">echo</span> ~notexist</span><br><span class="line">~notexist</span><br></pre></td></tr></table></figure>
+
+<p><code>~+</code>会拓展成当前所在的目录，等同于<code>pwd</code>命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/foo</span><br><span class="line">$ <span class="built_in">echo</span> ~+</span><br><span class="line">/home/ajsoabk/foo</span><br></pre></td></tr></table></figure>
+
+<h3 id="单字符拓展"><a href="#单字符拓展" class="headerlink" title="?单字符拓展"></a><code>?</code>单字符拓展</h3><p><code>?</code>字符代表文件路径里面的任意单个字符，不包括空字符。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前目录存在文件a.txt和b.txt</span></span><br><span class="line">$ ls ?.txt</span><br><span class="line">a.txt b.txt</span><br></pre></td></tr></table></figure>
+
+<p>如果文件不存在，则不进行拓展</p>
+<h3 id="通配拓展"><a href="#通配拓展" class="headerlink" title="*通配拓展"></a><code>*</code>通配拓展</h3><p><code>*</code>字符代表文件路径里面的任意数量的任意字符。但不会匹配隐藏文件（以<code>.</code>开头的文件），如果需要匹配隐藏文件要使用<code>.*</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 存在文件 a.txt、b.txt和 ab.txt</span></span><br><span class="line">$ ls a*.txt</span><br><span class="line">a.txt ab.txt</span><br><span class="line">$ ls *b*</span><br><span class="line">b.txt ab.txt</span><br></pre></td></tr></table></figure>
+
+<p>如果没有匹配的文件，则不进行拓展</p>
+<h3 id="匹配拓展"><a href="#匹配拓展" class="headerlink" title="[]匹配拓展"></a><code>[]</code>匹配拓展</h3><p><code>[]</code>包裹的任意一个字符匹配则匹配成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 存在文件 a.txt 和 b.txt</span></span><br><span class="line">$ ls [ab].txt</span><br><span class="line">a.txt b.txt</span><br></pre></td></tr></table></figure>
+
+<p>可以在左方括号后紧跟一个<code>^</code>或<code>!</code>，表示匹配不在方括号里面的字符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 存在 aaa、bbb、aba三个文件</span></span><br><span class="line">$ ls ?[!a]?</span><br><span class="line">aba bbb</span><br></pre></td></tr></table></figure>
+
+<p>如果需要匹配<code>[</code>字符，可以放在方括号内，如果需要匹配<code>-</code>，只能放在方括号内部的开头或结尾，比如<code>[-aeiou]</code>，除此之外，<code>-</code>可以用来匹配一个连续的范围，如<code>[a-d]</code>等同于<code>[abcd]</code></p>
+<h3 id="全部拓展"><a href="#全部拓展" class="headerlink" title="{}全部拓展"></a><code>&#123;&#125;</code>全部拓展</h3><p><code>&#123;&#125;</code>拓展表示分别拓展成大括号里面的所有值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> d&#123;a,e,i,u,o&#125;g</span><br><span class="line">dag deg dig dug dog</span><br></pre></td></tr></table></figure>
+
+<p>大括号内部的逗号前后不能有空格，否则扩展失效</p>
+<p>逗号前面可以没有值，表示拓展失效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cp a.log&#123;,.bak&#125;</span><br><span class="line"><span class="comment">#等同于</span></span><br><span class="line"><span class="comment"># cp a.log a.log.bak</span></span><br></pre></td></tr></table></figure>
+
+<p>大括号可以嵌套，也可以与其他模式联用，并且总是先于其他模式进行拓展</p>
+<p><code>&#123;start..end&#125;</code>表示拓展成一个连续序列，并且支持逆序</p>
+<p>这种简写形式还可以使用第二个双点号用来指定拓展的步长 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> &#123;0..8..2&#125;</span><br><span class="line">0 2 3 4 6 8</span><br></pre></td></tr></table></figure>
+
+<h3 id="变量拓展"><a href="#变量拓展" class="headerlink" title="$变量拓展"></a><code>$</code>变量拓展</h3><p><code>$</code>开头的词元将被视为变量，变量名除了放在<code>$</code>后面，也可以放在<code>$&#123;&#125;</code>里面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br></pre></td></tr></table></figure>
+
+<p><code>$&#123;|string*&#125;</code> 或<code>$&#123;!string@&#125;</code>返回所有匹配<code>string</code>的变量名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="variable">$&#123;!S*&#125;</span></span><br><span class="line">SECONDS SHELL SHELLOPTS SHLVL SSH_AGENT_PID SSH_AUTH_SOCK</span><br></pre></td></tr></table></figure>
+
+<h3 id="命令拓展"><a href="#命令拓展" class="headerlink" title="$()命令拓展"></a><code>$()</code>命令拓展</h3><p><code>$()</code>或反引号可以拓展成另一个命令的运行结果，可嵌套，但是结果中的连续空白字符将被替换成单个空格：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> $(date)</span><br><span class="line">Tue Jan 28 00:01:13 CST 2020</span><br></pre></td></tr></table></figure>
+
+<h3 id="算术拓展"><a href="#算术拓展" class="headerlink" title="$(())算术拓展"></a><code>$(())</code>算术拓展</h3><p><code>$(())</code>可以拓展成整数运算的结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> $((<span class="number">2</span>+<span class="number">2</span>))</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<h3 id="class-类匹配拓展"><a href="#class-类匹配拓展" class="headerlink" title="[[:class:]]类匹配拓展"></a><code>[[:class:]]</code>类匹配拓展</h3><ul>
+<li><code>[[:graph:]]</code>：匹配A-Z、a-z、0-9和标点符号</li>
+<li><code>[[:alnum:]]</code>：匹配A-Z、a-z、0-9</li>
+<li><code>[[:alpha:]]</code>：匹配A-Z、a-z</li>
+<li><code>[[:upper:]]</code>：匹配A-Z</li>
+<li><code>[[:lower:]]</code>：匹配a-z</li>
+<li><code>[[:digit:]]</code>：匹配0-9</li>
+<li><code>[[:punct:]]</code>：匹配标点符号（除了A-Z、a-z、0-9的可打印字符）</li>
+<li><code>[[:blank:]]</code>：匹配空格和<code>Tab</code>键</li>
+<li><code>[[:space:]]</code>：匹配空格、<code>Tab</code>、LF(10)、VT(11)、FF(12)、CR(13)</li>
+<li><code>[[:cntrl:]]</code>：匹配ASCII码0-31的不可打印字符</li>
+<li><code>[[:xdigit:]]</code>：匹配A-F、a-f、0-9</li>
+</ul>
+<p>在第一个方括号后面加上<code>!</code>表示否定</p>
+<h3 id="量词语法"><a href="#量词语法" class="headerlink" title="量词语法"></a>量词语法</h3><p>量词语法用于控制模式匹配的次数</p>
+<p>量词语法有以下五个</p>
+<ul>
+<li><code>?(pattern-list)</code>：匹配零个或一个模式</li>
+<li><code>@(pattern-list)</code>：匹配一个模式</li>
+<li><code>*(pattern-list)</code>：匹配零个或多个模式</li>
+<li><code>+(pattern-list)</code>：匹配一个或多个模式</li>
+<li><code>!(pattern-list)</code>：匹配给定模式外的任何内容</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#当前目录下有abctxt和abc.txt</span></span><br><span class="line">$ ls abc?(.)txt</span><br><span class="line">abctxt abc.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="shopt命令"><a href="#shopt命令" class="headerlink" title="shopt命令"></a><code>shopt</code>命令</h3><p><code>shopt</code>命令可以调整Bash的行为，它有好几个参数跟通配符拓展有关</p>
+<p><code>-s</code>参数打开后面跟着的参数，<code>-u</code>关闭后面跟着的参数</p>
+<ul>
+<li><p><code>dotglob</code>，打开后拓展结果可以包含隐藏文件，默认关闭</p>
+</li>
+<li><p><code>nullglob</code>，打开后让通配符不匹配任何文件名时返回空字符，默认关闭</p>
+</li>
+<li><p><code>failglob</code>，打开后让通配符不匹配任何文件名时直接报错而不交由命令处理，默认关闭</p>
+</li>
+<li><p><code>extglob</code> ，打开后支持量词语法，默认打开</p>
+</li>
+<li><p><code>nocaseglob</code>，打开后让通配符拓展不区分大小写，默认关闭</p>
+</li>
+<li><p><code>globstar</code>，打开后可以用<code>**</code>匹配零个或多个子目录，默认关闭</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">shopt</span> -s globstar</span><br><span class="line">$ ls **/*.txt</span><br><span class="line">a.txt sub1/b.txt sub1/sub2/c.txt</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><p>某些字符在bash里面有特殊含义（<code>$</code>,<code>&amp;</code>,<code>*</code>），要想输出这些字符需要在它们前面加上反斜杠，时其变成普通字符，这就叫做转义</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> \<span class="variable">$date</span></span><br><span class="line"><span class="variable">$date</span></span><br></pre></td></tr></table></figure>
+
+<p>反斜杠本身也是特殊字符</p>
+<p>是否转义主要有两种区别，一个是包裹字符串的是单引号还是双引号，一个是否使用了<code>-e</code>参数</p>
+<p><code>-e</code>参数会强制转义，不管包裹字符串的是单引号还是双引号。</p>
+<p>而在没有<code>-e</code>参数的情况下，单引号包裹的字符串全部原样打印，不会有任何转义或拓展：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;a\\b\nc&#x27;</span></span><br><span class="line">a\\b\nc</span><br></pre></td></tr></table></figure>
+
+<p>只有三个特殊字符在双引号中会保留特殊含义（<code>$</code>,<code>`</code> ,<code>\</code>），因此双引号包裹的字符串会对特殊字符进行转义，但不会对不可打印字符进行转义，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$SHELL</span>&quot;</span></span><br><span class="line">/bin/bash</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;`date`&quot;</span></span><br><span class="line">Mon Jan 27 13:33:18 CST 2020</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;a\\b\nc&quot;</span></span><br><span class="line">a\b\nc</span><br></pre></td></tr></table></figure>
+
+<h2 id="Here文档"><a href="#Here文档" class="headerlink" title="Here文档"></a>Here文档</h2><p>Here文档用于输入多行字符串，格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt; <span class="string">token</span></span><br><span class="line"><span class="string">text</span></span><br><span class="line"><span class="string">token</span></span><br></pre></td></tr></table></figure>
+
+<p>它的格式分为开始标记和结束标记，结束标记必须顶格写</p>
+<p>Here文档内部<code>$</code>与<code>\</code>保留特殊含义，不支持通配符拓展</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ foo=<span class="string">&#x27;Ajsoabk&#x27;</span></span><br><span class="line">cat &lt;&lt; <span class="string">_example_</span></span><br><span class="line"><span class="string">$foo</span></span><br><span class="line"><span class="string">&quot;$foo&quot;</span></span><br><span class="line"><span class="string">&#x27;$foo&#x27;</span></span><br><span class="line"><span class="string">_example</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Ajsoabk</span></span><br><span class="line"><span class="string">&quot;Ajsoabk&quot;</span></span><br><span class="line"><span class="string">&#x27;Ajsoabk&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果不希望发生变量替换，可以把Here文档的开始标记放在单引号之中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ foo=<span class="string">&#x27;Ajsoabk&#x27;</span></span><br><span class="line">$ cat &lt;&lt; <span class="string">&#x27;_example&#x27;</span></span><br><span class="line"><span class="variable">$foo</span></span><br><span class="line"><span class="string">&quot;<span class="variable">$foo</span>&quot;</span></span><br><span class="line"><span class="string">&#x27;$foo&#x27;</span></span><br><span class="line">_example_</span><br><span class="line"></span><br><span class="line"><span class="variable">$foo</span></span><br><span class="line"><span class="string">&quot;<span class="variable">$foo</span>&quot;</span></span><br><span class="line"><span class="string">&#x27;$foo&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>Here文档的本质是重定向，它将字符串重定向输出给某个命令，相当于包含了<code>echo</code>命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">command</span> &lt;&lt; <span class="string">token</span></span><br><span class="line"><span class="string">string</span></span><br><span class="line"><span class="string">token</span></span><br><span class="line"><span class="comment"># 等同于</span></span><br><span class="line">$ <span class="built_in">echo</span> string |<span class="built_in">command</span></span><br></pre></td></tr></table></figure>
+
+<p>所以，Here文档知识和哪些可以接受标准输入作为参数的命令，对于其他命令无效，比如<code>echo</code>命令就不能用Here文档作为参数</p>
+<p>此外，Here文档也不能作为变量的值，只能用于命令的参数</p>
+<h3 id="Here字符串"><a href="#Here字符串" class="headerlink" title="Here字符串"></a>Here字符串</h3><p>Here文档还有一个变体，叫做Here字符串，使用<code>&lt;&lt;&lt;</code>表示，它的作用是将字符串通过标准输入传递给命令</p>
+<p>有些命令直接接受给定的参数与通过标准输入接受参数结果是不一样的，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;&lt; <span class="string">&#x27;hi there&#x27;</span></span><br><span class="line"><span class="comment"># 等同于</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;hi there&#x27;</span> | cat</span><br></pre></td></tr></table></figure>
+
+<p>而如果是直接将字符串放在<code>cat</code>命令后面的话则会被解释成字符串</p>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>环境变量是Bash环境自带的变量，进入Shell时已经定义好了，可以直接使用。</p>
+<p>可以通过命令<code>env</code>, <code>printenv</code>来查看所有环境变量</p>
+<p>下面是一些常见的环境变量</p>
+<ul>
+<li><p><code>BASH</code>，Shell名称，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BASH=/user/bin/bash</span><br></pre></td></tr></table></figure></li>
+<li><p><code>BASH_VERSION</code>，Bash持有的shell版本，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BASH_VERSION=4.2.46(2)</span><br></pre></td></tr></table></figure></li>
+<li><p><code>COLUMNS</code>，屏幕的列数，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COLUMNS=80</span><br></pre></td></tr></table></figure></li>
+<li><p><code>HOME</code>为用户的主目录，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HOME=/home/ajsoabk</span><br></pre></td></tr></table></figure></li>
+<li><p><code>LOGNAME</code>为日志的用户名，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOGNAME=ajsoabk</span><br></pre></td></tr></table></figure></li>
+<li><p><code>USER</code>当前用户的用户名，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USER=ajsoabk</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h3><p>命令行参数通过将数据以参数的形式传递给脚本，使脚本更具动态性，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bash_script.sh parameter1 parameter2</span><br></pre></td></tr></table></figure>
+
+<h4 id="如何使用命令行参数"><a href="#如何使用命令行参数" class="headerlink" title="如何使用命令行参数"></a>如何使用命令行参数</h4><ul>
+<li><code>$0</code>，脚本名称</li>
+<li><code>$1-9</code>，存储前9个参数的名称</li>
+<li><code>$#</code>，传递给脚本的参数总数</li>
+<li><code>$@</code>， 以数组形式存储的参数列表</li>
+<li><code>$*</code>，所有参数连接在一起后的形式</li>
+</ul>
+<h4 id="Shift命令与参数移位"><a href="#Shift命令与参数移位" class="headerlink" title="Shift命令与参数移位"></a>Shift命令与参数移位</h4><p><code>shift</code>命令能够控制命令行参数整体左移，同时<code>$#</code>也会减少相应个数，默认移一位，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">while</span> [ -n <span class="string">&quot;<span class="variable">$1</span>&quot;</span> ];<span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="获取用户输入"><a href="#获取用户输入" class="headerlink" title="获取用户输入"></a>获取用户输入</h2><p>使用内置的<code>read</code>命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Enter your name:&quot;</span></span><br><span class="line"><span class="built_in">read</span> user_name</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Your name is <span class="variable">$user_name</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Enter your age, phonenumber and email: &quot;</span></span><br><span class="line"><span class="built_in">read</span> age phonenumber email</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Your age is :<span class="variable">$age</span>. Your phone is: <span class="variable">$phonenumber</span>. Your email is <span class="variable">$email</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>-p</code>参数</p>
+<h2 id="命令替换"><a href="#命令替换" class="headerlink" title="命令替换"></a>命令替换</h2><p>将命令用反引号或<code>$()</code>包裹起来，就能把该命令的输出结果替换到此处</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#获取上个星期天的日期</span></span><br><span class="line"><span class="built_in">echo</span> `data -d <span class="string">&quot;last sunday&quot;</span> +%Y-%m-%d`</span><br></pre></td></tr></table></figure>
+
+<p>被替换的命令输出中任何连续空白都会被替换为单个空格</p>
+<h1 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h1><p>可以通过<code>ls -l</code>命令来罗列出所有文件和目录</p>
+<p><img src="https://atts.w3cschool.cn/attachments/image/20200616/1592287146504129.png" alt="img"></p>
+<p>上图七列分别是：</p>
+<ul>
+<li>文件类型（<code>-</code>常规文件，<code>c</code>特殊档案，<code>p</code>命名管道，<code>b</code>块设备，<code>s</code>套接字，<code>d</code>目录，<code>l</code>链接）及超级用户、用户组与其他用户的权限（<code>r</code>阅读权限，<code>w</code>写入权限，<code>x</code>执行权限，<code>-</code>占位）</li>
+<li>存储块的数量</li>
+<li>文件的所有者或具有管理权限的超级用户</li>
+<li>所有者、筹集用户组</li>
+<li>文件大小</li>
+<li>文件的最后修改日期</li>
+<li>文件或目录的名称</li>
+</ul>
+<p><code>chmod</code>命令可以更改不同用户类型的文件权限，其基本形式为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod [class][operator][permission] filename</span><br><span class="line"><span class="comment">#具体为</span></span><br><span class="line">chmod [ugoa][+or-][rwx] filename</span><br></pre></td></tr></table></figure>
+
+<p><code>u</code>超级用户<code>g</code>用户组<code>o</code>其他用户<code>a</code>所有类型</p>
+<p><code>+</code>添加<code>-</code>删除权限</p>
+<p><code>r</code>读取<code>w</code>修改<code>x</code>运行</p>
+<h1 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h1><h2 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h2><p><code>&gt;</code>会以命令中的写入内容覆盖原文件内容，如果指定的文件不存在，那么它将会创建一个以指定文件名命名的新文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">writefile=WriteFile.txt</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;Ajsoabk:www.ajsoabk.xyz&quot;</span> &gt; <span class="variable">$writefile</span></span><br><span class="line"><span class="comment">#使用cat命令打印文件内容</span></span><br><span class="line">$ cat <span class="variable">$writefile</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&gt;&gt;</code>则是内容附加，如果文件不存在也会新建</p>
+<h2 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h2><p><code>&lt;</code>,与<code>&lt;&lt;</code></p>
+<h2 id="深入理解"><a href="#深入理解" class="headerlink" title="深入理解"></a>深入理解</h2><ul>
+<li><code>stdin</code>：标准输入文件，其文件描述符为0，默认由此读取数据</li>
+<li><code>stdout</code>：标准输出文件，其文件描述符为1，默认向它输出数据</li>
+<li><code>stderr</code>：标准错误文件，其文件描述符为2，默认向它写入错误信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将stdin重定向到file1，将stdout重定向到file2</span></span><br><span class="line">$ <span class="built_in">command</span> &lt; file1 &gt; file2</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h2><p>过于简单：<code>cd</code>，<code>mkdir</code>,<code>stat</code>，<code>rmdir</code>, <code>rm</code>(删除目录或文件）</p>
+<p><code>touch</code>命令可以用来修改文件读取时间和修改时间，<code>-t</code>参数自定义修改时间</p>
+<p><img src="https://i.bmp.ovh/imgs/2021/11/c29ad154f64a600c.png"></p>
+<h2 id="cat-命令"><a href="#cat-命令" class="headerlink" title="cat 命令"></a>cat 命令</h2><p><code>cat</code>的全拼是concatenate，主要有三大功能</p>
+<h3 id="显示整个文件"><a href="#显示整个文件" class="headerlink" title="显示整个文件"></a>显示整个文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cat</span> filename</span><br></pre></td></tr></table></figure>
+
+<h3 id="从键盘创建新文件"><a href="#从键盘创建新文件" class="headerlink" title="从键盘创建新文件"></a>从键盘创建新文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将stdout重定向到filename</span></span><br><span class="line"><span class="variable">$cat</span> &gt; filename</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件合并"><a href="#文件合并" class="headerlink" title="文件合并"></a>文件合并</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cat</span> file1 file2 &gt; file</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li><code>-n</code>or<code>-number</code>输出带行数</li>
+<li><code>-b</code>or<code>-number-nonblank</code>，输出带行数，但对空行不编号</li>
+<li><code>-s</code>or<code>-squeeze-blank</code>，当遇到有两行以上的空行，压缩为一行空行</li>
+<li><code>-v</code>or<code>-show-nonprinting</code>， </li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/06/%E8%AF%BB%E8%AE%BA%E6%96%87%E4%B9%8B%E9%97%AA%E7%94%B5%E7%BD%91%E7%BB%9C-%E9%AB%98%E5%AE%B9%E9%87%8F%E9%93%BE%E4%B8%8B%E5%8D%B3%E6%97%B6%E6%94%AF%E4%BB%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -172,7 +572,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-11-06 16:09:34 / 修改时间：16:55:52" itemprop="dateCreated datePublished" datetime="2021-11-06T16:09:34+08:00">2021-11-06</time>
+              <time title="创建时间：2021-11-06 16:09:34 / 修改时间：17:08:53" itemprop="dateCreated datePublished" datetime="2021-11-06T16:09:34+08:00">2021-11-06</time>
             </span>
 
           
@@ -186,7 +586,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <p><a target="_blank" rel="noopener" href="https://lightning.network/lightning-network-paper.pdf">闪电网络-可扩容链下即时支付系统</a></p>
+<h2 id="The-Bitcoin-Blockchain-Scalability-Problem"><a href="#The-Bitcoin-Blockchain-Scalability-Problem" class="headerlink" title="The Bitcoin Blockchain Scalability Problem"></a>The Bitcoin Blockchain Scalability Problem</h2>
       
     </div>
 
@@ -417,7 +818,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-06 15:30:47" itemprop="dateModified" datetime="2021-11-06T15:30:47+08:00">2021-11-06</time>
+                <time title="修改时间：2021-11-12 13:37:57" itemprop="dateModified" datetime="2021-11-12T13:37:57+08:00">2021-11-12</time>
               </span>
 
           
@@ -431,10 +832,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li><p><strong>pharmaceutical</strong>, (ceu-&gt;su:),relating to the production of medicines</p>
-</li>
-<li><p><strong>substantial</strong>, large in size, value, or importance;</p>
+          <p>overlapping, substantial, redundancy, predicate, mediate, hassle, mint, inflation, lunge, compact, broadband, a.k.a., in volume, micropayment, malleability, scalability, ledger, refactor, </p>
+<ol>
+<li><p><strong>pharmaceutical</strong>, relating to the production of medicines.</p>
 </li>
 <li><p><strong>dues</strong>, the official payments that you make to an organization you belong to</p>
 </li>
@@ -445,66 +845,137 @@
 </li>
 <li><p><strong>implement</strong>, to put a plan into action</p>
 </li>
-<li><p><strong>slip</strong>, a small piece of paper</p>
+<li><p><strong>slip</strong>,a small piece of paper</p>
 </li>
-<li><p><strong>overlapping</strong>, having some parts that are the same of happen at the same time</p>
-<p>eg: She had several overlapping commitments that day</p>
+<li><p><strong>reminiscent</strong> -&gt; <strong>reminiscent of sb/sth</strong>, making you remember a particular person, event, or thing.</p>
+<p>eg: That song is so reminiscent of my adolescence</p>
 </li>
-<li><p><strong>redundancy</strong>, a situation in which something is unnecessary because it is more than is needed</p>
+<li><p><strong>debit</strong>, (a record of ) money taken out of a bank account</p>
 </li>
-<li><p><strong>predicate</strong>, to state that something is true</p>
-<p>If and idea or argument is **predicated on ** something, it depends on the existence or truth of that thing</p>
+<li><p><strong>mediate</strong>, to talk to two separate people or groups involved in a disagreement to </p>
 </li>
-<li><p><strong>reminiscent</strong> -&gt; <strong>reminiscent of sb/sth</strong>, making you remember a particular person, event, or thing</p>
-<p>eg: That sons is so reminiscent of my adolescence</p>
-</li>
-<li><p><strong>debit</strong>, (a record of) money taken out of a bank account</p>
-</li>
-<li><p><strong>mediate</strong>, to talk to two separate people or groups involved in a disagreement to try to help them to agree or find a solution to their problems</p>
-</li>
-<li><p><strong>hassle</strong>, to annoy someone, especially y repeatedly asking them something</p>
-</li>
-<li><p><strong>escrow</strong>, an agreement between two people or organizations in which money or property is kept by a third person or organization until a particular condition is met</p>
-</li>
-<li><p><strong>mint</strong>, a place where the new coins of a country are made</p>
+<li><p><strong>escrow</strong>, an agreement between two people or organization in which money or property is kept by a third person or organization until a particular condition is met</p>
 </li>
 <li><p><strong>subvert</strong>, to try to destroy or damage something, especially an established political system</p>
 </li>
-<li><p><strong>analogous</strong>, having similar features to another thing and there fore able to be compared with it</p>
-</li>
-<li><p><strong>inflation</strong>, a general, continuous increase in prices</p>
+<li><p><strong>analogous</strong>, having similar features to another thing and therefore able to be compared with it</p>
+<p>eg: The emergency vehicle for the International Space Station is analogous to a lifeboat</p>
 </li>
 <li><p><strong>preclude</strong>, to prevent something or make it impossible, or prevent someone from doing something.</p>
 </li>
 <li><p><strong>deficit</strong>, the total amount by which money spent is more than money received.</p>
 </li>
-<li><p><strong>lunge</strong>, to move forward suddenly and with force, especially in order to attack someone.</p>
-</li>
-<li><p><strong>issue</strong>, to produce or provide something official</p>
-</li>
-<li><p><strong>compact</strong>, to press something together in a tight and solid way.</p>
+<li><p><strong>issue</strong>, to produce or provide something official.</p>
 </li>
 <li><p><strong>encompass</strong>, to include different types of things.</p>
 </li>
 <li><p><strong>custodial</strong>, referring to or having the responsibility of protecting, caring for, or maintaining something or someone.</p>
 </li>
-<li><p><strong>broadband</strong>, a system that makes i possible for many messages or large amounts of information to be sent at the same time and very quickly between computers or other electronic devices.</p>
+<li><p><strong>ubiquitous</strong>, seeming to be everywhere</p>
 </li>
-<li><p><strong>whereby</strong>, by which way or method.</p>
+<li><p><strong>indicator</strong>, something that shows what a situation is like</p>
 </li>
-<li><p><strong>a.k.a.</strong>, abbreviation for also known as.</p>
+<li><p><strong>ecology</strong>, the relationships between the air, land, water, animals, plants, etc., usually of a particular area.</p>
 </li>
-<li><p><strong>in volume</strong>, in large quantities</p>
+<li><p><strong>proliferate</strong>, to increase a lot and suddenly in number</p>
 </li>
-<li><p><strong>micropayment</strong>, an online payment of a very small amount of money</p>
+<li><p><strong>actuate</strong>, to make a machine work or be the reason a person acts in a certain way.</p>
 </li>
-<li><p><strong>malleability</strong>, the ability to be easily changed into a new shape</p>
+<li><p><strong>altruism</strong>, willingness to do things that bring advantages to others, even if it results in disadvantage for yourself.</p>
 </li>
-<li><p><strong>scalability</strong>, the ability of a business or system to grow larger</p>
+<li><p><strong>seamlessly</strong>, without any sudden changes, interruptions, or problems.</p>
 </li>
-<li><p><strong>ledger</strong>, a book in which things are regularly recorded, especially business activities and money received or paid.</p>
+<li><p><strong>-centric</strong>, having a particular type of person, place, or thing as your most important interest; seen from the point of view of a particular type of person, place, or thing.</p>
 </li>
+<li><p><strong>paradigm</strong>, a model of something, or a very clear and typical example of something.</p>
+</li>
+<li><p><strong>commodity</strong>, a substance or product that can be traded, bought, or sold.</p>
+</li>
+<li><p><strong>utility</strong>, able to do several different things well.</p>
+</li>
+<li><p><strong>pervasive</strong>, present or noticeable in every part of a thing or place.</p>
+</li>
+<li><p><strong>intervention</strong>, the action of becoming intentionally involved in a difficult situation, in order to improve it or prevent it from getting worse.</p>
+</li>
+<li><p><strong>verge</strong>, the edge or border of something<br>eg: They set up camp on the verge of the desert</p>
+</li>
+<li><p><strong>daemon</strong>, background processes that worked tirelessly to perform system chores</p>
+</li>
+<li><p><strong>ventilator</strong>, a machine that helps people breathe when they have difficulty breathing on their own, by forcing air in and out of their lungs.</p>
+</li>
+<li><p><strong>avionics</strong>, the electronic devices of an aircraft or spacecraft</p>
+</li>
+<li><p><strong>telemetry</strong>, the science or process of collecting information about objects that are for away and sending the information somewhere electronically</p>
+</li>
+<li><p><strong>rocketry</strong>, the design and construction of rockets</p>
+</li>
+<li><p><strong>intermittent</strong>, not happening regularly or continuously; stopping and starting repeatedly or with periods in between</p>
+</li>
+<li><p><strong>erratic</strong>, moving or behaving in a way that is not regular, certain, or expected.</p>
+</li>
+<li><p><strong>afflict</strong>, if a problem or illness  afflicts a person or thing, they suffer from it.</p>
+</li>
+<li><p><strong>mitigate</strong>, to make something less armful, unpleasant, or bad.</p>
+</li>
+<li><p><strong>destabilizing</strong>, making a government, area, or political group lose power or control, or making a political or economic situation less strong or safe, by causing changes and problems.</p>
+</li>
+<li><p><strong>malicious</strong>, intended to harm or upset other people.</p>
+</li>
+<li><p><strong>exploitable</strong>, able to be used unfairly, for someone’s own advantage.</p>
+</li>
+<li><p><strong>snippet</strong>, a small and often interesting piece of news, information, or conversation.</p>
+</li>
+<li><p><strong>undue</strong>, to a level that is more than is necessary, acceptable, or reasonable.<br>eg: Such a high increase will impose an undue burden on the local tax payer.</p>
+</li>
+<li><p><strong>glean</strong>, to collect information in small amounts and often with difficulty<br>eg: They’re leaving on Tuesday - I managed to glean that much (from them)</p>
+</li>
+<li><p><strong>esoteric</strong>, very unusual and understood or liked by only a small number of people, especially those with special knowledge.</p>
+</li>
+<li><p><strong>de facto</strong>, /dei…/, existing in fact, although perhaps not intended, legal, or accepted.</p>
+</li>
+<li><p><strong>imbue sth./sb. with sth.</strong>, to fill something or someone with a quality or feeling.<br>eg: Her poetry was imbued with a love of the outdoors.</p>
+</li>
+<li><p><strong>deprecate</strong>, to not approve of something or say that you do not approve of something</p>
+</li>
+<li><p><strong>intercept</strong>, to stop or catch something or someone that is on the way from one place to another so that it does not reach the intended place.</p>
+</li>
+<li><p><strong>flaky</strong>, behaving in a way that is strange, not responsible or not expected.</p>
+</li>
+<li><p><strong>malice</strong>, /`m…/, the wish to harm or upset other people<br>eg: I bear him no malice.</p>
+</li>
+<li><p><strong>proprietary</strong>, owned and legally controlled by a particular company.<br>eg: This is proprietary software, and you have no right to copy it without a license from the owner.</p>
+</li>
+<li><p><strong>overdue</strong>, not done or happening when expected or when needed; late;</p>
+</li>
+<li><p><strong>sentinel</strong>, a person employed to guard something</p>
+</li>
+<li><p><strong>the gory details</strong>, the interesting and usually personal pieces of information about a person or event.</p>
+<ul>
+<li>Come on, I want to know all the gory details about your date with Jon.</li>
 </ul>
+</li>
+<li><p><strong>terse</strong>, using few words, sometimes in a way that seems rude or unfriendly.</p>
+<ul>
+<li>“Are you feeling any better?” “No!” was the terse reply.</li>
+</ul>
+</li>
+<li><p><strong>descriptive</strong>, A descriptive area of study is one that is based on saying what its subject is really like, rather than on developing theories about it.</p>
+</li>
+<li><p><strong>declarative sentence</strong>, a sentence that makes a statement or states a fact.</p>
+</li>
+<li><p><strong>per se</strong>, by or of itself</p>
+<ul>
+<li>Research shows that it is not divorce per se that harms children, but the continuing conflict between parents.</li>
+</ul>
+</li>
+<li><p><strong>dictate</strong>, to give orders, or tell someone exactly what they must do, with total authority.</p>
+</li>
+<li><p><strong>verbose</strong>, using or containing more words than are necessary.</p>
+</li>
+<li><p><strong>the whole shebang</strong>, the whole of something, including everything that is connected with it.</p>
+</li>
+<li></li>
+</ol>
 
       
     </div>
@@ -1244,223 +1715,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/10/12/%E6%97%A5%E5%BF%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ajsoabk">
-      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="归因">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/12/%E6%97%A5%E5%BF%97/" class="post-title-link" itemprop="url">随想</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-12 18:12:12" itemprop="dateCreated datePublished" datetime="2021-10-12T18:12:12+08:00">2021-10-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-29 23:26:04" itemprop="dateModified" datetime="2021-10-29T23:26:04+08:00">2021-10-29</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="十月October"><a href="#十月October" class="headerlink" title="十月October"></a>十月October</h1><p>之前有朋友问我算法问题，我才发现他已经慢慢学到kruskal了<br>kruskal本身不难，他之前也问了我很多语法问题，这似乎是第一次问算法相关<br>但是我却被他代码中浓浓的工程风格给小小震撼了一下，命名无可挑剔，封装恰到好处，简直不像是算法处女作<br>本来命名也就多费点精力的事，不能算多难，但我上大学后见到的99%的代码都严重缺乏这样的规范<br>更何况他是在尚未学完kruskal的前置知识的时候就主动去摸索算法流程，能够自己形成清晰的想法并非常准确地描述出来<br>尽管他的想法最终被我推翻，但也让我有了一些思考，更让我重新拾起高中信竞时期跟队友激情讨论算法过程的快感</p>
-<p>…</p>
-<h1 id="九月September"><a href="#九月September" class="headerlink" title="九月September"></a>九月September</h1><p>小小总结一波小学期小组的经历</p>
-<p>一开始分组时脑中一片空白，不断跟学姐打探小学期的各种情况，当时学姐一句“你们这个小学期，除了要用文件读取就没啥啦”直接让我舒服了</p>
-<p>后来选完航空售票系统的问题，我们果断组织开展组员大学习，组长与gfy同志亲自部署、亲自指挥，安排其余组员于菜鸟教程上进行C艹先进技术的学习，坚决落实组长(也就是我)的各项要求，并于两日内超额完成学习任务(指本来也没指望学会多少)</p>
-<p>开始设计了个基于页面栈思想的main函数，把大系统分解成了一个个小页面，在structure里面确定页面间的关系逻辑，后面十几天这个框架就基本没啥改动了</p>
-<p>框架出来后，很快啊，我立马给我嗷嗷待哺的组员喂养了一坨任务，收到任务的那一刻，每个人脸上都洋溢着喜悦，并表示自己还能再干更多！(资本家泪目)</p>
-<p>在组员间游走的时光，是我这个小学期最为放松且满足的日子，所有的问题好像都不是问题，所有的bug都露出它温顺的一面，验收的日子看起来是那么遥远，实现自己的想法看起来是那么简单，出于一种对未知的挑战，gfy同学也在这段时间承担下了给用户发送邮箱验证码的任务</p>
-<p>好景不长，命令行界面的页面布局始终困扰着我，无论怎么布局，用户的输入始终只能在固定的地点，代码也因为要检查用户输入而变得像老太太的裹脚布–又臭又长。失去了优美，代码还有什么意义！我的关于图形界面的想法蠢蠢欲动</p>
-<p>星期六是跌宕的一天，这天组员们寻得了一片喘息的空间，我为了不妨碍原有框架，新建了一个airTicketSystemGUI文件夹，将我并不成熟的想法倾注其中，在此之前，我已然决定，若一个上午无法形成完整框架，就放弃这一全新的尝试</p>
-<p>果然天不遂人愿，直到中午我都没有完成既定目标，页面要想转型成图形，块的概念是必不可少的，我急于借鉴HTML的设计理念，试图实现块中有块的效果，却在继承关系上栽了个大跟头</p>
-<p>大跃进的失败已然固定，跟别人小小抱怨后，我迅速从airTicketSystemGUI文件夹中抽身，及时止损，不让不成功的转型过多影响原有项目进度</p>
-<p>但心中不甘在所难免，一上午的摸索也让我学到了不少新知识，我决定将一部分图形功能加入原有界面，于是Button类诞生了</p>
-<p>这个类承载了我上午未尽的想法，也丢弃了其中晦涩的指针部分(刚看完c++ primer的我实在庆幸这一决定，不然我一定会遇到带指针类拷贝时自动浅拷贝的问题)，我在实现欢迎界面的过程中逐步完善了这个类的其他函数以更方便地获取鼠标点击，与lcj一起完成了诸多必不可少的函数定义</p>
-<p>这一步走得实在艰辛，那几天，游刃有余的感觉荡然无存，取而代之的是无尽的bug与错误信息，组员也因缺少任务而无法被充分调动，我在他们早上一起来就催我发布任务的那一刻觉得自己就像游戏里的npc，只是这个npc并没有固定的任务发布流程，他也暂时陷入了僵局</p>
-<p>后来不知调掉了多少bug，百度了多少信息，终于在大约周日晚上的时候把原有进度中的所有页面全面升级成了支持鼠标点击的界面，而也大约在这时，gfy带着捷报回寝，他利用smtp协议和telnet协议成功完成了验证码发送功能，并在我的邮箱里成功尝试，我直呼好事成双，却不知我的噩梦才刚刚开始</p>
-<p>程序中的bug解决了，团队的问题却逐渐浮现，由于时间过紧学的太快，奈何我拼命解释，那些刚学C艹的组员在理解我的代码上始终有点吃力，我只能退而求其次，自己承担起剩下页面的设计，将一些小巧轻便的函数分给组员去做</p>
-<p>又在这时，新的问题出现，我发现上星期交给组员的各种函数的实现实在太不符合我的一贯码风，前期未确立代码规范的弊端也在此时显现，我花了较多时间改掉了其他人的代码，自然而然地用到了太多高级操作，也给读懂代码的门槛提高了不少，再次加大了组员的跟进难度，不过cyq同志热情不减，领下了忘记密码界面的全部设计工作</p>
-<p>就在我给所有代码大换血后，还没等挨个测试，我就又迸出了改进Button类的想法，偏偏这个想法还很符合实际，我于是开始了框架的第二次大改</p>
-<p>这次大改的代码量比第一次只多不少，不到两天的苦战，当我再次把代码push进我们的仓库时，git上显示page.cpp的一千多行代码改动了67%</p>
-<p>第二次大改后，离项目验收已经只剩1天时间，bug多到找不完，也深到de不了，页面已完成设计，背后的逻辑却尚未跟上，我将所有花里胡哨的想法通通抛弃，把与用户的交互做了最大简化，顺便将cyq完成的忘记密码界面做了些许调整，规避了一切可能的出现在交互层的bug，让自己沉下心来修复满目疮痍的后端</p>
-<p>中间一些小插曲更是让我有点崩溃，有没有人告诉我为什么这么多组用qt啊！！！还带数据库的那种！！！</p>
-<p>幸好，后端所需技术仍然在我从高中遗留下来的知识范围内，模板的加入也让后端代码变得优美无比，接下来发动所有组员的bug调试工作也进行得很快，有时候后端一个bug的修复，能顺带着让前端的无数错误输出回到正轨，对代码模块化的追求终究没有白费，甚至在验收前的那一刻，我还往这个庞然大物里添加了一个重要功能</p>
-<p>至此，在验收结束的星期五，这个一波三折的故事就此告一段落，我们的代码或许不是最好，但这段经历在我这里最为刻骨铭心</p>
-<p>附带我们组的gitee仓库，已开源<br><a target="_blank" rel="noopener" href="https://gitee.com/Ajsoabk/primary-school-homework/tree/master">https://gitee.com/Ajsoabk/primary-school-homework/tree/master</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/09/29/%E6%AF%8F%E6%97%A5%E5%85%B3%E9%94%AE%E8%AF%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ajsoabk">
-      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="归因">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/29/%E6%AF%8F%E6%97%A5%E5%85%B3%E9%94%AE%E8%AF%8D/" class="post-title-link" itemprop="url">每日关键词</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-29 17:52:35" itemprop="dateCreated datePublished" datetime="2021-09-29T17:52:35+08:00">2021-09-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-17 16:01:49" itemprop="dateModified" datetime="2021-10-17T16:01:49+08:00">2021-10-17</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="10-17（Block-Chain）"><a href="#10-17（Block-Chain）" class="headerlink" title="10.17（Block Chain）"></a>10.17（Block Chain）</h2><p>It’s worth to know the history of failure</p>
-<h2 id="10-12（开源协议）"><a href="#10-12（开源协议）" class="headerlink" title="10.12（开源协议）"></a>10.12（开源协议）</h2><p>GNU GPL（GNU General Public License）协议，传播自由，可选收费</p>
-<p>BSD（Berkeley Software Distribution）协议，允许销售，无需开源</p>
-<p>Apache许可证协议 ，需要保留源代码的协议、商标、专利声明及其他原作者声明的内容信息</p>
-<p>MIT（Massachusetts Institute of Technology）协议，只要保留原作者的许可信息，最宽松</p>
-<p>GNU LGPL（GNU Lesser…），必须允许被引用</p>
-<p><img src="..%5Cimage%5ClicenseTree.gif" alt="如何选择开源协议"></p>
-<h2 id="10-2-以太坊、密码学"><a href="#10-2-以太坊、密码学" class="headerlink" title="10.2(以太坊、密码学)"></a>10.2(以太坊、密码学)</h2><p>哈希不可逆，可以防止量子计算机的破解</p>
-<p>proof of work -&gt; proof of stack（权益证明）</p>
-<p>Patricia tree/Patricia trie(压缩字典树）</p>
-<p>Merkle Patricia tree</p>
-<p>Modified MPT是以太坊运用的数据结构，甚至有可持久化？</p>
-<p>RLP，极简的序列化方法</p>
-<p>protobuf是一种序列化库</p>
-<p>以太坊可以看成交易驱动的状态机</p>
-<p>GHOST协议</p>
-<p>叔叔节点祖宗六代</p>
-<p>LiteCoin，基于Scrypt的mining puzzle，对轻节点不友好</p>
-<p>以太坊的挖矿算法要求16M的cache和1G的DAG</p>
-<p>AltCoin Infanticide</p>
-<p>权益证明是闭环</p>
-<p>nothing at stake（无利害关系）</p>
-<p>Casper the Friendly Finality Gadget(FFG) </p>
-<h2 id="10-1-区块链"><a href="#10-1-区块链" class="headerlink" title="10.1(区块链)"></a>10.1(区块链)</h2><p>序列到期可撤销合约（RSMC）解决了比特币单向流动问题</p>
-<p>哈希时间锁定合约（HTLC）解决了比特币跨节点传递的问题</p>
-<table>
-<thead>
-<tr>
-<th>哈希地址</th>
-<th>中文名</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>P2PKH</td>
-<td>向公钥哈希支付</td>
-<td>以1打头</td>
-<td>只需要提供公钥和私钥签名</td>
-<td></td>
-</tr>
-<tr>
-<td>P2SH</td>
-<td>向脚本哈希支付</td>
-<td>以3打头</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54955876">比特币的 P2SH 机制 - 知乎 (zhihu.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/33157713">比特币区块链（八） | 比特币中的脚本系统 - 知乎 (zhihu.com)</a></p>
-<p>merkle proof 证明某个交易是否被写入区块</p>
-<h2 id="9-29-区块链）"><a href="#9-29-区块链）" class="headerlink" title="9.29(区块链）"></a>9.29(区块链）</h2><p>ICO（Initial Coin Offering），首次代币募集</p>
-<h2 id="9-27-信号与系统）"><a href="#9-27-信号与系统）" class="headerlink" title="9.27(信号与系统）"></a>9.27(信号与系统）</h2><p>记忆性 $$(h[n]=K\delta[n])$$</p>
-<p>因果性 $$(h[n]=0\ when\ n&lt;0)$$</p>
-<p>可逆性 </p>
-<p>$$(for\ h[n],there\ exists\  h^{-1}[n]\ that\ satisfies\ h[n]*h^{-1}=\delta [n])$$</p>
-<p>稳定性$(\Sigma h[n]&lt;+\infin)$</p>
-<p>时不变性$(h_k[n]=h[n-k])$</p>
-<p>可加性$(h[n]\cdot x_1[n]+h[n]\cdot x_2[n]=h[n]\cdot(x_1[n]+x_2[n]))$</p>
-<p>比例性$(h[n]\cdot \alpha x[n]=\alpha h[n] \cdot x[n])$</p>
-<h2 id="9-24-区块链）"><a href="#9-24-区块链）" class="headerlink" title="9.24(区块链）"></a>9.24(区块链）</h2><p>哈希指针</p>
-<p>转账需给出签名过的转出者的公钥，并指向上一个交易以及币的来源</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1530,7 +1784,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
