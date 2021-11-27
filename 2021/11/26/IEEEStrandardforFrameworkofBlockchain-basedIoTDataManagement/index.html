@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ajsoabk.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="基于区块链网络的IoT数据管理框架的IEEE标准1.概论该标准适用于通过部署具有数据采集功能的IoT设备并利用这些数据进行内部业务决策、数据共享或交易的数据管理系统所对应的业务场景，为兼具区块链与物联网技术的数据管理系统的建立提供了框架性的指导 1.1 领域该标准定义了基于区块链网络的IoT数据管理系统的框架，它根据数据的处理周期（数据获取、处理、存储、分析、使用&#x2F;交换、丢弃）将区块链物联网的数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IEEEStrandardforFrameworkofBlockchain-basedIoTDataManagement">
+<meta property="og:url" content="http://ajsoabk.xyz/2021/11/26/IEEEStrandardforFrameworkofBlockchain-basedIoTDataManagement/index.html">
+<meta property="og:site_name" content="归因">
+<meta property="og:description" content="基于区块链网络的IoT数据管理框架的IEEE标准1.概论该标准适用于通过部署具有数据采集功能的IoT设备并利用这些数据进行内部业务决策、数据共享或交易的数据管理系统所对应的业务场景，为兼具区块链与物联网技术的数据管理系统的建立提供了框架性的指导 1.1 领域该标准定义了基于区块链网络的IoT数据管理系统的框架，它根据数据的处理周期（数据获取、处理、存储、分析、使用&#x2F;交换、丢弃）将区块链物联网的数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/fratz/AppData/Roaming/Typora/typora-user-images/image-20211126205500370.png">
+<meta property="og:image" content="c:/Users/fratz/AppData/Roaming/Typora/typora-user-images/image-20211126215058756.png">
+<meta property="article:published_time" content="2021-11-26T08:31:34.000Z">
+<meta property="article:modified_time" content="2021-11-27T16:29:10.767Z">
+<meta property="article:author" content="Ajsoabk">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/fratz/AppData/Roaming/Typora/typora-user-images/image-20211126205500370.png">
+
+<link rel="canonical" href="http://ajsoabk.xyz/2021/11/26/IEEEStrandardforFrameworkofBlockchain-basedIoTDataManagement/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>IEEEStrandardforFrameworkofBlockchain-basedIoTDataManagement | 归因</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">归因</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/26/IEEEStrandardforFrameworkofBlockchain-basedIoTDataManagement/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IEEEStrandardforFrameworkofBlockchain-basedIoTDataManagement
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-26 16:31:34" itemprop="dateCreated datePublished" datetime="2021-11-26T16:31:34+08:00">2021-11-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-28 00:29:10" itemprop="dateModified" datetime="2021-11-28T00:29:10+08:00">2021-11-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="基于区块链网络的IoT数据管理框架的IEEE标准"><a href="#基于区块链网络的IoT数据管理框架的IEEE标准" class="headerlink" title="基于区块链网络的IoT数据管理框架的IEEE标准"></a>基于区块链网络的IoT数据管理框架的IEEE标准</h1><h2 id="1-概论"><a href="#1-概论" class="headerlink" title="1.概论"></a>1.概论</h2><p>该标准适用于通过部署具有数据采集功能的IoT设备并利用这些数据进行内部业务决策、数据共享或交易的数据管理系统所对应的业务场景，为兼具区块链与物联网技术的数据管理系统的建立提供了框架性的指导</p>
+<h3 id="1-1-领域"><a href="#1-1-领域" class="headerlink" title="1.1 领域"></a>1.1 领域</h3><p>该标准定义了基于区块链网络的IoT数据管理系统的框架，它根据数据的处理周期（数据获取、处理、存储、分析、使用/交换、丢弃）将区块链物联网的数据管理框架的多个基本要素区分开并描述了其间关系。</p>
+<h3 id="1-2-用词规范"><a href="#1-2-用词规范" class="headerlink" title="1.2 用词规范"></a>1.2 用词规范</h3><ul>
+<li><strong>必须</strong>表示强制要求遵守以保证绝对一致，任何违背这一要求的都不会被承认</li>
+<li><strong>应当</strong>表示建议某种行为但不作强制要求，也用于表示某一行为较其余更好但不否定其他选择</li>
+<li><strong>能够</strong>表示某一行为在标准允许范围内</li>
+<li><strong>可能</strong>用于一些概率事件或可行性的陈述中，不管是物质上的、心理上的抑或是用于表达因果连接的</li>
+</ul>
+<h2 id="2-标准参考资料"><a href="#2-标准参考资料" class="headerlink" title="2. 标准参考资料"></a>2. 标准参考资料</h2><p>以下资料对本标准的制定有参考意义（即标准中包含对这些资料的理解与使用，因此每项资料都以文本形式引用在下方并解释了其对标准的贡献）。对于注明日期的参考文献，仅引用的版本适用。而对于未注明日期的参考文献，引用文件的最新版本（包括任何修订或勘误）适用。</p>
+<p>无参考资料</p>
+<h2 id="3-专业用语的定义与缩写"><a href="#3-专业用语的定义与缩写" class="headerlink" title="3.专业用语的定义与缩写"></a>3.专业用语的定义与缩写</h2><h3 id="3-1-定义"><a href="#3-1-定义" class="headerlink" title="3.1 定义"></a>3.1 定义</h3><p>以下定义仅适用于本标准，对未包含在内的专业用语可以在<em>IEEE Standards Dictionary Online</em>上查到</p>
+<p><strong>区块链即服务（BaaS）</strong>：BaaS是由第三方提供的区块链服务，通过BaaS，用户可以在云网络上自己创建、管理并运行区块链应用</p>
+<p><strong>可信数据</strong>：指从所选数据源获取并以特定方式处理以保证其一直满足某些特征的数据</p>
+<p><strong>信托</strong>：指承担基本可信功能的信息系统</p>
+<h3 id="3-2-缩写"><a href="#3-2-缩写" class="headerlink" title="3.2 缩写"></a>3.2 缩写</h3><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>英文全称</th>
+<th>中文名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>API</td>
+<td>application programming interface</td>
+<td>应用程序接口</td>
+</tr>
+<tr>
+<td>BaaS</td>
+<td>blockchain as a service</td>
+<td>区块链即服务</td>
+</tr>
+<tr>
+<td>BCN</td>
+<td>blockchain node</td>
+<td>区块链节点</td>
+</tr>
+<tr>
+<td>IoT</td>
+<td>internet of things</td>
+<td>物联网</td>
+</tr>
+</tbody></table>
+<h2 id="4-生态关系方"><a href="#4-生态关系方" class="headerlink" title="4.生态关系方"></a>4.生态关系方</h2><p>该条目将厘清一个典型的IoT数据协作生态中的所有关系方。他们对整个系统的关注点各不相同，每种角色对系统的贡献与需求也不同。这些角色定义如下：</p>
+<ul>
+<li><strong>数据拥有者</strong>：数据拥有着被定义为对数据有所有权的个人或实体。他们可能拥有能产生或收集数据的IoT设备，也可能在数据权力的约定条款中享有把数据转让给第三方的权力</li>
+<li><strong>数据购买者</strong>：数据购买者被定义为从数据拥有者手中接收/购买数据的个人或实体并通过与拥有者的协议获取了对数据的所有权。在数据交换的双方都处于同一个组织或两者有合作关系时，数据购买者与数据拥有者是同一实体</li>
+<li><strong>服务提供者</strong>：服务提供者支持在IoT数据生命周期内对其进行操作并为一个或多个利益相关方提供服务。这些服务包括但不限于：软硬件开发、维护、数据分析、云服务、网络访问、金融服务、咨询等等</li>
+<li><strong>政策制定者</strong>：政策制定者是监督和规范数据在其处理周期内的任何活动的人或实体</li>
+<li><strong>其余角色</strong>：其他角色将随着协作生态的发展与壮大而不断丰富，如媒体、教育与非盈利组织等等</li>
+</ul>
+<h2 id="5-可信数据的特征"><a href="#5-可信数据的特征" class="headerlink" title="5. 可信数据的特征"></a>5. 可信数据的特征</h2><h3 id="5-1-概论"><a href="#5-1-概论" class="headerlink" title="5.1 概论"></a>5.1 概论</h3><p>数据管理的目的有两个，一个是提供对对象/事件的准确记录（如记账），另一个是基于一系列事件来产生可靠结论（如数据分析）。可信数据在不同使用场景下的作用与地位不尽相同。对于可信数据与其他数据的比较超出了本标准的范围。以下是可信数据所具有的几大特征：</p>
+<h3 id="5-2-准确性"><a href="#5-2-准确性" class="headerlink" title="5.2 准确性"></a>5.2 准确性</h3><p>指所收集数据描述真实世界中的对象/事件的程度。其必须在数据产生后的数据收集阶段被测试与测量</p>
+<h3 id="5-3-完整性"><a href="#5-3-完整性" class="headerlink" title="5.3 完整性"></a>5.3 完整性</h3><p>指数据的各部分根据数据规范被填写的程度。其必须在数据收集阶段被测试与测量以助最大限度地提高数据完整性与并降低填充缺失数据的成本</p>
+<h3 id="5-4-一致性"><a href="#5-4-一致性" class="headerlink" title="5.4 一致性"></a>5.4 一致性</h3><p>指对同一对象/事件在同一状态记录的相同信息的程度。必须在数据的整个处理周期中通过测试与测量以保证数据一致性，尤其在进行某些关键的数据转换时</p>
+<h3 id="5-5-合规性"><a href="#5-5-合规性" class="headerlink" title="5.5 合规性"></a>5.5 合规性</h3><p>指对数据的操作须满足某些规定标准或权限的要求。当存在组织、区域或国家性的数据管理条例应测试此特征，例如欧盟的通用数据保护条例 (GDPR)、美国的加利福尼亚州消费者隐私法 (CCPA)。</p>
+<h3 id="5-6-时效性"><a href="#5-6-时效性" class="headerlink" title="5.6 时效性"></a>5.6 时效性</h3><p>指数据所代表的事件发生后收集数据的程度。其必须在数据产生后的数据收集阶段被测试和测量</p>
+<h2 id="6-可信任的IoT数据管理系统框架"><a href="#6-可信任的IoT数据管理系统框架" class="headerlink" title="6. 可信任的IoT数据管理系统框架"></a>6. 可信任的IoT数据管理系统框架</h2><h3 id="6-1-概论"><a href="#6-1-概论" class="headerlink" title="6.1 概论"></a>6.1 概论</h3><p>条目6描述了数据管理的周期性流程与可信任的IoT数据管理系统框架</p>
+<h3 id="6-2-数据管理周期"><a href="#6-2-数据管理周期" class="headerlink" title="6.2 数据管理周期"></a>6.2 数据管理周期</h3><p>该框架是为了解决IoT数据管理需求而开发的，因而在此之前我们需要先确定IoT数据管理的周期。图1展示了其三个阶段，分别是规划阶段、实施与监控阶段和处置阶段</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20211126205500370.png" alt="image-20211126205500370"></p>
+<p>规划阶段为让数据满足消费者的需要奠定了基础，其包括数据用途、数据规范与预算资源。实施阶段由包括数据生成、数据采集、数据处理、数据应用与性能评估在内的多个子阶段组成。最终的处置阶段将结算费用、审查记录、总结并汇报结果并最终删除、转移或重新利用在整个周期中采集和处理到的数据，这些处理必须基于数据所有者与数据购买者在规划阶段所达成的协议和数据管理系统基于系统用途而进行的设计</p>
+<p>如图一所示，数据管理周期开始于数据生命周期之前。这是因为在规划阶段确定了数据的用途与规范以获取相关的数据并启动数据的生命周期。在整个数据管理周期中收集并生成的数据都能被重用于数据分析，只要对这些数据的操作始终满足合规性。注意，带箭头的虚线表示可选的数据重用。</p>
+<h2 id="6-3-框架的组成部分"><a href="#6-3-框架的组成部分" class="headerlink" title="6.3 框架的组成部分"></a>6.3 框架的组成部分</h2><p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20211126215058756.png" alt="image-20211126215058756"></p>
+<p>如图二，标准框架自上而下分为五层，分别是应用层、服务层、功能层和信托层。管理与控制面板则贯穿所有层次</p>
+<h3 id="6-3-1-应用层"><a href="#6-3-1-应用层" class="headerlink" title="6.3.1 应用层"></a>6.3.1 应用层</h3><p>应用层利用了从下层的数据服务并向数据购买者提供定制的可呈现的交互式数据应用。应用的一些例子包括仓库管理系统 (WMS)、企业资源规划软件 (ERP)、供应链管理系统 (SCM)、商业智能软件 (BI) 等。</p>
+<h3 id="6-3-2-服务层"><a href="#6-3-2-服务层" class="headerlink" title="6.3.2 服务层"></a>6.3.2 服务层</h3><p>服务层包括基础的数据服务如数据分析、数据共享和数据交易并且为上层的数据应用层提供支持。这些服务与底层数据通过下一层的数据API接口进行交互</p>
+<h3 id="6-3-3-功能层"><a href="#6-3-3-功能层" class="headerlink" title="6.3.3 功能层"></a>6.3.3 功能层</h3><p>功能层包括一些功能模块，这些功能模块对应IoT数据管理所需要的各种行为。它利用了信托层提供的数据处理能力并且支撑着上层的服务。图中各模块间的箭头代表了数据在各功能模块间的流动</p>
+<p>从数据管理的时序角度，这些功能模块分别是数据生成、数据采集、数据存储、数据处理与数据API。注意每个功能都必须利用其下信托层的一种或多种功能来运行，比如，数据生成需要利用可信感知 [硬件加密，可信执行环境（Trusted Execution Environment），临时身份识别等等] 来最大限度地提高原始数据的准确性。</p>
+<ul>
+<li>数据生成功能将现实世界数字化。其采用了信托层的可信感知功能并被直接物理映射到IoT设备上</li>
+<li>数据采集程序将数据采入信息系统。它是何种设备记录何种数据的网关，因此须实现身份证明与读写访问控制。该功能利用了下层的多个模块包括可信通信、可信存储与可信网络</li>
+<li>数据处理程序将收集到的原始数据根据需要转换成特定的格式、内容与知识。其任务包括除噪、本地/边缘计算、数据抽象等等</li>
+<li>数据存储程序支持数据采集、数据处理以及其他API接口来保证这些程序能在采集到数据时输入数据并根据需要合规地访问数据。数据存储功能特别利用了下层的可信存储模块来帮助保证一致性、合规性和及时性</li>
+<li>数据API程序为上面的数据服务层提供了一批接口，并保护了敏感信息不在未经许可的情况下暴露，以最大限度地提高合规性</li>
+</ul>
+<h3 id="6-3-4-信托层"><a href="#6-3-4-信托层" class="headerlink" title="6.3.4 信托层"></a>6.3.4 信托层</h3><p>信托层建立起了整个框架的基础设施，包括可信感知、可信存储、可信通信、可信网络与可信计算</p>
+<p>这些基础设施定义如下：</p>
+<ul>
+<li><p>可信感知提供设备层面的身份识别与可信执行，以保证数据是由经过安全验证的源与能够运行授权指令的IoT设备产生。</p>
+</li>
+<li><p>可信存储提供了读写访问控制并能最大限度地减小数据篡改的可能。注意一些规章中可能规定了个人数据必须在用户要求或达到一定时间后被销毁，在这种情况下，数据删除功能也应当被组入数据存储功能中。可信存储必须有链上存储的部分，可以将链上链下存储相结合以满足隐私协议的要求</p>
+</li>
+<li><p>可信通信有助于最大限度地提高点对点物联网数据传输的安全级别。市场上有大量专为各种场景（不同通信范围的场景、无线电干扰、数据速率、网络覆盖支持等）指定的无线通信协议。区块链须通过去中心化身份识别、加密凭证等方式与物联网通信相结合。</p>
+</li>
+<li><p>可信网络有助于最大限度地提高数据在源-目标对之间进行多跳寻址的可靠性</p>
+</li>
+<li><p>可信计算以最高级别的安全来支持多方参与计算，在这种设计中，数据本身并没有被暴露给参与者，参与者得知的只有计算的结果。应采用区块链来管理数据访问控制与隐私数据共享日志等</p>
+</li>
+</ul>
+<p>信托功能兼有传统技术与区块链技术的优点，并支持更可信的IoT网络。信任载体层可以以区块链即服务（BaaS）或不在云上运行的区块链节点（BCN）的形式使用无许可区块链和许可区块链来实现。具体选择应与业务特点和部署技术因素相符。</p>
+<h3 id="6-3-5-管理控制面板"><a href="#6-3-5-管理控制面板" class="headerlink" title="6.3.5 管理控制面板"></a>6.3.5 管理控制面板</h3><p>管理和控制面板根据预先确定的策略和规则协调跨层的交互操作，监控和评估系统的性能，并根据系统规范调整系统以提高整体性能。 </p>
+<p>该面板包含到所有层的多个接口，用于接收或交付策略和规则并将它们安装到不同层的操作单元中。请注意，尽管此面板显示为框架中的一个逻辑组件，但它可以分解为集中式或分布式单元，以适应实施中的信任设计。例如，可以通过智能合约实施策略和规则以强制执行信任。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/23/MATLAB%E5%AD%A6%E4%B9%A0/" rel="prev" title="MATLAB学习">
+      <i class="fa fa-chevron-left"></i> MATLAB学习
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%8C%BA%E5%9D%97%E9%93%BE%E7%BD%91%E7%BB%9C%E7%9A%84IoT%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6%E7%9A%84IEEE%E6%A0%87%E5%87%86"><span class="nav-number">1.</span> <span class="nav-text">基于区块链网络的IoT数据管理框架的IEEE标准</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%A6%82%E8%AE%BA"><span class="nav-number">1.1.</span> <span class="nav-text">1.概论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E9%A2%86%E5%9F%9F"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 领域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E7%94%A8%E8%AF%8D%E8%A7%84%E8%8C%83"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 用词规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%A0%87%E5%87%86%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">1.2.</span> <span class="nav-text">2. 标准参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%B8%93%E4%B8%9A%E7%94%A8%E8%AF%AD%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%BC%A9%E5%86%99"><span class="nav-number">1.3.</span> <span class="nav-text">3.专业用语的定义与缩写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%AE%9A%E4%B9%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E7%BC%A9%E5%86%99"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 缩写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%94%9F%E6%80%81%E5%85%B3%E7%B3%BB%E6%96%B9"><span class="nav-number">1.4.</span> <span class="nav-text">4.生态关系方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%8F%AF%E4%BF%A1%E6%95%B0%E6%8D%AE%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">1.5.</span> <span class="nav-text">5. 可信数据的特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%A6%82%E8%AE%BA"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 概论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%87%86%E7%A1%AE%E6%80%A7"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 准确性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 完整性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">1.5.4.</span> <span class="nav-text">5.4 一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E5%90%88%E8%A7%84%E6%80%A7"><span class="nav-number">1.5.5.</span> <span class="nav-text">5.5 合规性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-%E6%97%B6%E6%95%88%E6%80%A7"><span class="nav-number">1.5.6.</span> <span class="nav-text">5.6 时效性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%8F%AF%E4%BF%A1%E4%BB%BB%E7%9A%84IoT%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6"><span class="nav-number">1.6.</span> <span class="nav-text">6. 可信任的IoT数据管理系统框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E6%A6%82%E8%AE%BA"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1 概论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%91%A8%E6%9C%9F"><span class="nav-number">1.6.2.</span> <span class="nav-text">6.2 数据管理周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-%E6%A1%86%E6%9E%B6%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="nav-number">1.7.</span> <span class="nav-text">6.3 框架的组成部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-1-%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">1.7.1.</span> <span class="nav-text">6.3.1 应用层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-2-%E6%9C%8D%E5%8A%A1%E5%B1%82"><span class="nav-number">1.7.2.</span> <span class="nav-text">6.3.2 服务层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-3-%E5%8A%9F%E8%83%BD%E5%B1%82"><span class="nav-number">1.7.3.</span> <span class="nav-text">6.3.3 功能层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-4-%E4%BF%A1%E6%89%98%E5%B1%82"><span class="nav-number">1.7.4.</span> <span class="nav-text">6.3.4 信托层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-5-%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF"><span class="nav-number">1.7.5.</span> <span class="nav-text">6.3.5 管理控制面板</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ajsoabk</p>
+  <div class="site-description" itemprop="description">我在我心的孤寂里，听见你的叹息了</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ajsoabk</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

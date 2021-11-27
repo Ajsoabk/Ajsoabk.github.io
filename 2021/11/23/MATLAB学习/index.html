@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ajsoabk.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="基础知识变量名由大小写字母、数字和特殊字符（_和$）组成。只有前64个字符有效 可以使用;标记语句结尾，表示隐藏该行计算结果，也可以不标记语句结束 MATLAB的注释符是% 命令用于管理会话的命令clc用于清除命令窗口 clear用于从内存中删除变量 exist用于检查文件或变量是否存在 global声明变量为全局变量 help获取帮助 lookfor在帮助条目种搜索关键字 quit停止MATLA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MATLAB学习">
+<meta property="og:url" content="http://ajsoabk.xyz/2021/11/23/MATLAB%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="归因">
+<meta property="og:description" content="基础知识变量名由大小写字母、数字和特殊字符（_和$）组成。只有前64个字符有效 可以使用;标记语句结尾，表示隐藏该行计算结果，也可以不标记语句结束 MATLAB的注释符是% 命令用于管理会话的命令clc用于清除命令窗口 clear用于从内存中删除变量 exist用于检查文件或变量是否存在 global声明变量为全局变量 help获取帮助 lookfor在帮助条目种搜索关键字 quit停止MATLA">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/fratz/AppData/Roaming/Typora/typora-user-images/image-20211125135447692.png">
+<meta property="article:published_time" content="2021-11-23T09:23:02.000Z">
+<meta property="article:modified_time" content="2021-11-25T05:58:53.106Z">
+<meta property="article:author" content="Ajsoabk">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/fratz/AppData/Roaming/Typora/typora-user-images/image-20211125135447692.png">
+
+<link rel="canonical" href="http://ajsoabk.xyz/2021/11/23/MATLAB%E5%AD%A6%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MATLAB学习 | 归因</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">归因</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/23/MATLAB%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MATLAB学习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-23 17:23:02" itemprop="dateCreated datePublished" datetime="2021-11-23T17:23:02+08:00">2021-11-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-25 13:58:53" itemprop="dateModified" datetime="2021-11-25T13:58:53+08:00">2021-11-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>变量名由大小写字母、数字和特殊字符（_和$）组成。只有前64个字符有效</p>
+<p>可以使用<code>;</code>标记语句结尾，表示隐藏该行计算结果，也可以不标记语句结束</p>
+<p>MATLAB的注释符是<code>%</code></p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="用于管理会话的命令"><a href="#用于管理会话的命令" class="headerlink" title="用于管理会话的命令"></a>用于管理会话的命令</h3><p><code>clc</code>用于清除命令窗口</p>
+<p><code>clear</code>用于从内存中删除变量</p>
+<p><code>exist</code>用于检查文件或变量是否存在</p>
+<p><code>global</code>声明变量为全局变量</p>
+<p><code>help</code>获取帮助</p>
+<p><code>lookfor</code>在帮助条目种搜索关键字</p>
+<p><code>quit</code>停止MATLAB</p>
+<p><code>who</code>列出当前所有变量的名称</p>
+<p><code>whos</code>列出当前变量的详细信息</p>
+<h3 id="用于系统的命令"><a href="#用于系统的命令" class="headerlink" title="用于系统的命令"></a>用于系统的命令</h3><p><code>cd</code>更改当前目录</p>
+<p><code>date</code>显示当前日期</p>
+<p><code>delete</code>删除文件</p>
+<p><code>diary</code>开启/关闭日记文件录制</p>
+<p><code>dir</code>列出当前目录中的所有文件</p>
+<p><code>load</code>从文件加载工作区变量</p>
+<p><code>path</code>显示搜索路径</p>
+<p><code>pwd</code>显示当前目录</p>
+<p><code>save</code>将工作空间变量保存在文件中</p>
+<p><code>type</code>显示文件的内容</p>
+<p><code>what</code>列出当前目录中的所有MATLAB文件</p>
+<p><code>wklread</code>读取<code>.wkl</code>电子表格文件</p>
+<h3 id="输入和输出函数-命令"><a href="#输入和输出函数-命令" class="headerlink" title="输入和输出函数/命令"></a>输入和输出函数/命令</h3><p><code>disp</code>显示数组或字符串的内容</p>
+<p><code>fsanf</code>从文件中读取格式化的数据</p>
+<p><code>format</code>格式控制命令</p>
+<p><code>fprintf</code>执行对屏幕或文件的格式化写入</p>
+<p><code>input</code>显示提示并等待输入</p>
+<p>其中，<code>fsanf</code>和<code>fprintf</code>函数的行为像C的<code>scanf</code>和<code>printf</code>函数，它们支持，<code>%s</code>格式化为字符串，<code>%d</code>格式化为整数，<code>%f</code>格式化为浮点值，<code>%e</code>科学计数法，<code>%g</code>从<code>%f</code>和<code>%e</code>中选择一个最紧凑的格式</p>
+<h2 id="特殊变量"><a href="#特殊变量" class="headerlink" title="特殊变量"></a>特殊变量</h2><p><code>ans</code>表示最近计算的答案</p>
+<p><code>eps</code>表示浮点精度</p>
+<p><code>i</code>和<code>j</code>表示虚数的单位</p>
+<p><code>Inf</code>表示无穷</p>
+<p><code>NaN</code>表示未定义的数值结果</p>
+<p><code>pi</code>表示$$\pi$$</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p>除了不等于是<code>~=</code>以外，其他都跟C相同</p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>短路运算：<code>&amp;&amp;</code>和<code>||</code></p>
+<p>元素级运算：<code>&amp;</code>、<code>|</code>、<code>~</code></p>
+<h3 id="按位运算符"><a href="#按位运算符" class="headerlink" title="按位运算符"></a>按位运算符</h3><p><code>&amp;</code>、<code>|</code>、<code>^</code>和<code>~</code></p>
+<p>除此之外还有一些位运算相关的函数</p>
+<p><code>bitset(a,pos)</code>将<code>bit</code>设置为<code>a</code>的特定位置<code>pos</code></p>
+<p><code>bitshift(a,k)</code>将<code>a</code>向左移动<code>k</code>bit</p>
+<h2 id="矩阵与向量"><a href="#矩阵与向量" class="headerlink" title="矩阵与向量"></a>矩阵与向量</h2><p>由于MATLAB起源于FORTRAN，它的索引值起始于1而不是0</p>
+<p>矩阵是数字的二维数组，通过以空格或逗号分隔的顺序输入每一行来创建矩阵，并用分号分隔行的结尾</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">m=[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>;<span class="number">4</span> <span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span> <span class="number">9</span>]</span><br><span class="line">C=<span class="number">1</span>:<span class="number">3</span>:<span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以用一些专业函数产生新的数组</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A=<span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">10</span>,<span class="number">4</span>)</span><br><span class="line">A =</span><br><span class="line">	<span class="number">0</span> 	<span class="number">3.3333</span> 	<span class="number">6.6667</span> 	<span class="number">10.0000</span></span><br><span class="line">&gt;&gt; B=<span class="built_in">zeros</span>(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">B = </span><br><span class="line">	<span class="number">0</span>	<span class="number">0</span>	</span><br><span class="line">	<span class="number">0</span>	<span class="number">0</span></span><br><span class="line">&gt;&gt; C=<span class="built_in">ones</span>(<span class="number">1</span>,<span class="number">4</span>)</span><br><span class="line">C = </span><br><span class="line">	<span class="number">1</span>	<span class="number">1</span>	<span class="number">1</span>	<span class="number">1</span></span><br><span class="line">&gt;&gt; D=<span class="built_in">rand</span>(<span class="number">3</span>,<span class="number">3</span>)<span class="comment">%均匀分布随机数</span></span><br><span class="line">D =</span><br><span class="line">	<span class="number">0.8530</span>	<span class="number">0.5132</span>	<span class="number">0.2399</span></span><br><span class="line">	<span class="number">0.6221</span>	<span class="number">0.4018</span>	<span class="number">0.1233</span></span><br><span class="line">	<span class="number">0.2510</span>	<span class="number">0.0760</span>	<span class="number">0.1839</span></span><br><span class="line">&gt;&gt; E=<span class="built_in">randn</span>(<span class="number">2</span>,<span class="number">2</span>)<span class="comment">%正态分布随机数</span></span><br><span class="line">E =</span><br><span class="line">	 <span class="number">0.5201</span>	<span class="number">-0.0348</span></span><br><span class="line">	<span class="number">-0.0200</span>	<span class="number">-0.7982</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="size-与length"><a href="#size-与length" class="headerlink" title="size()与length()"></a>size()与length()</h3><p><code>size</code>函数返回一个长度为2的向量，第一个值是传入数组的行数，第二个值是传入数组的列数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">size</span>(<span class="built_in">rand</span>(<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line"><span class="built_in">ans</span> = </span><br><span class="line">	<span class="number">3</span>	<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p><code>length</code>函数返回该数组最长的维度的长度：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">length</span>(<span class="built_in">rand</span>(<span class="number">4</span>,<span class="number">3</span>))</span><br><span class="line"><span class="built_in">ans</span> = </span><br><span class="line">	<span class="number">4</span></span><br><span class="line">&gt;&gt; <span class="built_in">length</span>(<span class="built_in">rand</span>(<span class="number">4</span>,<span class="number">10</span>))</span><br><span class="line">and = </span><br><span class="line">	<span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="索引向量"><a href="#索引向量" class="headerlink" title="索引向量"></a>索引向量</h3><p>通过位置访问数组元素的过程称为<strong>索引</strong></p>
+<h1 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h1><h2 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h2><h3 id="stem函数"><a href="#stem函数" class="headerlink" title="stem函数"></a>stem函数</h3><p>用法：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stem(Y)</span><br><span class="line">stem(X,Y)</span><br><span class="line">stem(___,<span class="string">&#x27;filled&#x27;</span>)<span class="comment">%这里的___既可以是Y也可以是X,Y</span></span><br><span class="line">stem(___,LineSpec)</span><br><span class="line">stem(___,Name,Value)</span><br><span class="line">stem(ax,___)</span><br></pre></td></tr></table></figure>
+
+<p>第一种用法中，如果Y是向量，则X轴的刻度范围从1到length(Y)</p>
+<p>如果Y是矩阵，则stem将根据相同的x值绘制行中的所有元素，并且x轴的刻度范围是从1至Y中的行数</p>
+<p>第二种用法会在X指定的值的位置绘制数据序列Y。X和Y输入必须是大小相同的向量或矩阵，或者X是行或列向量而Y是列数为length（X）的矩阵</p>
+<p>第三种用法会将小球改成实心</p>
+<p>第四种用法指定线型、标记符号和颜色，指定为包含符号的字符向量或字符串。符号可以按任意顺序显示，不需要同时指定所有三个特征。</p>
+<table>
+<thead>
+<tr>
+<th>线型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>实线</td>
+</tr>
+<tr>
+<td>–</td>
+<td>虚线</td>
+</tr>
+<tr>
+<td>:</td>
+<td>点线</td>
+</tr>
+<tr>
+<td>-.</td>
+<td>点划线</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‘o’</td>
+<td>圆圈</td>
+</tr>
+<tr>
+<td>‘+’</td>
+<td>加号</td>
+</tr>
+<tr>
+<td>‘*’</td>
+<td>星号</td>
+</tr>
+<tr>
+<td>‘.’</td>
+<td>点</td>
+</tr>
+<tr>
+<td>‘x’</td>
+<td>叉号</td>
+</tr>
+<tr>
+<td>‘_’</td>
+<td>水平线条</td>
+</tr>
+<tr>
+<td>‘|’</td>
+<td>垂直线条</td>
+</tr>
+<tr>
+<td>‘s’</td>
+<td>方形</td>
+</tr>
+<tr>
+<td>‘d’</td>
+<td>菱形</td>
+</tr>
+<tr>
+<td>‘^’</td>
+<td>上三角</td>
+</tr>
+<tr>
+<td>‘v’</td>
+<td>下三角</td>
+</tr>
+<tr>
+<td>‘&gt;’</td>
+<td>右三角</td>
+</tr>
+<tr>
+<td>‘&lt;’</td>
+<td>左三角</td>
+</tr>
+<tr>
+<td>‘p’</td>
+<td>五角形</td>
+</tr>
+<tr>
+<td>‘h’</td>
+<td>六角形</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>颜色</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>y</td>
+<td>黄色</td>
+</tr>
+<tr>
+<td>m</td>
+<td>品红</td>
+</tr>
+<tr>
+<td>c</td>
+<td>青蓝</td>
+</tr>
+<tr>
+<td>r</td>
+<td>红色</td>
+</tr>
+<tr>
+<td>g</td>
+<td>绿色</td>
+</tr>
+<tr>
+<td>b</td>
+<td>蓝色</td>
+</tr>
+<tr>
+<td>w</td>
+<td>白色</td>
+</tr>
+<tr>
+<td>k</td>
+<td>黑色</td>
+</tr>
+</tbody></table>
+<p>第五种用法改变<code>Name</code>设置的<code>Value</code></p>
+<p>也可以获取窗口句柄后通过属性访问来改变stem的属性值：</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>属性值（第一个是默认值）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>LineStyle</code>-线型</td>
+<td>‘-‘、’–’、’:’、’-.’、’none’</td>
+</tr>
+<tr>
+<td><code>LineWidth</code>-线条宽度</td>
+<td>0.5、其他正值</td>
+</tr>
+<tr>
+<td><code>Color</code>-针状图颜色</td>
+<td>[0 0 0]、RGB三元组、十六进制颜色代码、长名称、短名称</td>
+</tr>
+<tr>
+<td><code>Marker</code>-标记符号</td>
+<td>上表所列标记值</td>
+</tr>
+<tr>
+<td><code>MarkerSize</code>-标记大小</td>
+<td>6、其他正值</td>
+</tr>
+<tr>
+<td><code>MarkerEdgeColor</code>-标记轮廓颜色</td>
+<td>‘auto’、其余如<code>Color</code></td>
+</tr>
+<tr>
+<td><code>MarkerFaceColor</code>-标记填充颜色</td>
+<td>‘none’、其余如<code>Color</code></td>
+</tr>
+</tbody></table>
+<p>第六种用法指定坐标区（ax），如果未指定坐标区，则stem在当前坐标区中绘图</p>
+<h3 id="xlabel函数与ylabel函数"><a href="#xlabel函数与ylabel函数" class="headerlink" title="xlabel函数与ylabel函数"></a><code>xlabel</code>函数与<code>ylabel</code>函数</h3><p>语法：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xlabel(txt)</span><br><span class="line">xlabel(target,txt)</span><br><span class="line">xlabel(___,Name,Value)<span class="comment">%___可以是txt也可以是target,txt</span></span><br></pre></td></tr></table></figure>
+
+<p>第一种用法对当前坐标区添加标签，可以使用字符向量元胞数组的方式来创建多行标签：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">plot</span>((<span class="number">1</span>:<span class="number">10</span>).^<span class="number">2</span>)</span><br><span class="line">xlabel(&#123;<span class="string">&#x27;Population&#x27;</span>,<span class="string">&#x27;(in thousands)&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20211125135447692.png" alt="image-20211125135447692"></p>
+<p>也可以使用<code>TeX</code>标记来显示特殊字符，可以通过逗号分隔字符串来实现变量值的包含：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">plot</span>((<span class="number">1</span>:<span class="number">10</span>).^<span class="number">2</span>)</span><br><span class="line">year = <span class="number">2014</span></span><br><span class="line">xlabel([<span class="string">&#x27;Population for Year &#x27;</span>,num2str(year)])</span><br></pre></td></tr></table></figure>
+
+
+
+<p>第二种用法为指定的目标对象添加标签</p>
+<p>第三种用法使用<code>Name-Value</code>对来修改标签外观，也可以获取标签对象本身后通过访问相应属性来修改</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/19/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/" rel="prev" title="信号与系统笔记">
+      <i class="fa fa-chevron-left"></i> 信号与系统笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/11/26/IEEEStrandardforFrameworkofBlockchain-basedIoTDataManagement/" rel="next" title="IEEEStrandardforFrameworkofBlockchain-basedIoTDataManagement">
+      IEEEStrandardforFrameworkofBlockchain-basedIoTDataManagement <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E7%AE%A1%E7%90%86%E4%BC%9A%E8%AF%9D%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.1.</span> <span class="nav-text">用于管理会话的命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.</span> <span class="nav-text">用于系统的命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.3.</span> <span class="nav-text">输入和输出函数&#x2F;命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F"><span class="nav-number">1.2.</span> <span class="nav-text">特殊变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.1.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.2.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.3.</span> <span class="nav-text">按位运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%90%91%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">矩阵与向量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#size-%E4%B8%8Elength"><span class="nav-number">1.4.1.</span> <span class="nav-text">size()与length()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%90%91%E9%87%8F"><span class="nav-number">1.4.2.</span> <span class="nav-text">索引向量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">常用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E5%9B%BE"><span class="nav-number">2.1.</span> <span class="nav-text">画图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#stem%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.1.</span> <span class="nav-text">stem函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xlabel%E5%87%BD%E6%95%B0%E4%B8%8Eylabel%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.2.</span> <span class="nav-text">xlabel函数与ylabel函数</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ajsoabk</p>
+  <div class="site-description" itemprop="description">我在我心的孤寂里，听见你的叹息了</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ajsoabk</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
