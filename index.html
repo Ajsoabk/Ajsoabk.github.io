@@ -147,6 +147,1139 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/28/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E7%9A%84IEEE%E6%A0%87%E5%87%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/28/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E7%9A%84IEEE%E6%A0%87%E5%87%86/" class="post-title-link" itemprop="url">区块链系统数据格式的IEEE标准</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-28 13:21:01" itemprop="dateCreated datePublished" datetime="2021-11-28T13:21:01+08:00">2021-11-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-01 10:33:11" itemprop="dateModified" datetime="2021-12-01T10:33:11+08:00">2021-12-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><h2 id="1-1-范围"><a href="#1-1-范围" class="headerlink" title="1.1 范围"></a>1.1 范围</h2><p>该标准规定了区块链系统对数据格式的要求，确定了包括数据结构、数据类型与类型中所含元素在内的规范。</p>
+<h2 id="1-2-用途"><a href="#1-2-用途" class="headerlink" title="1.2 用途"></a>1.2 用途</h2><p>这一标准为计划使用区块链技术来建立区块链系统的实体提供了数据格式上的参考，为提供区块链服务的实体给予了关于在区块链系统中建立数据结构方面的指导，并为在区块链系统中提供中间件服务的实体提供数据格式方面的参考</p>
+<h2 id="1-3-用词规范"><a href="#1-3-用词规范" class="headerlink" title="1.3 用词规范"></a>1.3 用词规范</h2><ul>
+<li><strong>必须</strong>表示强制要求遵守以保证绝对一致，任何违背这一要求的行为都不会被承认</li>
+<li><strong>应当</strong>表示建议某种行为但不作强制要求，也用于表示某一行为较其余更好但不否定其他选择</li>
+<li><strong>能够</strong>表示某一行为在标准允许范围内</li>
+<li><strong>可能</strong>用于一些概率事件或可行性的陈述中，不管是物质上的、心理上的抑或是用于表达因果连接的</li>
+</ul>
+<h2 id="2-标准参考资料"><a href="#2-标准参考资料" class="headerlink" title="2. 标准参考资料"></a>2. 标准参考资料</h2><p>以下资料对本标准的制定有参考意义（即标准中包含对这些资料的理解与使用，因此每项资料都以文本形式引用在下方并解释了其对标准的贡献）。对于注明日期的参考文献，仅引用的版本适用。而对于未注明日期的参考文献，引用文件的最新版本（包括任何修订或勘误）适用。</p>
+<p>GB/T 18391.2-2009, Information Technology—Metadata registries (MDR)—Part 2: Classification.</p>
+<h2 id="3-定义与缩写"><a href="#3-定义与缩写" class="headerlink" title="3. 定义与缩写"></a>3. 定义与缩写</h2><h3 id="3-1-定义"><a href="#3-1-定义" class="headerlink" title="3.1 定义"></a>3.1 定义</h3><p>以下专业术语的定义适用于本文档。该条目中未定义的专业术语可以在<em>IEEE Standards Dictionary Online</em>上查找到</p>
+<ul>
+<li><strong>属性</strong>：某一对象或实体的特征</li>
+<li><strong>区块链</strong>：<strong>（A）</strong>一种不可伪造、不可篡改且可追溯的链块数据结构和基于此的在点对点网络中具有透明与可信规则的交易工具和管理模式。<strong>（B）</strong>一种通过在点对点网络中建立不可伪造、不可篡改且可追溯的链块数据结构而实现的交易工具与管理模式</li>
+<li><strong>数据单元</strong>：由一系列属性所描述的运算单元，这些属性包括定义、id、表现形式与可行值</li>
+<li><strong>数据类型</strong>：一种由能对数据进行的基本运算而决定的底层设计，用于存储字符、图像或其余符号来描述数据单元的值</li>
+<li><strong>数据ID</strong>：数据单元独有的身份</li>
+<li><strong>智能合约</strong>：一种用二进制格式定义的合约，能够根据其条款自动执行</li>
+</ul>
+<h3 id="3-2-缩写"><a href="#3-2-缩写" class="headerlink" title="3.2 缩写"></a>3.2 缩写</h3><table>
+<thead>
+<tr>
+<th>英文缩写</th>
+<th>英文全拼</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ID</td>
+<td>identity</td>
+<td>身份</td>
+</tr>
+<tr>
+<td>PKI</td>
+<td>public key infrastructure</td>
+<td>公钥基础设施</td>
+</tr>
+</tbody></table>
+<h2 id="4-数据结构"><a href="#4-数据结构" class="headerlink" title="4. 数据结构"></a>4. 数据结构</h2><p>与区块链技术有关的数据结构包括六个部分，分别对应不同的数据对象，即如前所述的区块型、交易型、交易实体型、合约型、账户型与配置型数据对象。其中，区块型、交易型、交易实体型与合约型数据对象共同构成该结构的核心。每个区块对象都包含了一或多个交易型数据对象。每个交易型对象都有交易实体对象与业务逻辑（如合约数据对象）等数据对象作为其属性。在区块链系统的运作中，配置型数据对象对提供配置信息起到了重要作用。配置型数据对象与这些核心数据对象共同构成了可运作区块链的基石。区块链业务相关的交易人或组织与该数据结构间的联系由账户型数据对象来确定。</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20211129195755157.png" alt="image-20211129195755157"></p>
+<h2 id="5-数据分类"><a href="#5-数据分类" class="headerlink" title="5. 数据分类"></a>5. 数据分类</h2><p>该标准将区块链数据分成以下六个大类：</p>
+<ol>
+<li><strong>账户数据</strong>：描述与区块链上交易的相关账户的数据。在块中记录的所有交易信息都与相关的账户联系到了一起。使用区块链服务的客户可以拥有一个或多个账户。</li>
+<li><strong>区块数据</strong>：描述区块链网络中各节点所维护的链状结构的数据，用于将已经发生的交易信息写入区块链数据并在一定时间后保证永久保存。总的来说，区块由区块头与区块体组成。区块头包含与区块本身相关的控制信息，而区块体则包含具体的交易信息。</li>
+<li><strong>业务数据</strong>：描述由区块链系统所进行的具体交易行为的数据。这些交易行为可以是商业性的，也可以是非商业性的</li>
+<li><strong>交易实体数据</strong>：描述某一业务的静态属性数据。常常包含交易业务中双方的地址，交易数额，燃料费用，存储数据与交易实体所作的评论。</li>
+<li><strong>合约数据</strong>：描述一项交易的动态处理逻辑的数据。合约，又称智能合约，由某种工作量承诺组成，这种工作量承诺以计算机代码的形式给出，要想执行这些承诺必须要有条约各方的参与。从另一角度看，合约同样也是各参与方所达成的能够强制执行的共识协议。这里所提到的合约数据不仅包含了逻辑处理所需要的可执行代码，也包含了逻辑处理所得的结果。</li>
+<li><strong>配置数据</strong>：描述了区块链系统的日常运作所需要的配置信息。一般有共识协议的版本号，软件版本号与所在通信网络的节点信息</li>
+</ol>
+<h2 id="6-数据单元的属性"><a href="#6-数据单元的属性" class="headerlink" title="6. 数据单元的属性"></a>6. 数据单元的属性</h2><p>区块链的数据单元有七种属性，包括数据ID，数据名，数据类型，数据长度，数据说明与必须性标识：</p>
+<ul>
+<li><strong>数据ID</strong>是每个数据单元独有的ID，以分层分类的方式编码。数据分类与数据单元都以顺序编码并记录并分别对应码的前后部</li>
+<li><strong>数据名</strong>是每个数据单元的名称，在特定上下文中，数据名需要保证唯一</li>
+<li><strong>数据类型</strong>描述了数据单元的基本要素与特征。该标准中所使用的数据类型大部分是字符串（string）类型，整数（integer）类型与数组（array）类型</li>
+<li><strong>数据长度</strong>描述了该数据单元的长度，在这一标准中，数据长度可以是有限的也可以是无限的。并且该标准给出了推荐的字节数</li>
+<li><strong>数据说明</strong>具体描述了该数据单元的含义及内容</li>
+<li><strong>强制性标识</strong>描述了该数据单元是必须的还是可选的</li>
+</ul>
+<p>下一节对各种区块链数据的属性做出了描述与要求。</p>
+<h2 id="7-数据格式规范"><a href="#7-数据格式规范" class="headerlink" title="7. 数据格式规范"></a>7. 数据格式规范</h2><h3 id="7-1-账户数据格式"><a href="#7-1-账户数据格式" class="headerlink" title="7.1 账户数据格式"></a>7.1 账户数据格式</h3><p>账户数据包括以下数据单元：</p>
+<ol>
+<li>账户公钥</li>
+<li>账户私钥</li>
+<li>账户资产</li>
+<li>数字证书</li>
+<li>所属组织</li>
+</ol>
+<h3 id="7-1-1-账户公钥"><a href="#7-1-1-账户公钥" class="headerlink" title="7.1.1 账户公钥"></a>7.1.1 账户公钥</h3><p>下面对账户公钥的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据名称</td>
+<td>账户公钥</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度，建议64字节</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>通过PKI系统为用户生成的密钥对的公共部分</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>必须</td>
+</tr>
+</tbody></table>
+<h3 id="7-1-2账户私钥"><a href="#7-1-2账户私钥" class="headerlink" title="7.1.2账户私钥"></a>7.1.2账户私钥</h3><p>下面对账户私钥的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据名称</td>
+<td>账户私钥</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度，建议32字节</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>通过PKI系统为用户生成的密钥对的私有部分</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>必须</td>
+</tr>
+</tbody></table>
+<h3 id="7-1-3-账户资产"><a href="#7-1-3-账户资产" class="headerlink" title="7.1.3 账户资产"></a>7.1.3 账户资产</h3><p>下面对账户资产的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据名称</td>
+<td>账户资产</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>对账户所持资产的说明，<br />包括资产名，资产清单，余额等等</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-1-4-数字证书"><a href="#7-1-4-数字证书" class="headerlink" title="7.1.4 数字证书"></a>7.1.4 数字证书</h3><p>下面对数字证书的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据名称</td>
+<td>数字证书</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>一种由权威证书发放机构签名的文件，<br />包括公钥所有者的信息以及公钥本身</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-1-5-附属机构"><a href="#7-1-5-附属机构" class="headerlink" title="7.1.5 附属机构"></a>7.1.5 附属机构</h3><p>下面对附属机构的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th align="left">属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据名称</td>
+<td align="left">附属机构</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td align="left">数组</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td align="left">不固定</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td align="left">参与区块链网络的独立成员。可以是公司、组织、团体等等。<br />从组织关系的角度来看，账户可以从属于某一特定的机构</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td align="left">可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-区块数据格式"><a href="#7-2-区块数据格式" class="headerlink" title="7.2 区块数据格式"></a>7.2 区块数据格式</h3><p>区块数据基本包括以下数据单元：</p>
+<ol>
+<li>区块高度</li>
+<li>区块ID</li>
+<li>区块版本</li>
+<li>前导区块哈希</li>
+<li>默克尔根哈希</li>
+<li>区块时间戳</li>
+<li>区块nonce值</li>
+<li>挖矿难度</li>
+<li>交易列表</li>
+</ol>
+<h3 id="7-2-1-区块高度"><a href="#7-2-1-区块高度" class="headerlink" title="7.2.1 区块高度"></a>7.2.1 区块高度</h3><p>下面对区块高度的数据格式进行了规范：</p>
+<p>（原文中该处的定义与区块ID相同，疑似错误故留空）</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>区块高度</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td></td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td></td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td></td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="7-2-2-区块ID"><a href="#7-2-2-区块ID" class="headerlink" title="7.2.2 区块ID"></a>7.2.2 区块ID</h3><p>下面对区块ID的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>区块ID</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度，推荐32字节</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>该区块所独有的ID，作为该区块的摘要</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>必须</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-3-区块版本"><a href="#7-2-3-区块版本" class="headerlink" title="7.2.3 区块版本"></a>7.2.3 区块版本</h3><p>下面对区块版本的数据格式进行了规范：</p>
+<p>（原文中该处的定义与区块ID相同，疑似错误故留空）</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>区块版本</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td></td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td></td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td></td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="7-2-4-前序区块哈希"><a href="#7-2-4-前序区块哈希" class="headerlink" title="7.2.4 前序区块哈希"></a>7.2.4 前序区块哈希</h3><p>下面对前序区块哈希的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>前序区块哈希</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度，建议32字节</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>该区块的前序区块的摘要，为当前区块所独有</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>必须</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-5-默克尔根哈希"><a href="#7-2-5-默克尔根哈希" class="headerlink" title="7.2.5 默克尔根哈希"></a>7.2.5 默克尔根哈希</h3><p>下面对默克尔根哈希的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>默克尔根哈希</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度，建议32字节</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>通过默克尔树的构造算法生成的区块中有关联性信息（如交易信息）的摘要</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>交易树根：必须<br />状态树根与收据树根：可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-6-区块时间戳"><a href="#7-2-6-区块时间戳" class="headerlink" title="7.2.6 区块时间戳"></a>7.2.6 区块时间戳</h3><p>下面对区块时间戳的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>区块时间戳</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>整数</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度，建议8字节</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>用于确定区块生成的事件。从1970年开始计数，精确到毫秒且只能正向递增</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>必须</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-7区块nonce值"><a href="#7-2-7区块nonce值" class="headerlink" title="7.2.7区块nonce值"></a>7.2.7区块nonce值</h3><p>下面对区块nonce值的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>区块nonce值</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>整数</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>挖矿节点争夺记账权时通过hash计算证明自己正确性的一个可变参数</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-8-挖矿难度"><a href="#7-2-8-挖矿难度" class="headerlink" title="7.2.8 挖矿难度"></a>7.2.8 挖矿难度</h3><p>下面对挖矿难度的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>挖矿难度</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>整数</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度，建议8字节</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>挖矿节点间争夺记账权时所需要的hash计算的难度参数</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-9-交易列表"><a href="#7-2-9-交易列表" class="headerlink" title="7.2.9 交易列表"></a>7.2.9 交易列表</h3><p>下面对交易列表的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>j交易列表</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>该区块中包含的所有交易，每笔交易都对应一笔业务</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>必须</td>
+</tr>
+</tbody></table>
+<h2 id="7-3-交易数据格式"><a href="#7-3-交易数据格式" class="headerlink" title="7.3 交易数据格式"></a>7.3 交易数据格式</h2><p>交易数据基本包括以下数据单元：</p>
+<ol>
+<li>交易ID</li>
+<li>交易类型</li>
+<li>签名者</li>
+<li>交易时间戳</li>
+</ol>
+<h3 id="7-3-1-交易ID"><a href="#7-3-1-交易ID" class="headerlink" title="7.3.1 交易ID"></a>7.3.1 交易ID</h3><p>下面对交易ID的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>交易ID</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>交易过程中的数据的独有ID，通常是一个哈希值</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>必须</td>
+</tr>
+</tbody></table>
+<h3 id="7-3-1-交易类型"><a href="#7-3-1-交易类型" class="headerlink" title="7.3.1 交易类型"></a>7.3.1 交易类型</h3><p>下面对交易类型的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>交易属性</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串或整数</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>用于定义交易事件的类型，可以有一种或多种</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-3-1-签名者"><a href="#7-3-1-签名者" class="headerlink" title="7.3.1 签名者"></a>7.3.1 签名者</h3><p>下面对签名者的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>签名者</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>指对该笔交易签名的所有人</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-3-1-交易时间戳"><a href="#7-3-1-交易时间戳" class="headerlink" title="7.3.1 交易时间戳"></a>7.3.1 交易时间戳</h3><p>下面对交易时间戳的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>交易时间戳</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>整数</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>32字节</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>正整数。从1970年开始计数，精确到毫秒且只能正向递增</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选</td>
+</tr>
+</tbody></table>
+<h2 id="7-4-交易实体数据格式"><a href="#7-4-交易实体数据格式" class="headerlink" title="7.4 交易实体数据格式"></a>7.4 交易实体数据格式</h2><p>交易实体数据包括以下数据单位：</p>
+<ol>
+<li>转出地址</li>
+<li>转入地址</li>
+<li>交易金额</li>
+<li>燃料费用</li>
+<li>附加数据</li>
+<li>备忘录</li>
+</ol>
+<h3 id="7-4-1-转出地址"><a href="#7-4-1-转出地址" class="headerlink" title="7.4.1 转出地址"></a>7.4.1 转出地址</h3><p>下面对转出地址的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>转出地址</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>该笔交易的转出方，在该笔交易中唯一确定</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>必须</td>
+</tr>
+</tbody></table>
+<h3 id="7-4-2-转入地址"><a href="#7-4-2-转入地址" class="headerlink" title="7.4.2 转入地址"></a>7.4.2 转入地址</h3><p>下面对转入地址的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>转入地址</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>该笔交易的转入方，在该笔交易中唯一确定</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-4-3-交易金额"><a href="#7-4-3-交易金额" class="headerlink" title="7.4.3 交易金额"></a>7.4.3 交易金额</h3><p>下面对交易金额的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>交易金额</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>整数或字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>与该笔交易有关的资产变动</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-4-4-燃料费用"><a href="#7-4-4-燃料费用" class="headerlink" title="7.4.4 燃料费用"></a>7.4.4 燃料费用</h3><p>下面对燃料费用的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>燃料费用</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>整数或字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>为了预防垃圾交易与流量攻击而设置的交易费用</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-4-5-附加数据"><a href="#7-4-5-附加数据" class="headerlink" title="7.4.5 附加数据"></a>7.4.5 附加数据</h3><p>下面对发送人地址的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>附加数据</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>为了满足某些业务需求而提供的可选域。对应附加性的业务</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选的</td>
+</tr>
+</tbody></table>
+<h3 id="7-4-6-备忘录"><a href="#7-4-6-备忘录" class="headerlink" title="7.4.6 备忘录"></a>7.4.6 备忘录</h3><p>下面对备忘录的数据格式进行了规范：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>备忘录</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>与文本，ID与交易中的hash类型对应的评论区</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选的</td>
+</tr>
+</tbody></table>
+<h2 id="7-5-合约数据格式"><a href="#7-5-合约数据格式" class="headerlink" title="7.5 合约数据格式"></a>7.5 合约数据格式</h2><p>合约数据格式包含以下数据单元：</p>
+<ol>
+<li>合约ID</li>
+<li>合约版本</li>
+<li>合约代码</li>
+<li>合约变量</li>
+</ol>
+<h3 id="7-5-1-合约ID"><a href="#7-5-1-合约ID" class="headerlink" title="7.5.1 合约ID"></a>7.5.1 合约ID</h3><p>下面对合约ID的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>合约ID</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>在合约部署在区块链后，调用方就可以根据该合约ID访问合约代码与存储状态等等信息</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>这一ID通过“账户信息+索引+（可选的）另一合约信息”的可选的摘要算法所生成<br />生成的ID必须是唯一确定且可用的。可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-5-2-合约版本"><a href="#7-5-2-合约版本" class="headerlink" title="7.5.2 合约版本"></a>7.5.2 合约版本</h3><p>下面对合约版本的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>合约版本</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>指考虑到代码与智能合约的编译设定的二进制码。用于识别不同的版本</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>由于智能合约持续提供某一特定的业务功能，<br />应根据需求导向与问题导向的变化来设定不同的版本分类。可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-5-3-合约代码"><a href="#7-5-3-合约代码" class="headerlink" title="7.5.3 合约代码"></a>7.5.3 合约代码</h3><p>下面对合约代码的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>合约代码</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>指合约中的可执行指令，<br />由经过设计的能够实现对区块链上虚拟机的调用与执行的编译器编译并生成</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>根据不同的虚拟机系统与编译器，<br />合约代码能以不同的计算机语言形式所编译。可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-5-4-合约变量"><a href="#7-5-4-合约变量" class="headerlink" title="7.5.4 合约变量"></a>7.5.4 合约变量</h3><p>下面对合约变量的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>合约变量</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>指合约运行过程中生成的一系列状态数据。<br />其内容与合约逻辑密切相关</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>键值对形式或关系型数据库形式。可选</td>
+</tr>
+</tbody></table>
+<h2 id="7-6-配置数据格式"><a href="#7-6-配置数据格式" class="headerlink" title="7.6 配置数据格式"></a>7.6 配置数据格式</h2><p>配置数据格式包括以下数据单元</p>
+<ol>
+<li>协议版本</li>
+<li>软件版本</li>
+<li>节点ID</li>
+<li>节点地址</li>
+<li>节点公钥</li>
+</ol>
+<h3 id="7-6-1-协议版本"><a href="#7-6-1-协议版本" class="headerlink" title="7.6.1 协议版本"></a>7.6.1 协议版本</h3><p>下面对协议版本的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>协议版本</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>使用协议版本号以识别用于节点间通信和交互和节点与外界交互的协议</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>随着软件版本的更新，区块链协议可以具有不同的接口与功能。<br />一般的区块链软件须提供协议层面的下载兼容性并通过协议版本号来区分。<br />通过不同的协议。这些软件要能为不同的客户提供不同的服务。可选</td>
+</tr>
+</tbody></table>
+<h3 id="7-6-2-软件版本"><a href="#7-6-2-软件版本" class="headerlink" title="7.6.2 软件版本"></a>7.6.2 软件版本</h3><p>下面对软件版本的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>软件版本</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>根据软件本身包含了计算机代码与二进制代码。版本号用于区分不同的发行版本</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>必须。根据不同的软件生命周期，应用场景与目标人群可以部署区块链软件的不同版本</td>
+</tr>
+</tbody></table>
+<h3 id="7-6-3-节点ID"><a href="#7-6-3-节点ID" class="headerlink" title="7.6.3 节点ID"></a>7.6.3 节点ID</h3><p>下面对节点ID的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>节点ID</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>区块链网络中某一节点独有的ID，公钥可被选为该节点的ID</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>必须</td>
+</tr>
+</tbody></table>
+<h3 id="7-6-4-节点地址"><a href="#7-6-4-节点地址" class="headerlink" title="7.6.4 节点地址"></a>7.6.4 节点地址</h3><p>下面对节点地址的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>节点地址</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>根据网络协议而定（IPv4或IPv6）</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>区块链网络中其他节点的地址信息</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>必须</td>
+</tr>
+</tbody></table>
+<h3 id="7-6-5-节点公钥"><a href="#7-6-5-节点公钥" class="headerlink" title="7.6.5 节点公钥"></a>7.6.5 节点公钥</h3><p>下面对节点公钥的数据格式进行了规范</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性名称</td>
+<td>节点公钥</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>数据说明</td>
+<td>区块链网络中其他节点的公钥信息</td>
+</tr>
+<tr>
+<td>强制性标识</td>
+<td>可选</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/26/IEEEStrandardforFrameworkofBlockchain-basedIoTDataManagement/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1787,219 +2920,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/04/%E5%8D%95%E8%AF%8D%E6%9C%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ajsoabk">
-      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="归因">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/04/%E5%8D%95%E8%AF%8D%E6%9C%AC/" class="post-title-link" itemprop="url">单词本</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-04 18:49:53" itemprop="dateCreated datePublished" datetime="2021-11-04T18:49:53+08:00">2021-11-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-18 14:48:20" itemprop="dateModified" datetime="2021-11-18T14:48:20+08:00">2021-11-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>overlapping, substantial, redundancy, predicate, mediate, hassle, mint, inflation, lunge, compact, broadband, a.k.a., in volume, micropayment, malleability, scalability, ledger, refactor, </p>
-<ol>
-<li><p><strong>pharmaceutical</strong>, relating to the production of medicines.</p>
-</li>
-<li><p><strong>dues</strong>, the official payments that you make to an organization you belong to</p>
-</li>
-<li><p><strong>evasion</strong>, the act of avoiding something or someone</p>
-<p>eg: tax evasion</p>
-</li>
-<li><p><strong>ballot</strong>, a piece of paper on which you write your vote</p>
-</li>
-<li><p><strong>implement</strong>, to put a plan into action</p>
-</li>
-<li><p><strong>slip</strong>,a small piece of paper</p>
-</li>
-<li><p><strong>reminiscent</strong> -&gt; <strong>reminiscent of sb/sth</strong>, making you remember a particular person, event, or thing.</p>
-<p>eg: That song is so reminiscent of my adolescence</p>
-</li>
-<li><p><strong>debit</strong>, (a record of ) money taken out of a bank account</p>
-</li>
-<li><p><strong>mediate</strong>, to talk to two separate people or groups involved in a disagreement to </p>
-</li>
-<li><p><strong>escrow</strong>, an agreement between two people or organization in which money or property is kept by a third person or organization until a particular condition is met</p>
-</li>
-<li><p><strong>subvert</strong>, to try to destroy or damage something, especially an established political system</p>
-</li>
-<li><p><strong>analogous</strong>, having similar features to another thing and therefore able to be compared with it</p>
-<p>eg: The emergency vehicle for the International Space Station is analogous to a lifeboat</p>
-</li>
-<li><p><strong>preclude</strong>, to prevent something or make it impossible, or prevent someone from doing something.</p>
-</li>
-<li><p><strong>deficit</strong>, the total amount by which money spent is more than money received.</p>
-</li>
-<li><p><strong>issue</strong>, to produce or provide something official.</p>
-</li>
-<li><p><strong>encompass</strong>, to include different types of things.</p>
-</li>
-<li><p><strong>custodial</strong>, referring to or having the responsibility of protecting, caring for, or maintaining something or someone.</p>
-</li>
-<li><p><strong>ubiquitous</strong>, seeming to be everywhere</p>
-</li>
-<li><p><strong>indicator</strong>, something that shows what a situation is like</p>
-</li>
-<li><p><strong>ecology</strong>, the relationships between the air, land, water, animals, plants, etc., usually of a particular area.</p>
-</li>
-<li><p><strong>proliferate</strong>, to increase a lot and suddenly in number</p>
-</li>
-<li><p><strong>actuate</strong>, to make a machine work or be the reason a person acts in a certain way.</p>
-</li>
-<li><p><strong>altruism</strong>, willingness to do things that bring advantages to others, even if it results in disadvantage for yourself.</p>
-</li>
-<li><p><strong>seamlessly</strong>, without any sudden changes, interruptions, or problems.</p>
-</li>
-<li><p><strong>-centric</strong>, having a particular type of person, place, or thing as your most important interest; seen from the point of view of a particular type of person, place, or thing.</p>
-</li>
-<li><p><strong>paradigm</strong>, a model of something, or a very clear and typical example of something.</p>
-</li>
-<li><p><strong>commodity</strong>, a substance or product that can be traded, bought, or sold.</p>
-</li>
-<li><p><strong>utility</strong>, able to do several different things well.</p>
-</li>
-<li><p><strong>pervasive</strong>, present or noticeable in every part of a thing or place.</p>
-</li>
-<li><p><strong>intervention</strong>, the action of becoming intentionally involved in a difficult situation, in order to improve it or prevent it from getting worse.</p>
-</li>
-<li><p><strong>verge</strong>, the edge or border of something<br>eg: They set up camp on the verge of the desert</p>
-</li>
-<li><p><strong>daemon</strong>, background processes that worked tirelessly to perform system chores</p>
-</li>
-<li><p><strong>ventilator</strong>, a machine that helps people breathe when they have difficulty breathing on their own, by forcing air in and out of their lungs.</p>
-</li>
-<li><p><strong>avionics</strong>, the electronic devices of an aircraft or spacecraft</p>
-</li>
-<li><p><strong>telemetry</strong>, the science or process of collecting information about objects that are for away and sending the information somewhere electronically</p>
-</li>
-<li><p><strong>rocketry</strong>, the design and construction of rockets</p>
-</li>
-<li><p><strong>intermittent</strong>, not happening regularly or continuously; stopping and starting repeatedly or with periods in between</p>
-</li>
-<li><p><strong>erratic</strong>, moving or behaving in a way that is not regular, certain, or expected.</p>
-</li>
-<li><p><strong>afflict</strong>, if a problem or illness  afflicts a person or thing, they suffer from it.</p>
-</li>
-<li><p><strong>mitigate</strong>, to make something less armful, unpleasant, or bad.</p>
-</li>
-<li><p><strong>destabilizing</strong>, making a government, area, or political group lose power or control, or making a political or economic situation less strong or safe, by causing changes and problems.</p>
-</li>
-<li><p><strong>malicious</strong>, intended to harm or upset other people.</p>
-</li>
-<li><p><strong>exploitable</strong>, able to be used unfairly, for someone’s own advantage.</p>
-</li>
-<li><p><strong>snippet</strong>, a small and often interesting piece of news, information, or conversation.</p>
-</li>
-<li><p><strong>undue</strong>, to a level that is more than is necessary, acceptable, or reasonable.<br>eg: Such a high increase will impose an undue burden on the local tax payer.</p>
-</li>
-<li><p><strong>glean</strong>, to collect information in small amounts and often with difficulty<br>eg: They’re leaving on Tuesday - I managed to glean that much (from them)</p>
-</li>
-<li><p><strong>esoteric</strong>, very unusual and understood or liked by only a small number of people, especially those with special knowledge.</p>
-</li>
-<li><p><strong>de facto</strong>, /dei…/, existing in fact, although perhaps not intended, legal, or accepted.</p>
-</li>
-<li><p><strong>imbue sth./sb. with sth.</strong>, to fill something or someone with a quality or feeling.<br>eg: Her poetry was imbued with a love of the outdoors.</p>
-</li>
-<li><p><strong>intercept</strong>, to stop or catch something or someone that is on the way from one place to another so that it does not reach the intended place.</p>
-</li>
-<li><p><strong>flaky</strong>, behaving in a way that is strange, not responsible or not expected.</p>
-</li>
-<li><p><strong>malice</strong>, /`m…/, the wish to harm or upset other people<br>eg: I bear him no malice.</p>
-</li>
-<li><p><strong>proprietary</strong>, owned and legally controlled by a particular company.<br>eg: This is proprietary software, and you have no right to copy it without a license from the owner.</p>
-</li>
-<li><p><strong>overdue</strong>, not done or happening when expected or when needed; late;</p>
-</li>
-<li><p><strong>sentinel</strong>, a person employed to guard something</p>
-</li>
-<li><p><strong>the gory details</strong>, the interesting and usually personal pieces of information about a person or event.</p>
-<ul>
-<li>Come on, I want to know all the gory details about your date with Jon.</li>
-</ul>
-</li>
-<li><p><strong>terse</strong>, using few words, sometimes in a way that seems rude or unfriendly.</p>
-<ul>
-<li>“Are you feeling any better?” “No!” was the terse reply.</li>
-</ul>
-</li>
-<li><p><strong>descriptive</strong>, A descriptive area of study is one that is based on saying what its subject is really like, rather than on developing theories about it.</p>
-</li>
-<li><p><strong>declarative sentence</strong>, a sentence that makes a statement or states a fact.</p>
-</li>
-<li><p><strong>per se</strong>, by or of itself</p>
-<ul>
-<li>Research shows that it is not divorce per se that harms children, but the continuing conflict between parents.</li>
-</ul>
-</li>
-<li><p><strong>dictate</strong>, to give orders, or tell someone exactly what they must do, with total authority.</p>
-</li>
-<li><p><strong>verbose</strong>, using or containing more words than are necessary.</p>
-</li>
-<li><p><strong>the whole shebang</strong>, the whole of something, including everything that is connected with it.</p>
-</li>
-<li><p><strong>hail</strong>, to publicly praise or who approval for a person or an achievement.</p>
-</li>
-<li><p><strong>prompt</strong>, if a computer prompts you to do something while performing a task, it gives you a message the tells you what action to take next.<br>eg: After you’ve downloaded the program, you will be prompted to restart your PC.</p>
-</li>
-<li><p><strong>at the expense of sth.</strong>, If you do one thing at the expense of another, doing the first thing harms the second thing.</p>
-</li>
-<li><p><strong>deprecate</strong>, to not approve of something or say that you do not approve of something;<br>to say that you think something is of little value or importance.</p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2069,7 +2989,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
