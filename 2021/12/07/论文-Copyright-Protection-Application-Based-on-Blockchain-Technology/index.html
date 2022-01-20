@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ajsoabk.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="基于区块链的版权保护实践摘要传统的版权保护平台存在包括版权信息安全与高昂注册费用的在内的诸多问题。正在快速发展的区块链技术作为一种全新的技术结构，具有去中心化、不可篡改、可追溯、公开透明等特性，天然适用于版权保护领域，有望解决传统版权保护中的众多问题。该论文致力于在版权管理平台上进行区块链技术的实践。希望能通过这种方式解决传统版权管理平台上安全性低、维权困难、业务手续繁杂等问题，是将区块链技术与版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文-Copyright_Protection_Application_Based_on_Blockchain_Technology">
+<meta property="og:url" content="http://ajsoabk.xyz/2021/12/07/%E8%AE%BA%E6%96%87-Copyright-Protection-Application-Based-on-Blockchain-Technology/index.html">
+<meta property="og:site_name" content="归因">
+<meta property="og:description" content="基于区块链的版权保护实践摘要传统的版权保护平台存在包括版权信息安全与高昂注册费用的在内的诸多问题。正在快速发展的区块链技术作为一种全新的技术结构，具有去中心化、不可篡改、可追溯、公开透明等特性，天然适用于版权保护领域，有望解决传统版权保护中的众多问题。该论文致力于在版权管理平台上进行区块链技术的实践。希望能通过这种方式解决传统版权管理平台上安全性低、维权困难、业务手续繁杂等问题，是将区块链技术与版">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/fratz/AppData/Roaming/Typora/typora-user-images/image-20211207140445406.png">
+<meta property="og:image" content="c:/Users/fratz/AppData/Roaming/Typora/typora-user-images/image-20211207164006992.png">
+<meta property="article:published_time" content="2021-12-07T05:12:08.000Z">
+<meta property="article:modified_time" content="2021-12-07T09:42:57.844Z">
+<meta property="article:author" content="Ajsoabk">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/fratz/AppData/Roaming/Typora/typora-user-images/image-20211207140445406.png">
+
+<link rel="canonical" href="http://ajsoabk.xyz/2021/12/07/%E8%AE%BA%E6%96%87-Copyright-Protection-Application-Based-on-Blockchain-Technology/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>论文-Copyright_Protection_Application_Based_on_Blockchain_Technology | 归因</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">归因</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/12/07/%E8%AE%BA%E6%96%87-Copyright-Protection-Application-Based-on-Blockchain-Technology/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论文-Copyright_Protection_Application_Based_on_Blockchain_Technology
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-07 13:12:08 / 修改时间：17:42:57" itemprop="dateCreated datePublished" datetime="2021-12-07T13:12:08+08:00">2021-12-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="基于区块链的版权保护实践"><a href="#基于区块链的版权保护实践" class="headerlink" title="基于区块链的版权保护实践"></a>基于区块链的版权保护实践</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>传统的版权保护平台存在包括版权信息安全与高昂注册费用的在内的诸多问题。正在快速发展的区块链技术作为一种全新的技术结构，具有去中心化、不可篡改、可追溯、公开透明等特性，天然适用于版权保护领域，有望解决传统版权保护中的众多问题。该论文致力于在版权管理平台上进行区块链技术的实践。希望能通过这种方式解决传统版权管理平台上安全性低、维权困难、业务手续繁杂等问题，是将区块链技术与版权保护相结合的一次尝试</p>
+<p>关键词：<em>版权保护；区块链；信息安全</em></p>
+<h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h2><p>随着信息技术的发展与互联网的普及，人们能简单高效地从网络上获取大量知识信息。然而与此同时，侵权问题与隐私问题也逐渐严重。传统版权保护有以下几大痛点：</p>
+<ul>
+<li>版权注册期长、注册费高昂</li>
+<li>版权保护难、流程复杂</li>
+<li>维权难</li>
+</ul>
+<p>音乐、照片等原创作品被几乎零成本剽窃，但传统版权保护却无法高效解决这些问题。区块链本质上是一个特殊的能够公开保存数据的分布式数据库。其主要功能就是存储信息。任何需要保存的数据信息都可以被存储在区块链上。与此同时它又提供了读取数据的功能，因此它也是一个数据库。通过共识算法，区块链能够保证其中的每个节点所存储的数据是一致的，通过密码学算法，区块链能保证写入的数据是不可更改的。总而言之，传统版权保护普遍具有安全性低且易篡改的问题。该论文综合利用了区块链技术并基于区块链技术使用IPFS（星际文件系统）进行了版权管理平台的设计与实践，具有高安全性、可交易性、公开透明且具有强大的流量控制能力</p>
+<h2 id="2-技术点"><a href="#2-技术点" class="headerlink" title="2.技术点"></a>2.技术点</h2><h4 id="区块链技术"><a href="#区块链技术" class="headerlink" title="区块链技术"></a>区块链技术</h4><p>区块链技术是一个能够公开保存数据的分布式数据库。区块链系统由数据层、网络层、共识层、激励层、合约层与应用层构成。数据层包括底层的数据块、数据加密过程、时间戳等等基本数据与算法；网络层包括点对点网络，数据传播与验证机制；共识层囊括了网络节点间的共识算法，诸如POW（工作量证明）、POS（权益证明），PBFT（实用拜占庭容错算法）等等；激励层集成了各种经济要素，包括保险机制与分布式的经济激励机制等等；合约层主要是能实现各种功能的智能合约，是区块链可编程性的基础。应用层针对不同应用场景案例中的各种需求开发了不同的功能模块</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20211207140445406.png" alt="image-20211207140445406"></p>
+<p>最初，区块链用于解决交易中的信任与安全问题，因此其产生了四大技术创新：</p>
+<ol>
+<li><strong>分布式账本</strong>，即分布式记账技术，是部署在多个节点或计算设备上的数据库，每个节点都能复制并保存账本数据，且每个节点都能独立上传数据。其特点在于这个账本不被任何中心组织所控制，并且账本的更新是独立进行的且能够被每个节点所记录。区块链分布式存储与传统分布式存储的不同主要体现在两方面：首先，每个节点都存储了有关区块链结构的所有信息，其次，区块链中的每个节点都独立且平等地存储信息，通过共识机制保证了存储一致性。传统的分布式存储则通过中心化节点来跟其余备份节点进行信息同步</li>
+<li><strong>非对称加密与授权技术</strong>，在区块链上存储的交易信息是公开的，但是账户身份信息却是高度加密的，只能在数据所有者授权的情况下访问账户信息，这保证了数据安全性与隐私性</li>
+<li><strong>共识机制</strong>，即如何让所有节点达成共识并保证所存储数据的有效性，这并不只是一种验证技术，还是一种防篡改技术。区块链针对不同的应用场景平衡效率与安全而提出了不同的共识机制。这些共识机制具有“少数服从多数”与“人人平等”的特征。“少数服从多数”不只是节点的数量上的，还包括算力、股份或其他可比较的特征。“人人平等”指当节点遇到问题时，每个节点都有权对共识结果给予自己的优先级，且能够被其余节点所识别，可能成为最终的共识结果</li>
+<li><strong>智能合约</strong>，即一组用数字形式定义的能够由计算机系统自动执行的条款，保证了对数字资产的控制，包括合约参与方规定的权力与义务等。一个智能合约程序不止是一个能自动执行的计算机程序，还是能够接收并存储价值或根据接收到的信息向外界发送信息或价值的合约参与方。这一过程就像一个能够暂时保管资产的可信中介并且其总是根据事先定好的规则行动</li>
+</ol>
+<h3 id="Fabric"><a href="#Fabric" class="headerlink" title="Fabric"></a>Fabric</h3><p>Fabric是一个Linux基金会孵化的开源区块链项目。其目标是建立一个联盟链平台来提供分布式账本解决方案。Fabric 的模块化设计近乎完美，还具有可插拔的系统架构，比如可以使用Level DB、Couch DB、或其他键值数据库作为状态数据库。共识机制与加密算法也可以根据实际情况进行更换。Fabric在保持高性能与可扩容性的基础上使用模块设计将交易分为三个阶段：分布式业务逻辑处理与协商环节、订单排序、交易验证与提交环节。这样区分的好处是扮演不同角色的节点在不同的阶段参与了进来，而不是网络中的所有节点都参与。网络的性能与容量得到了优化，Peer节点与Order节点都能独立的拓展并动态添加。为了获得完整的存储控制权限与安全，成员须通过证书、加密、签名等方式获得加入网络的认证，并以此保证数据的安全同时丰富询问容量</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20211207164006992.png" alt="image-20211207164006992"></p>
+<h2 id="3-系统设计"><a href="#3-系统设计" class="headerlink" title="3. 系统设计"></a>3. 系统设计</h2><p>该基于区块链的版权管理平台的系统架构如图4-1所示。整个系统被分为两层。上层事平台的交互层，下层是包括IPFS与区块链在内的数据库层。这一结构的特征是用户交互模块与数据存储模块相互独立。当用户进入该版权管理平台时，用户并不能感受到下层不同数据存储方式所带来的变化。这一结构清晰明了且易于组织。</p>
+<p>平台的上层时用户交互层，包括版权管理模块，登录控制模块，个人信息管理模块以及一个智能算法模块，该层用于执行该版权管理平台核心的业务逻辑并为用户提供相关的服务。交互层能够完成用户的版权发行、交易、保护与追溯工作，并且将这些操作传给下层的区块链。在通过时间戳后，这些数据将会被永久地保存在区块链上。当用户需要查询或是购买时，相关的操作请求将被发送，然后询问到的数据将在平台上展示出来</p>
+<p>平台的下层时数据存储层。包括IPFS簇和一个fabric网络。该联盟链包含多个节点。PBFT合约机制用于达成共识并未平台的存储与交易提供服务。IPFS分布式数据库基于内容定址特性，这种特性帮助存储大文件数据，比如图像文件与文本文件，并能进一步存储区块链上文件内容的哈希值，将区块链网络变得更为高效。并不适用于存储大文件。对于整个平台，Fabric区块链网络与数据库所扮演的角色相同，但区别在于这一数据库使用的是去中心化、公开透明、不可篡改的数据库，这些特征与版权保护天然相合</p>
+<h2 id="4-系统功能"><a href="#4-系统功能" class="headerlink" title="4. 系统功能"></a>4. 系统功能</h2><p>本论文使用Hyperledger Fabric的应用开发模型来模拟版权管理平台的应用场景，如图4-2所示。从程序开发的角度来看，模块间的交互得到了分析。首先，应用从用户侧获取请求，然后调用智能合约或进入区块链。这些代码在链上执行并生成相应的事件</p>
+<p>每层的功能如下：</p>
+<ol>
+<li>区块链底层平台：提供诸如分布式共享账本、状态数据库维护与智能合约生命周期管理在内的区块链功能。主要用于存储每个节点的交易信息。一旦成功存储到了区块中，它就不再能被篡改。数据透明、不可篡改且智能的合约逻辑得到了保证</li>
+<li>智能合约：用GO语言编写的链上代码用于实现智能合约。主要的链上代码具有版权发布、版权购买、版权出售、个人信息询问等功能。链上代码的询问包括询问已发布的版权或是所有版权。询问包括是否已被购买在内的特征</li>
+<li>应用层：这一层类似计算机中的软件。这是用户能直接使用的产品。同时也可以视其为基于C/S架构的软件中的客户。用户将应用层与区块链连接起来，在应用层提供的接口间交易，并最终将交易存储在区块中以防篡改。该平台的前端使用Angular.js的前端框架来创建一个具有MVC框架的、模块式的、且数据双向的联结，为用户提供了一个良好的交互界面。业务操作包括版权分配、版权售卖、版权购买、个人信息查询与版权查询</li>
+</ol>
+<p>该平台的主要界面包括六个功能：版权商场、正发行的文学版权、正发行的图像版权、已发行的版权、已被购买的版权与用户个人信息询问</p>
+<p>在文学作品的发行中，作者将文学文件发送到IPFS分布式数据库中并获取到返回的IPFS哈希值，版权号、版权类型、版权价格、作者名、作者ID。文本总结、文本的IPFS哈希值与其余相关的信息将被上传到区块链网络中</p>
+<p>在用户登录到版权管理平台后，版权商店页面展示所有用户上传的已被标注版权的作品与相关的介绍。用户既可以在该平台上作为购买者购买这些已有版权的作品，也可以作为作者出售他自己掌握版权的作品。当进入购买界面时，每个商品都有询问是否购买的选项。查询细节时将展示版权细节并且该版权能够被购买。这一购买记录将被记录在版权区块链上。一旦写入了区块中，它将被广播给所有的节点，然后所有的节点都会同步这一信息来保证这一操作的信息不会被篡改</p>
+<h2 id="5-结语"><a href="#5-结语" class="headerlink" title="5.结语"></a>5.结语</h2><p>随着区块链技术的快速发展，它提供了去中心化的、分布式数据库，这一数据库是点对点传输、共识机制与加密算法等等在计算机技术中的应用。由于区块链公开透明且可追溯的优点，它能用于解决传统版权保护中的众多痛点。该系统是将区块链技术用于版权管理领域的一次探索与尝试</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/06/%E8%AE%BA%E6%96%87-Blockchain-for-Digital-Rights-Management-of-Design-Works/" rel="prev" title="论文-Blockchain_for_Digital_Rights_Management_of_Design_Works">
+      <i class="fa fa-chevron-left"></i> 论文-Blockchain_for_Digital_Rights_Management_of_Design_Works
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/10/Docker%E5%AD%A6%E4%B9%A0/" rel="next" title="Docker学习">
+      Docker学习 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E7%89%88%E6%9D%83%E4%BF%9D%E6%8A%A4%E5%AE%9E%E8%B7%B5"><span class="nav-number">1.</span> <span class="nav-text">基于区块链的版权保护实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%BC%95%E8%A8%80"><span class="nav-number">1.2.</span> <span class="nav-text">1. 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%8A%80%E6%9C%AF%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">2.技术点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BA%E5%9D%97%E9%93%BE%E6%8A%80%E6%9C%AF"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">区块链技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fabric"><span class="nav-number">1.3.1.</span> <span class="nav-text">Fabric</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.4.</span> <span class="nav-text">3. 系统设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD"><span class="nav-number">1.5.</span> <span class="nav-text">4. 系统功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E7%BB%93%E8%AF%AD"><span class="nav-number">1.6.</span> <span class="nav-text">5.结语</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Ajsoabk</p>
+  <div class="site-description" itemprop="description">我在我心的孤寂里，听见你的叹息了</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ajsoabk</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -147,6 +147,541 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2022/01/17/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/17/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" class="post-title-link" itemprop="url">动手学深度学习日志</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-17 14:47:01" itemprop="dateCreated datePublished" datetime="2022-01-17T14:47:01+08:00">2022-01-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-19 18:41:02" itemprop="dateModified" datetime="2022-01-19T18:41:02+08:00">2022-01-19</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p> 第一步，下好了miniconda跟课程文件（<a target="_blank" rel="noopener" href="https://zh.d2l.ai/d2l-zh-1.0.zip%EF%BC%89%E5%B9%B6%E8%A7%A3%E5%8E%8B%E5%90%8E%EF%BC%8C%E5%9C%A8%E8%A7%A3%E5%8E%8B%E5%90%8E%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E9%85%8D%E7%BD%AE%E6%B8%85%E5%8D%8Epypi%E9%95%9C%E5%83%8F%EF%BC%9A">https://zh.d2l.ai/d2l-zh-1.0.zip）并解压后，在解压后的文件夹下配置清华pypi镜像：</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip config set global.index-url https://pypi.tuna.tinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>结果：<img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20220117183501006.png" alt="image-20220117183501006"></p>
+<p>接下来使用conda创建名为d2l-zh的虚拟环境并激活</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda env remove -n d2l-zh</span><br><span class="line">conda create -n d2l-zh -y python=3.8 pip</span><br><span class="line">conda activate d2l-zh</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20220117183303882.png" alt="image-20220117183303882"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pip install mxnet==1.5.0</span><br><span class="line"></span><br><span class="line">pip install d2lzh==1.0.0</span><br><span class="line"></span><br><span class="line">pip install jupyter==1.0.0</span><br><span class="line"></span><br><span class="line">pip install matplotlib==2.2.2</span><br><span class="line"></span><br><span class="line">pip install pandas==0.23.4</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20220117183806112.png" alt="image-20220117183806112"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade setuptools &amp;&amp; python -m pip instal --upgrade pip</span><br></pre></td></tr></table></figure>
+
+<p>试了上面这一行后也没用</p>
+<p>然后试了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install numpy=1.16.6</span><br></pre></td></tr></table></figure>
+
+<p>就可以了…个屁</p>
+<p>我选择重装miniconda</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20220118180640488.png" alt="image-20220118180640488"></p>
+<p>到这一步发现没下cuda</p>
+<p>下了cuda之后也还是报错</p>
+<p>发现可能是cuda版本的问题，原有版本是11.6，没有对应的mxnet，所以重装了10.1</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20220118211508706.png" alt="image-20220118211508706"></p>
+<p>问题解决</p>
+<p>但是下numpy的时候又出问题</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20220118213121651.png" alt="image-20220118213121651"></p>
+<p>突然中断，很明显是网络的问题了</p>
+<p>尝试了一下把VPN关掉，没用</p>
+<p>试了一下升级pip，把pip给弄没了</p>
+<p>于是用了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br><span class="line">conda update pip</span><br></pre></td></tr></table></figure>
+
+<p>pip回来了</p>
+<p>但是出现了一个小warning：</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20220118222525208.png" alt="image-20220118222525208"></p>
+<p>百度了一下发现是之前下载库的时候退出了，要去这个文件夹下把ip开头的文件删了<img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20220118222646459.png" alt="image-20220118222646459">删掉这两个就好了</p>
+<p>结果还是tmd，numpy的wheel出问题</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20220118223607417.png" alt="image-20220118223607417"></p>
+<p>于是直接装numpy</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install numpy==16.6</span><br></pre></td></tr></table></figure>
+
+<p>就行了</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20220119184102050.png" alt="image-20220119184102050"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/12/10/Docker%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/10/Docker%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">Docker学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-10 16:12:00" itemprop="dateCreated datePublished" datetime="2021-12-10T16:12:00+08:00">2021-12-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-12 15:14:03" itemprop="dateModified" datetime="2021-12-12T15:14:03+08:00">2021-12-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Docker引擎是用于运行和编排容器的基础设施工具+</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/12/07/%E8%AE%BA%E6%96%87-Copyright-Protection-Application-Based-on-Blockchain-Technology/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/07/%E8%AE%BA%E6%96%87-Copyright-Protection-Application-Based-on-Blockchain-Technology/" class="post-title-link" itemprop="url">论文-Copyright_Protection_Application_Based_on_Blockchain_Technology</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-07 13:12:08 / 修改时间：17:42:57" itemprop="dateCreated datePublished" datetime="2021-12-07T13:12:08+08:00">2021-12-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="基于区块链的版权保护实践"><a href="#基于区块链的版权保护实践" class="headerlink" title="基于区块链的版权保护实践"></a>基于区块链的版权保护实践</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>传统的版权保护平台存在包括版权信息安全与高昂注册费用的在内的诸多问题。正在快速发展的区块链技术作为一种全新的技术结构，具有去中心化、不可篡改、可追溯、公开透明等特性，天然适用于版权保护领域，有望解决传统版权保护中的众多问题。该论文致力于在版权管理平台上进行区块链技术的实践。希望能通过这种方式解决传统版权管理平台上安全性低、维权困难、业务手续繁杂等问题，是将区块链技术与版权保护相结合的一次尝试</p>
+<p>关键词：<em>版权保护；区块链；信息安全</em></p>
+<h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h2><p>随着信息技术的发展与互联网的普及，人们能简单高效地从网络上获取大量知识信息。然而与此同时，侵权问题与隐私问题也逐渐严重。传统版权保护有以下几大痛点：</p>
+<ul>
+<li>版权注册期长、注册费高昂</li>
+<li>版权保护难、流程复杂</li>
+<li>维权难</li>
+</ul>
+<p>音乐、照片等原创作品被几乎零成本剽窃，但传统版权保护却无法高效解决这些问题。区块链本质上是一个特殊的能够公开保存数据的分布式数据库。其主要功能就是存储信息。任何需要保存的数据信息都可以被存储在区块链上。与此同时它又提供了读取数据的功能，因此它也是一个数据库。通过共识算法，区块链能够保证其中的每个节点所存储的数据是一致的，通过密码学算法，区块链能保证写入的数据是不可更改的。总而言之，传统版权保护普遍具有安全性低且易篡改的问题。该论文综合利用了区块链技术并基于区块链技术使用IPFS（星际文件系统）进行了版权管理平台的设计与实践，具有高安全性、可交易性、公开透明且具有强大的流量控制能力</p>
+<h2 id="2-技术点"><a href="#2-技术点" class="headerlink" title="2.技术点"></a>2.技术点</h2><h4 id="区块链技术"><a href="#区块链技术" class="headerlink" title="区块链技术"></a>区块链技术</h4><p>区块链技术是一个能够公开保存数据的分布式数据库。区块链系统由数据层、网络层、共识层、激励层、合约层与应用层构成。数据层包括底层的数据块、数据加密过程、时间戳等等基本数据与算法；网络层包括点对点网络，数据传播与验证机制；共识层囊括了网络节点间的共识算法，诸如POW（工作量证明）、POS（权益证明），PBFT（实用拜占庭容错算法）等等；激励层集成了各种经济要素，包括保险机制与分布式的经济激励机制等等；合约层主要是能实现各种功能的智能合约，是区块链可编程性的基础。应用层针对不同应用场景案例中的各种需求开发了不同的功能模块</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20211207140445406.png" alt="image-20211207140445406"></p>
+<p>最初，区块链用于解决交易中的信任与安全问题，因此其产生了四大技术创新：</p>
+<ol>
+<li><strong>分布式账本</strong>，即分布式记账技术，是部署在多个节点或计算设备上的数据库，每个节点都能复制并保存账本数据，且每个节点都能独立上传数据。其特点在于这个账本不被任何中心组织所控制，并且账本的更新是独立进行的且能够被每个节点所记录。区块链分布式存储与传统分布式存储的不同主要体现在两方面：首先，每个节点都存储了有关区块链结构的所有信息，其次，区块链中的每个节点都独立且平等地存储信息，通过共识机制保证了存储一致性。传统的分布式存储则通过中心化节点来跟其余备份节点进行信息同步</li>
+<li><strong>非对称加密与授权技术</strong>，在区块链上存储的交易信息是公开的，但是账户身份信息却是高度加密的，只能在数据所有者授权的情况下访问账户信息，这保证了数据安全性与隐私性</li>
+<li><strong>共识机制</strong>，即如何让所有节点达成共识并保证所存储数据的有效性，这并不只是一种验证技术，还是一种防篡改技术。区块链针对不同的应用场景平衡效率与安全而提出了不同的共识机制。这些共识机制具有“少数服从多数”与“人人平等”的特征。“少数服从多数”不只是节点的数量上的，还包括算力、股份或其他可比较的特征。“人人平等”指当节点遇到问题时，每个节点都有权对共识结果给予自己的优先级，且能够被其余节点所识别，可能成为最终的共识结果</li>
+<li><strong>智能合约</strong>，即一组用数字形式定义的能够由计算机系统自动执行的条款，保证了对数字资产的控制，包括合约参与方规定的权力与义务等。一个智能合约程序不止是一个能自动执行的计算机程序，还是能够接收并存储价值或根据接收到的信息向外界发送信息或价值的合约参与方。这一过程就像一个能够暂时保管资产的可信中介并且其总是根据事先定好的规则行动</li>
+</ol>
+<h3 id="Fabric"><a href="#Fabric" class="headerlink" title="Fabric"></a>Fabric</h3><p>Fabric是一个Linux基金会孵化的开源区块链项目。其目标是建立一个联盟链平台来提供分布式账本解决方案。Fabric 的模块化设计近乎完美，还具有可插拔的系统架构，比如可以使用Level DB、Couch DB、或其他键值数据库作为状态数据库。共识机制与加密算法也可以根据实际情况进行更换。Fabric在保持高性能与可扩容性的基础上使用模块设计将交易分为三个阶段：分布式业务逻辑处理与协商环节、订单排序、交易验证与提交环节。这样区分的好处是扮演不同角色的节点在不同的阶段参与了进来，而不是网络中的所有节点都参与。网络的性能与容量得到了优化，Peer节点与Order节点都能独立的拓展并动态添加。为了获得完整的存储控制权限与安全，成员须通过证书、加密、签名等方式获得加入网络的认证，并以此保证数据的安全同时丰富询问容量</p>
+<p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20211207164006992.png" alt="image-20211207164006992"></p>
+<h2 id="3-系统设计"><a href="#3-系统设计" class="headerlink" title="3. 系统设计"></a>3. 系统设计</h2><p>该基于区块链的版权管理平台的系统架构如图4-1所示。整个系统被分为两层。上层事平台的交互层，下层是包括IPFS与区块链在内的数据库层。这一结构的特征是用户交互模块与数据存储模块相互独立。当用户进入该版权管理平台时，用户并不能感受到下层不同数据存储方式所带来的变化。这一结构清晰明了且易于组织。</p>
+<p>平台的上层时用户交互层，包括版权管理模块，登录控制模块，个人信息管理模块以及一个智能算法模块，该层用于执行该版权管理平台核心的业务逻辑并为用户提供相关的服务。交互层能够完成用户的版权发行、交易、保护与追溯工作，并且将这些操作传给下层的区块链。在通过时间戳后，这些数据将会被永久地保存在区块链上。当用户需要查询或是购买时，相关的操作请求将被发送，然后询问到的数据将在平台上展示出来</p>
+<p>平台的下层时数据存储层。包括IPFS簇和一个fabric网络。该联盟链包含多个节点。PBFT合约机制用于达成共识并未平台的存储与交易提供服务。IPFS分布式数据库基于内容定址特性，这种特性帮助存储大文件数据，比如图像文件与文本文件，并能进一步存储区块链上文件内容的哈希值，将区块链网络变得更为高效。并不适用于存储大文件。对于整个平台，Fabric区块链网络与数据库所扮演的角色相同，但区别在于这一数据库使用的是去中心化、公开透明、不可篡改的数据库，这些特征与版权保护天然相合</p>
+<h2 id="4-系统功能"><a href="#4-系统功能" class="headerlink" title="4. 系统功能"></a>4. 系统功能</h2><p>本论文使用Hyperledger Fabric的应用开发模型来模拟版权管理平台的应用场景，如图4-2所示。从程序开发的角度来看，模块间的交互得到了分析。首先，应用从用户侧获取请求，然后调用智能合约或进入区块链。这些代码在链上执行并生成相应的事件</p>
+<p>每层的功能如下：</p>
+<ol>
+<li>区块链底层平台：提供诸如分布式共享账本、状态数据库维护与智能合约生命周期管理在内的区块链功能。主要用于存储每个节点的交易信息。一旦成功存储到了区块中，它就不再能被篡改。数据透明、不可篡改且智能的合约逻辑得到了保证</li>
+<li>智能合约：用GO语言编写的链上代码用于实现智能合约。主要的链上代码具有版权发布、版权购买、版权出售、个人信息询问等功能。链上代码的询问包括询问已发布的版权或是所有版权。询问包括是否已被购买在内的特征</li>
+<li>应用层：这一层类似计算机中的软件。这是用户能直接使用的产品。同时也可以视其为基于C/S架构的软件中的客户。用户将应用层与区块链连接起来，在应用层提供的接口间交易，并最终将交易存储在区块中以防篡改。该平台的前端使用Angular.js的前端框架来创建一个具有MVC框架的、模块式的、且数据双向的联结，为用户提供了一个良好的交互界面。业务操作包括版权分配、版权售卖、版权购买、个人信息查询与版权查询</li>
+</ol>
+<p>该平台的主要界面包括六个功能：版权商场、正发行的文学版权、正发行的图像版权、已发行的版权、已被购买的版权与用户个人信息询问</p>
+<p>在文学作品的发行中，作者将文学文件发送到IPFS分布式数据库中并获取到返回的IPFS哈希值，版权号、版权类型、版权价格、作者名、作者ID。文本总结、文本的IPFS哈希值与其余相关的信息将被上传到区块链网络中</p>
+<p>在用户登录到版权管理平台后，版权商店页面展示所有用户上传的已被标注版权的作品与相关的介绍。用户既可以在该平台上作为购买者购买这些已有版权的作品，也可以作为作者出售他自己掌握版权的作品。当进入购买界面时，每个商品都有询问是否购买的选项。查询细节时将展示版权细节并且该版权能够被购买。这一购买记录将被记录在版权区块链上。一旦写入了区块中，它将被广播给所有的节点，然后所有的节点都会同步这一信息来保证这一操作的信息不会被篡改</p>
+<h2 id="5-结语"><a href="#5-结语" class="headerlink" title="5.结语"></a>5.结语</h2><p>随着区块链技术的快速发展，它提供了去中心化的、分布式数据库，这一数据库是点对点传输、共识机制与加密算法等等在计算机技术中的应用。由于区块链公开透明且可追溯的优点，它能用于解决传统版权保护中的众多痛点。该系统是将区块链技术用于版权管理领域的一次探索与尝试</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/12/06/%E8%AE%BA%E6%96%87-Blockchain-for-Digital-Rights-Management-of-Design-Works/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/06/%E8%AE%BA%E6%96%87-Blockchain-for-Digital-Rights-Management-of-Design-Works/" class="post-title-link" itemprop="url">论文-Blockchain_for_Digital_Rights_Management_of_Design_Works</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-06 17:06:22" itemprop="dateCreated datePublished" datetime="2021-12-06T17:06:22+08:00">2021-12-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-07 13:09:22" itemprop="dateModified" datetime="2021-12-07T13:09:22+08:00">2021-12-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="用于管理设计数字设计工作版权的区块链"><a href="#用于管理设计数字设计工作版权的区块链" class="headerlink" title="用于管理设计数字设计工作版权的区块链"></a>用于管理设计数字设计工作版权的区块链</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/12/03/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%88%9B%E6%96%B0%E8%AF%BE%E6%8A%A5%E5%91%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/03/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%88%9B%E6%96%B0%E8%AF%BE%E6%8A%A5%E5%91%8A/" class="post-title-link" itemprop="url">区块链创新课报告</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-03 13:56:39 / 修改时间：15:31:48" itemprop="dateCreated datePublished" datetime="2021-12-03T13:56:39+08:00">2021-12-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="C:\Users\fratz\AppData\Roaming\Typora\typora-user-images\image-20211203135652676.png" alt="image-20211203135652676"></p>
+<p>完成</p>
+<p># Copyright IBM Corp. All Rights Reserved.</p>
+<p>#</p>
+<p># SPDX-License-Identifier: Apache-2.0</p>
+<p>#</p>
+<p>version: ‘2’</p>
+<p>services:</p>
+<p> peer0.njupt.eduAli.cn:</p>
+<p>  container_name: peer0.njupt.eduAli.cn</p>
+<p>  image: hyperledger/fabric-peer:1.4.11</p>
+<p>  environment:</p>
+<p>   - CORE_PEER_ID=peer0.njupt.eduAli.cn</p>
+<p>   - CORE_PEER_ADDRESS=peer0.njupt.eduAli.cn:7051</p>
+<p>   - CORE_PEER_CHAINCODEADDRESS=peer0.njupt.eduAli.cn:7052</p>
+<p>   - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052</p>
+<p>   - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.njupt.eduAli.cn:7051</p>
+<p>   - CORE_PEER_LOCALMSPID=njuptMSP</p>
+<p>   - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock</p>
+<p>   # the following setting starts chaincode containers on the same</p>
+<p>   # bridge network as the peers</p>
+<p>   # <a target="_blank" rel="noopener" href="https://docs.docker.com/compose/networking/">https://docs.docker.com/compose/networking/</a></p>
+<p>   - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=multipeer_default</p>
+<p>   #- CORE_LOGGING_LEVEL=ERROR</p>
+<p>   - CORE_LOGGING_LEVEL=DEBUG</p>
+<p>   - CORE_PEER_TLS_ENABLED=true</p>
+<p>   - CORE_PEER_GOSSIP_USELEADERELECTION=true</p>
+<p>   - CORE_PEER_GOSSIP_ORGLEADER=false</p>
+<p>   - CORE_PEER_PROFILE_ENABLED=true</p>
+<p>   - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt</p>
+<p>   - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key</p>
+<p>   - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt</p>
+<p>  working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer</p>
+<p>  command: peer node start</p>
+<p>  volumes:</p>
+<p>​    - /var/run/:/host/var/run/</p>
+<p>​    - ./crypto-config/peerOrganizations/njupt.eduAli.cn/peers/peer0.njupt.eduAli.cn/msp:/etc/hyperledger/fabric/msp</p>
+<p>​    - ./crypto-config/peerOrganizations/njupt.eduAli.cn/peers/peer0.njupt.eduAli.cn/tls:/etc/hyperledger/fabric/tls</p>
+<p>  ports:</p>
+<p>   - 7051:7051</p>
+<p>   - 7052:7052</p>
+<p>   - 7053:7053</p>
+<p>  extra_hosts:</p>
+<p>   - “orderer.eduAli.cn:192.168.195.155”</p>
+<p> cli:</p>
+<p>  container_name: cli</p>
+<p>  image: hyperledger/fabric-tools:1.4.11</p>
+<p>  tty: true</p>
+<p>  environment:</p>
+<p>   - GOPATH=/opt/gopath</p>
+<p>   - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock</p>
+<p>   - CORE_LOGGING_LEVEL=DEBUG</p>
+<p>   - CORE_PEER_ID=cli</p>
+<p>   - CORE_PEER_ADDRESS=peer0.njupt.eduAli.cn:7051</p>
+<p>   - CORE_PEER_LOCALMSPID=njuptMSP</p>
+<p>   - CORE_PEER_TLS_ENABLED=true</p>
+<p>   - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/njupt.eduAli.cn/peers/peer0.njupt.eduAli.cn/tls/server.crt</p>
+<p>   - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/njupt.eduAli.cn/peers/peer0.njupt.eduAli.cn/tls/server.key</p>
+<p>   - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/njupt.eduAli.cn/peers/peer0.njupt.eduAli.cn/tls/ca.crt</p>
+<p>   - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/njupt.eduAli.cn/users/<a href="mailto:&#65;&#100;&#109;&#105;&#x6e;&#x40;&#110;&#106;&#117;&#x70;&#x74;&#46;&#101;&#100;&#x75;&#65;&#108;&#105;&#46;&#x63;&#110;">&#65;&#100;&#109;&#105;&#x6e;&#x40;&#110;&#106;&#117;&#x70;&#x74;&#46;&#101;&#100;&#x75;&#65;&#108;&#105;&#46;&#x63;&#110;</a>/msp</p>
+<p>  working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer</p>
+<p>  volumes:</p>
+<p>​    - /var/run/:/host/var/run/</p>
+<p>​    - ./chaincode/go/:/opt/gopath/src/github.com/hyperledger/fabric/multipeer/chaincode/go</p>
+<p>​    - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/</p>
+<p>​    - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts</p>
+<p>  depends_on:</p>
+<p>​    - peer0.njupt.eduAli.cn</p>
+<p>  extra_hosts: </p>
+<p>​    - “orderer.eduAli.cn:192.168.1.113” </p>
+<p>​    - “peer0.bupt.eduAli.cn:192.168.1.112” </p>
+<p>​    - “peer0.njupt.eduAli.cn:192.168.1.103”</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/12/03/%E9%A9%AC%E5%8E%9F%E7%9F%A5%E8%AF%86%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ajsoabk">
+      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归因">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/03/%E9%A9%AC%E5%8E%9F%E7%9F%A5%E8%AF%86%E7%82%B9/" class="post-title-link" itemprop="url">马原知识点</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-03 12:15:58 / 修改时间：12:43:05" itemprop="dateCreated datePublished" datetime="2021-12-03T12:15:58+08:00">2021-12-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="导论"><a href="#导论" class="headerlink" title="导论"></a>导论</h1><p>马克思主义是由马克思和恩格斯创立并为后继者所不断发展的科学理论体系，是关于自然、社会和人类思维发展一般规律的学说，是关于社会主义必然代替资本主义、最终实现共产主义的学说，是关于无产阶级解放、全人类解放和每个人自由而全面发展的学说，是无产阶级政党和社会主义国家的指导思想，是指引任命创造美好生活的行动指南</p>
+<p>马克思主义基本原理是对马克思主义立场、观点、方法的集中概括，是马克思主义在其形成、发展和运用过程中经过时间反复检验而确立起来的具有普遍真理性的理论。它体现马克思主义的根本性质和整体特征，体现马克思主义科学性和革命性的统一。</p>
+<p><strong>马克思主义哲学</strong>、<strong>马克思主义政治经济学</strong>和<strong>科学社会主义</strong>是马克思主义的三个基本组成部分</p>
+<p>马克思主义的<strong>基本立场</strong>，是马克思主义观察、分析和解决问题的根本立足点和出发点。</p>
+<p>马克思主义的<strong>基本观点</strong>，是关于自然、社会和人类思维发展一般规律的科学认识，是对人类思想成果和社会实践经验的科学总结。</p>
+<p>马克思主义的<strong>基本方法</strong>，是建立在<strong>辩证唯物主义</strong>和<strong>历史唯物主义</strong>世界观和方法论基础上，指导我们正确认识世界和改造世界的思想方法和工作方法，主要包括实事求是的方法、辩证分析的方法、社会基本矛盾和主要矛盾分析的方法、历史分析的方法、阶级分析的方法、群众路线的方法</p>
+<h2 id="马克思主义的创立与发展"><a href="#马克思主义的创立与发展" class="headerlink" title="马克思主义的创立与发展"></a>马克思主义的创立与发展</h2><p>马克思主义产生于19世纪40年代</p>
+<p>19世纪西欧三大先进思潮（<strong>德国古典哲学、英国古典政治经济学、英法两国的空想社会主义</strong>）为马克思主义的创立提供了直接的理论来源（如德国古典哲学的辩证法思想，英国古典政治经济学对资本主义生产关系的分析和关于劳动创造价值的思想，空想社会主义者对资本主义社会的批判和对未来新社会的展望等）。19世纪的三大科学发现（<strong>细胞学说、能量守恒与转化定律、生物进化论</strong>）为马克思注意的产生提供了自然科学前提。</p>
+<h2 id="马克思主义的特征"><a href="#马克思主义的特征" class="headerlink" title="马克思主义的特征"></a>马克思主义的特征</h2><ol>
+<li>科学性：马克思注主义是对自然、社会和人类思维发展本质和规律的正确反映。它是在社会实践和科学发展的基础上产生的，并在自身发展过程中不断总结实践经验，汲取了自然科学和社会科学发展的最新成就。马克思主义具有科学的世界观和方法论基础，即<strong>辩证唯物主义</strong>和<strong>历史唯物主义</strong>。马克思主义以事实为依据、以规律为对象，并以实践为检验标准。马克思主义的发展具有科学探索性，是一个不断探索和掌握客观规律的过程。</li>
+<li>人民性：人民至上是马克思主义的政治立场。马克思主义的人民性是以阶级性为深刻基础的，是无产阶级先进性的体现。</li>
+<li>实践性：实践观点是马克思主义首要的和基本的观点。马克思注意具有突出的实践精神，它始终强调理论与实践的统一，始终坚持与社会主义实际运动紧密结合。</li>
+<li>发展性：马克思主义是不断发展的学说，具有与时俱进的理论品质。</li>
+</ol>
+<p>马克思主义的鲜明特征，用一句话来概括就是<strong>科学性与革命性的统一</strong>。马克思主义科学理论在指导无产阶级和人名群众进行伟大社会革命的过程中，其人民性、实践性和发展性集中地体现为革命性。革命性是马克思主义的内在品质，是马克思主义的人民性、实践性和发展性的应有之义和必然要求。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/28/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E7%9A%84IEEE%E6%A0%87%E5%87%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1813,1117 +2348,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/17/Ethereum-Whitepaper/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ajsoabk">
-      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="归因">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/17/Ethereum-Whitepaper/" class="post-title-link" itemprop="url">Ethereum-Whitepaper</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-11-17 21:14:39 / 修改时间：21:15:17" itemprop="dateCreated datePublished" datetime="2021-11-17T21:14:39+08:00">2021-11-17</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/12/geth-commands/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ajsoabk">
-      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="归因">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/12/geth-commands/" class="post-title-link" itemprop="url">geth-commands</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-12 10:16:14" itemprop="dateCreated datePublished" datetime="2021-11-12T10:16:14+08:00">2021-11-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-24 14:35:18" itemprop="dateModified" datetime="2021-11-24T14:35:18+08:00">2021-11-24</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="account命令"><a href="#account命令" class="headerlink" title="account命令"></a>account命令</h2><p>用来管理账户</p>
-<h3 id="list子命令"><a href="#list子命令" class="headerlink" title="list子命令"></a>list子命令</h3><p><code> geth account list</code>用于列出所有账户，默认数据目录是 <code>/home/ajsoabk/.ethereum</code>，可以通过<code>--datadir value</code>命令来查看特定数据目录中的账户信息，或者通过<code>--keystore value</code>来查看特定私钥目录中的账户信息，即：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ajsoabk-virtual-machine:/home/ajsoabk/privatechain<span class="comment"># geth account list --datadir data</span></span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ajsoabk-virtual-machine:/home/ajsoabk/privatechain<span class="comment"># geth account list --keystore data/keystore</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="new子命令"><a href="#new子命令" class="headerlink" title="new子命令"></a>new子命令</h3><p>创建一个新的账户并且打印账户地址，这个账户以加密的形式存储，会有提示要求设置密码</p>
-<p>可以通过<code>--password value</code>参数来以非交互的形式输入密码（即从文件输入），这种方法应该只用于测试，实际使用中并不推荐，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ajsoabk-virtual-machine:/home/ajsoabk/privatechain<span class="comment"># geth account new --password pwd.txt</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><code>--lightkdf</code>参数可以用来减小密码处理过程对内存与CPU的消耗，但是会减小密码的KDF强度（即更容易被破解）</p>
-<p>同样支持<code>--datadir value</code>和<code>--keystore value</code>命令用来设置数据所在目录（默认<code>/root/.ethereum</code></p>
-<h3 id="update子命令"><a href="#update子命令" class="headerlink" title="update子命令"></a>update子命令</h3><p><code>geth account update &lt;address&gt;</code>，用来修改账户密码，支持和<code>new</code>一样的参数</p>
-<h3 id="import子命令"><a href="#import子命令" class="headerlink" title="import子命令"></a>import子命令</h3><p>从外部引入一个未加密的私钥，</p>
-<h2 id="attach命令"><a href="#attach命令" class="headerlink" title="attach命令"></a>attach命令</h2><p><code>attach</code>命令可以打开一个正在运行的节点的控制台</p>
-<p><code>--jspath loadScrip</code>参数可以改变所打开的JavaScript文件的路径（默认<code>.</code>）</p>
-<p><code>--exec value</code>参数可以执行<code>value</code>（JavaScript语句）</p>
-<p><code>--preload value</code>参数可以将一系列逗号分隔的JS文件预加载入控制台</p>
-<p><code>--datadir value</code>参数可以将数据库的路径改成<code>value</code>（默认<code>/home/ajsoabk/.ethereum</code>）</p>
-<p><code>geth console</code>与<code>geth attach</code>都可以打开一个JavaScript并与节点交互，但是前者是启动新的节点，而后者则是通过<code>rpc</code>或者<code>ipc</code>与已经启动的节点交互。因而前者可以使用所有<code>api</code>，但后者只能使用已经打开的模块的<code>api</code>。</p>
-<p>使用<code>geth console</code>的时候你会发现控制台一直在输出信息，如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO [08-12|13:24:11.607] Upgrading chain index         type=bloobits percentage=88</span><br></pre></td></tr></table></figure>
-
-<p>使用命令<code>--verbosity</code>来调整信息详细度（0=silent，1=error，2=warn，3=info，4=debug，5=detail），默认为3</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geth --verbosity 0 console</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/11/Linuxcommands/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ajsoabk">
-      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="归因">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/11/Linuxcommands/" class="post-title-link" itemprop="url">Bash学习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-11 16:27:21" itemprop="dateCreated datePublished" datetime="2021-11-11T16:27:21+08:00">2021-11-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-15 17:26:44" itemprop="dateModified" datetime="2021-11-15T17:26:44+08:00">2021-11-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="命令入门"><a href="#命令入门" class="headerlink" title="命令入门"></a>命令入门</h1><h2 id="基本内容"><a href="#基本内容" class="headerlink" title="基本内容"></a>基本内容</h2><p>bash命令基本都是下面格式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">command</span> [ arg1 ... [ argN ]]</span><br></pre></td></tr></table></figure>
-
-<p><code>command</code>是具体的命令或者一个可执行文件，<code>arg1...argN</code>是传递给命令或文件的参数</p>
-<p>有些参数是命令的配置项，这些配置项一般都以一个连词线开头，比如</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l</span><br></pre></td></tr></table></figure>
-
-<p>同一个配置项往往有长和短两种形式，比如<code>-l</code>是短形式，<code>--list</code>是长形式，它们的作用完全相同。短形式便于手动输入，长形式一般用在脚本之中，可读性更好，利于解释自身的含义</p>
-<p>Bash单个命令一般都是一行，用户按下回车就开始执行，有些命令比较长，写成多行有利于阅读，这时就可以在每一行结尾加上<code>\</code>（反斜杠），Bash就会将下一行跟当前行放在一起解释</p>
-<h2 id="命令组合"><a href="#命令组合" class="headerlink" title="命令组合"></a>命令组合</h2><p><code>;</code>可以用来在同一行中分隔不同命令，此时不管分号前的命令执行成功或失败，分号后的命令都会执行</p>
-<p><code>&amp;&amp;</code>与<code>||</code>可以用于控制命令间的继发关系，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果command1 命令运行成功，则运行command2命令</span></span><br><span class="line">command1 &amp;&amp; command2</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果command1 命令运行失败，则运行command2命令</span></span><br><span class="line">command1 || command2</span><br></pre></td></tr></table></figure>
-
-<h2 id="echo命令"><a href="#echo命令" class="headerlink" title="echo命令"></a>echo命令</h2><p>使用<code>echo</code>命令输出一行文本可以不用双引号包含，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> Hello world!</span><br><span class="line">Hello world!</span><br></pre></td></tr></table></figure>
-
-<p>如果想输出多行文本，则需要用单引号或双引号包含，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;&lt;HTML&gt;</span></span><br><span class="line"><span class="string">	&lt;head&gt;</span></span><br><span class="line"><span class="string">		&lt;title&gt; Page Title&lt;/title&gt;</span></span><br><span class="line"><span class="string">	&lt;/head&gt;</span></span><br><span class="line"><span class="string">	&lt;body&gt;</span></span><br><span class="line"><span class="string">		Page body.</span></span><br><span class="line"><span class="string">	&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/HTML&gt;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>echo</code>命令输出的文本末尾会自带一个回车符，可以用<code>-n</code>参数取消末尾的回车符</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> -n a; <span class="built_in">echo</span> b</span><br><span class="line">ab</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>-e</code>参数可以将引号中的转义字符（如<code>\n</code>）转义</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;Hello\nAjsoabk!&quot;</span></span><br><span class="line">Hello\nAjsoabk!</span><br><span class="line">$ <span class="built_in">echo</span> -e <span class="string">&quot;Hello\nAjsoabk!&quot;</span></span><br><span class="line">Hello</span><br><span class="line">Ajsoabk!</span><br></pre></td></tr></table></figure>
-
-<h2 id="判断内置命令"><a href="#判断内置命令" class="headerlink" title="判断内置命令"></a>判断内置命令</h2><p><code>type</code>命令用于判断某个命令是内置命令还是外部程序，如</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">type</span> <span class="built_in">echo</span> </span><br><span class="line"><span class="built_in">echo</span> is a shell <span class="built_in">builtin</span></span><br><span class="line">$ <span class="built_in">type</span> ls</span><br><span class="line">ls is hashed (/bin/ls)</span><br></pre></td></tr></table></figure>
-
-<p>如果要查看一个命令的所有定义，可以使用<code>type</code>命令的<code>-a</code>参数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">type</span> -a <span class="built_in">echo</span> </span><br><span class="line"><span class="built_in">echo</span> is shell <span class="built_in">builtin</span></span><br><span class="line"><span class="built_in">echo</span> is /usr/bin/<span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> is /bin/<span class="built_in">echo</span></span><br><span class="line"><span class="comment">#说明echo既是内置命令，也有对应的外部程序</span></span><br></pre></td></tr></table></figure>
-
-<p><code>type</code>命令的<code>-t</code>参数，可以返回一个命令的类型（<code>alias</code>别名，<code>keyword</code>关键词，<code>function</code>函数，<code>builtin</code>内置命令，<code>file</code>文件）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">type</span> -t bash</span><br><span class="line">file</span><br><span class="line">$ <span class="built_in">type</span> -t <span class="keyword">if</span></span><br><span class="line">keyword</span><br></pre></td></tr></table></figure>
-
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
-<li><code>ctrl</code>+<code>l</code>，清屏</li>
-<li><code>ctrl</code>+<code>c</code>，中止当前命令的执行</li>
-<li><code>shift</code>+<code>PageUp</code>/<code>PageDown</code>，向上/下滚动</li>
-<li><code>ctrl</code>+<code>u</code> /<code>k</code>，从光标位置删除到行首/行尾</li>
-<li><code>ctrl</code>+<code>d</code>，关闭shell对话</li>
-</ul>
-<p>除了上面这些快捷键，Bash还有自动补全功能。命令输入到一半的时候，可以按下<code>Tab</code>键自动补全，路径也支持自动补全。如果有多个可能的选择，只需要按两次<code>Tab</code>，Bash会显示所有选项让你选择</p>
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>注释的方式有很多</p>
-<ul>
-<li><code>#</code>开头的一行会被当成注释</li>
-<li><code>&lt;&lt;BLOCK</code>和<code>BLOCK</code>之间的内容会被当成注释</li>
-<li><code>:&#39;</code>和<code>&#39;</code>之间的内容会被当成注释</li>
-</ul>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>变量名规则与c相同，大小写敏感</p>
-<p>变量定义规则:</p>
-<ul>
-<li>变量名与值之间的<code>=</code>两侧都不能有空格</li>
-<li>读取或打印变量时需要使用<code>$</code>+变量名</li>
-<li>不需要指定数据类型，bash会自动判断数据类型</li>
-</ul>
-<h2 id="模式拓展"><a href="#模式拓展" class="headerlink" title="模式拓展"></a>模式拓展</h2><p>Shell接收到用户输入的命令以后，会根据空格将用户的输入拆分成一个个词元。然后Shell会将词元里面的特殊字符进行拓展，拓展完成后才会调用相应的命令</p>
-<p>Bash允许用户关闭拓展：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">set</span> -o <span class="built_in">noglob</span></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">$ <span class="built_in">set</span> -f</span><br><span class="line"><span class="comment">#重新打开拓展</span></span><br><span class="line">$ <span class="built_in">set</span> +o <span class="built_in">noglob</span></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">$ <span class="built_in">set</span> +f</span><br></pre></td></tr></table></figure>
-
-<p>拓展有许多种，当文件名中包含通配符的时候需要将文件名放在单引号或双引号里面</p>
-<h3 id="目录拓展"><a href="#目录拓展" class="headerlink" title="~目录拓展"></a><code>~</code>目录拓展</h3><p><code>~</code>会自动拓展成当前用户的主目录：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> ~</span><br><span class="line">/home/ajsoabk</span><br></pre></td></tr></table></figure>
-
-<p><code>~user</code>，表示拓展成用户<code>user</code>的主目录：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> ~ajsoabk</span><br><span class="line">/home/ajsoabk</span><br><span class="line"><span class="comment">#如果后面的用户名是不存在的用户名，则拓展不起作用</span></span><br><span class="line">$ <span class="built_in">echo</span> ~notexist</span><br><span class="line">~notexist</span><br></pre></td></tr></table></figure>
-
-<p><code>~+</code>会拓展成当前所在的目录，等同于<code>pwd</code>命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/foo</span><br><span class="line">$ <span class="built_in">echo</span> ~+</span><br><span class="line">/home/ajsoabk/foo</span><br></pre></td></tr></table></figure>
-
-<h3 id="单字符拓展"><a href="#单字符拓展" class="headerlink" title="?单字符拓展"></a><code>?</code>单字符拓展</h3><p><code>?</code>字符代表文件路径里面的任意单个字符，不包括空字符。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前目录存在文件a.txt和b.txt</span></span><br><span class="line">$ ls ?.txt</span><br><span class="line">a.txt b.txt</span><br></pre></td></tr></table></figure>
-
-<p>如果文件不存在，则不进行拓展</p>
-<h3 id="通配拓展"><a href="#通配拓展" class="headerlink" title="*通配拓展"></a><code>*</code>通配拓展</h3><p><code>*</code>字符代表文件路径里面的任意数量的任意字符。但不会匹配隐藏文件（以<code>.</code>开头的文件），如果需要匹配隐藏文件要使用<code>.*</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 存在文件 a.txt、b.txt和 ab.txt</span></span><br><span class="line">$ ls a*.txt</span><br><span class="line">a.txt ab.txt</span><br><span class="line">$ ls *b*</span><br><span class="line">b.txt ab.txt</span><br></pre></td></tr></table></figure>
-
-<p>如果没有匹配的文件，则不进行拓展</p>
-<h3 id="匹配拓展"><a href="#匹配拓展" class="headerlink" title="[]匹配拓展"></a><code>[]</code>匹配拓展</h3><p><code>[]</code>包裹的任意一个字符匹配则匹配成功：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 存在文件 a.txt 和 b.txt</span></span><br><span class="line">$ ls [ab].txt</span><br><span class="line">a.txt b.txt</span><br></pre></td></tr></table></figure>
-
-<p>可以在左方括号后紧跟一个<code>^</code>或<code>!</code>，表示匹配不在方括号里面的字符</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 存在 aaa、bbb、aba三个文件</span></span><br><span class="line">$ ls ?[!a]?</span><br><span class="line">aba bbb</span><br></pre></td></tr></table></figure>
-
-<p>如果需要匹配<code>[</code>字符，可以放在方括号内，如果需要匹配<code>-</code>，只能放在方括号内部的开头或结尾，比如<code>[-aeiou]</code>，除此之外，<code>-</code>可以用来匹配一个连续的范围，如<code>[a-d]</code>等同于<code>[abcd]</code></p>
-<h3 id="全部拓展"><a href="#全部拓展" class="headerlink" title="{}全部拓展"></a><code>&#123;&#125;</code>全部拓展</h3><p><code>&#123;&#125;</code>拓展表示分别拓展成大括号里面的所有值：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> d&#123;a,e,i,u,o&#125;g</span><br><span class="line">dag deg dig dug dog</span><br></pre></td></tr></table></figure>
-
-<p>大括号内部的逗号前后不能有空格，否则扩展失效</p>
-<p>逗号前面可以没有值，表示拓展失效：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cp a.log&#123;,.bak&#125;</span><br><span class="line"><span class="comment">#等同于</span></span><br><span class="line"><span class="comment"># cp a.log a.log.bak</span></span><br></pre></td></tr></table></figure>
-
-<p>大括号可以嵌套，也可以与其他模式联用，并且总是先于其他模式进行拓展</p>
-<p><code>&#123;start..end&#125;</code>表示拓展成一个连续序列，并且支持逆序</p>
-<p>这种简写形式还可以使用第二个双点号用来指定拓展的步长 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> &#123;0..8..2&#125;</span><br><span class="line">0 2 3 4 6 8</span><br></pre></td></tr></table></figure>
-
-<h3 id="变量拓展"><a href="#变量拓展" class="headerlink" title="$变量拓展"></a><code>$</code>变量拓展</h3><p><code>$</code>开头的词元将被视为变量，变量名除了放在<code>$</code>后面，也可以放在<code>$&#123;&#125;</code>里面</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br></pre></td></tr></table></figure>
-
-<p><code>$&#123;|string*&#125;</code> 或<code>$&#123;!string@&#125;</code>返回所有匹配<code>string</code>的变量名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> <span class="variable">$&#123;!S*&#125;</span></span><br><span class="line">SECONDS SHELL SHELLOPTS SHLVL SSH_AGENT_PID SSH_AUTH_SOCK</span><br></pre></td></tr></table></figure>
-
-<h3 id="命令拓展"><a href="#命令拓展" class="headerlink" title="$()命令拓展"></a><code>$()</code>命令拓展</h3><p><code>$()</code>或反引号可以拓展成另一个命令的运行结果，可嵌套，但是结果中的连续空白字符将被替换成单个空格：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> $(date)</span><br><span class="line">Tue Jan 28 00:01:13 CST 2020</span><br></pre></td></tr></table></figure>
-
-<h3 id="算术拓展"><a href="#算术拓展" class="headerlink" title="$(())算术拓展"></a><code>$(())</code>算术拓展</h3><p><code>$(())</code>可以拓展成整数运算的结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> $((<span class="number">2</span>+<span class="number">2</span>))</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
-
-<h3 id="class-类匹配拓展"><a href="#class-类匹配拓展" class="headerlink" title="[[:class:]]类匹配拓展"></a><code>[[:class:]]</code>类匹配拓展</h3><ul>
-<li><code>[[:graph:]]</code>：匹配A-Z、a-z、0-9和标点符号</li>
-<li><code>[[:alnum:]]</code>：匹配A-Z、a-z、0-9</li>
-<li><code>[[:alpha:]]</code>：匹配A-Z、a-z</li>
-<li><code>[[:upper:]]</code>：匹配A-Z</li>
-<li><code>[[:lower:]]</code>：匹配a-z</li>
-<li><code>[[:digit:]]</code>：匹配0-9</li>
-<li><code>[[:punct:]]</code>：匹配标点符号（除了A-Z、a-z、0-9的可打印字符）</li>
-<li><code>[[:blank:]]</code>：匹配空格和<code>Tab</code>键</li>
-<li><code>[[:space:]]</code>：匹配空格、<code>Tab</code>、LF(10)、VT(11)、FF(12)、CR(13)</li>
-<li><code>[[:cntrl:]]</code>：匹配ASCII码0-31的不可打印字符</li>
-<li><code>[[:xdigit:]]</code>：匹配A-F、a-f、0-9</li>
-</ul>
-<p>在第一个方括号后面加上<code>!</code>表示否定</p>
-<h3 id="量词语法"><a href="#量词语法" class="headerlink" title="量词语法"></a>量词语法</h3><p>量词语法用于控制模式匹配的次数</p>
-<p>量词语法有以下五个</p>
-<ul>
-<li><code>?(pattern-list)</code>：匹配零个或一个模式</li>
-<li><code>@(pattern-list)</code>：匹配一个模式</li>
-<li><code>*(pattern-list)</code>：匹配零个或多个模式</li>
-<li><code>+(pattern-list)</code>：匹配一个或多个模式</li>
-<li><code>!(pattern-list)</code>：匹配给定模式外的任何内容</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#当前目录下有abctxt和abc.txt</span></span><br><span class="line">$ ls abc?(.)txt</span><br><span class="line">abctxt abc.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="shopt命令"><a href="#shopt命令" class="headerlink" title="shopt命令"></a><code>shopt</code>命令</h3><p><code>shopt</code>命令可以调整Bash的行为，它有好几个参数跟通配符拓展有关</p>
-<p><code>-s</code>参数打开后面跟着的参数，<code>-u</code>关闭后面跟着的参数</p>
-<ul>
-<li><p><code>dotglob</code>，打开后拓展结果可以包含隐藏文件，默认关闭</p>
-</li>
-<li><p><code>nullglob</code>，打开后让通配符不匹配任何文件名时返回空字符，默认关闭</p>
-</li>
-<li><p><code>failglob</code>，打开后让通配符不匹配任何文件名时直接报错而不交由命令处理，默认关闭</p>
-</li>
-<li><p><code>extglob</code> ，打开后支持量词语法，默认打开</p>
-</li>
-<li><p><code>nocaseglob</code>，打开后让通配符拓展不区分大小写，默认关闭</p>
-</li>
-<li><p><code>globstar</code>，打开后可以用<code>**</code>匹配零个或多个子目录，默认关闭</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">shopt</span> -s globstar</span><br><span class="line">$ ls **/*.txt</span><br><span class="line">a.txt sub1/b.txt sub1/sub2/c.txt</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><p>某些字符在bash里面有特殊含义（<code>$</code>,<code>&amp;</code>,<code>*</code>），要想输出这些字符需要在它们前面加上反斜杠，时其变成普通字符，这就叫做转义</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> \<span class="variable">$date</span></span><br><span class="line"><span class="variable">$date</span></span><br></pre></td></tr></table></figure>
-
-<p>反斜杠本身也是特殊字符</p>
-<p>是否转义主要有两种区别，一个是包裹字符串的是单引号还是双引号，一个是否使用了<code>-e</code>参数</p>
-<p><code>-e</code>参数会强制转义，不管包裹字符串的是单引号还是双引号。</p>
-<p>而在没有<code>-e</code>参数的情况下，单引号包裹的字符串全部原样打印，不会有任何转义或拓展：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;a\\b\nc&#x27;</span></span><br><span class="line">a\\b\nc</span><br></pre></td></tr></table></figure>
-
-<p>只有三个特殊字符在双引号中会保留特殊含义（<code>$</code>,<code>`</code> ,<code>\</code>），因此双引号包裹的字符串会对特殊字符进行转义，但不会对不可打印字符进行转义，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$SHELL</span>&quot;</span></span><br><span class="line">/bin/bash</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;`date`&quot;</span></span><br><span class="line">Mon Jan 27 13:33:18 CST 2020</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;a\\b\nc&quot;</span></span><br><span class="line">a\b\nc</span><br></pre></td></tr></table></figure>
-
-<h2 id="Here文档"><a href="#Here文档" class="headerlink" title="Here文档"></a>Here文档</h2><p>Here文档用于输入多行字符串，格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt; <span class="string">token</span></span><br><span class="line"><span class="string">text</span></span><br><span class="line"><span class="string">token</span></span><br></pre></td></tr></table></figure>
-
-<p>它的格式分为开始标记和结束标记，结束标记必须顶格写</p>
-<p>Here文档内部<code>$</code>与<code>\</code>保留特殊含义，不支持通配符拓展</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ foo=<span class="string">&#x27;Ajsoabk&#x27;</span></span><br><span class="line">cat &lt;&lt; <span class="string">_example_</span></span><br><span class="line"><span class="string">$foo</span></span><br><span class="line"><span class="string">&quot;$foo&quot;</span></span><br><span class="line"><span class="string">&#x27;$foo&#x27;</span></span><br><span class="line"><span class="string">_example</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Ajsoabk</span></span><br><span class="line"><span class="string">&quot;Ajsoabk&quot;</span></span><br><span class="line"><span class="string">&#x27;Ajsoabk&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果不希望发生变量替换，可以把Here文档的开始标记放在单引号之中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ foo=<span class="string">&#x27;Ajsoabk&#x27;</span></span><br><span class="line">$ cat &lt;&lt; <span class="string">&#x27;_example&#x27;</span></span><br><span class="line"><span class="variable">$foo</span></span><br><span class="line"><span class="string">&quot;<span class="variable">$foo</span>&quot;</span></span><br><span class="line"><span class="string">&#x27;$foo&#x27;</span></span><br><span class="line">_example_</span><br><span class="line"></span><br><span class="line"><span class="variable">$foo</span></span><br><span class="line"><span class="string">&quot;<span class="variable">$foo</span>&quot;</span></span><br><span class="line"><span class="string">&#x27;$foo&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>Here文档的本质是重定向，它将字符串重定向输出给某个命令，相当于包含了<code>echo</code>命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">command</span> &lt;&lt; <span class="string">token</span></span><br><span class="line"><span class="string">string</span></span><br><span class="line"><span class="string">token</span></span><br><span class="line"><span class="comment"># 等同于</span></span><br><span class="line">$ <span class="built_in">echo</span> string |<span class="built_in">command</span></span><br></pre></td></tr></table></figure>
-
-<p>所以，Here文档知识和哪些可以接受标准输入作为参数的命令，对于其他命令无效，比如<code>echo</code>命令就不能用Here文档作为参数</p>
-<p>此外，Here文档也不能作为变量的值，只能用于命令的参数</p>
-<h3 id="Here字符串"><a href="#Here字符串" class="headerlink" title="Here字符串"></a>Here字符串</h3><p>Here文档还有一个变体，叫做Here字符串，使用<code>&lt;&lt;&lt;</code>表示，它的作用是将字符串通过标准输入传递给命令</p>
-<p>有些命令直接接受给定的参数与通过标准输入接受参数结果是不一样的，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;&lt; <span class="string">&#x27;hi there&#x27;</span></span><br><span class="line"><span class="comment"># 等同于</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;hi there&#x27;</span> | cat</span><br></pre></td></tr></table></figure>
-
-<p>而如果是直接将字符串放在<code>cat</code>命令后面的话则会被解释成字符串</p>
-<h2 id="变量-1"><a href="#变量-1" class="headerlink" title="变量"></a>变量</h2><h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>环境变量是Bash环境自带的变量，进入Shell时已经定义好了，可以直接使用。</p>
-<p>可以通过命令<code>env</code>, <code>printenv</code>来查看所有环境变量</p>
-<p>下面是一些常见的环境变量</p>
-<ul>
-<li><p><code>BASH</code>，Shell名称，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BASH=/user/bin/bash</span><br></pre></td></tr></table></figure></li>
-<li><p><code>BASH_VERSION</code>，Bash持有的shell版本，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BASH_VERSION=4.2.46(2)</span><br></pre></td></tr></table></figure></li>
-<li><p><code>COLUMNS</code>，屏幕的列数，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COLUMNS=80</span><br></pre></td></tr></table></figure></li>
-<li><p><code>HOME</code>为用户的主目录，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HOME=/home/ajsoabk</span><br></pre></td></tr></table></figure></li>
-<li><p><code>LOGNAME</code>为日志的用户名，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOGNAME=ajsoabk</span><br></pre></td></tr></table></figure></li>
-<li><p><code>USER</code>当前用户的用户名，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USER=ajsoabk</span><br></pre></td></tr></table></figure></li>
-<li><p><code>LINUNO</code>返回它在脚本里面的行号</p>
-</li>
-<li><p><code>FUNCNAME</code>返回一个包含当前函数调用堆栈的数组</p>
-</li>
-<li><p><code>BASH_SOURCE</code>返回当前脚本调用堆栈</p>
-</li>
-<li></li>
-</ul>
-<h3 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h3><p> <code>set</code>命令可以显示所有变量（环境变量和自定义变量）已经所有的Bash函数</p>
-<p>变量可以重复赋值，后面的赋值会覆盖前面的赋值</p>
-<p>如果变量的值本身也是变量，可以使用<code>$&#123;!var&#125;</code> 的语法读取最终的值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ myvar=USER</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;!myvar&#125;</span></span><br><span class="line">ajsoabk</span><br></pre></td></tr></table></figure>
-
-<h2 id="export变量"><a href="#export变量" class="headerlink" title="export变量"></a><code>export</code>变量</h2><p><code>export</code>变量能够被子Shell读取，在子Shell中更改export变量不会影响父Shell，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> foo=bar</span><br><span class="line"><span class="comment"># 新建子Shell</span></span><br><span class="line">$ bash</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$foo</span></span><br><span class="line">bar</span><br><span class="line">$ foo=baz</span><br><span class="line"><span class="comment"># 退出子Shell</span></span><br><span class="line">$ <span class="built_in">exit</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$foo</span></span><br><span class="line">bar</span><br></pre></td></tr></table></figure>
-
-<h3 id="特殊变量"><a href="#特殊变量" class="headerlink" title="特殊变量"></a>特殊变量</h3><p><code>$?</code>为上一个命令的退出码，用来判断上一个命令是否执行成功，若成功则为<code>0</code>，反之则为非零值：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ls doesnotexist</span><br><span class="line">ls: doesnotexist: No such file or directory</span><br><span class="line">$ <span class="built_in">echo</span> $?</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<p><code>$$</code>为当前Shell的进程ID，可以用来命令临时文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOGFILE=/t,p/output_log.$$</span><br></pre></td></tr></table></figure>
-
-<p><code>$_</code>为上一个命令的最后一个参数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ grep dictionary /usr/share/dict/words</span><br><span class="line">dictionary</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$_</span></span><br><span class="line">/usr/share/dict/words</span><br></pre></td></tr></table></figure>
-
-<p><code>$0</code>为当前Shell的名称或者脚本名</p>
-<h3 id="变量的默认值"><a href="#变量的默认值" class="headerlink" title="变量的默认值"></a>变量的默认值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;varname:-word&#125;</span></span><br><span class="line"><span class="comment">#如果varname存在且不为空，则返回它的值，否则返回word</span></span><br><span class="line"><span class="variable">$&#123;varname:=word&#125;</span></span><br><span class="line"><span class="comment">#如果varname存在且不为空，则返回它的值，否则将它设为word并且返回word</span></span><br><span class="line"><span class="variable">$&#123;varname:+word&#125;</span></span><br><span class="line"><span class="comment">#如果varname存在且不为空，则返回word，否则返回空值</span></span><br><span class="line"><span class="variable">$&#123;varname:?word&#125;</span></span><br><span class="line"><span class="comment">#如果varname存在且不为空，则返回它的值，否则打印出varname: message，并中断脚本的执行</span></span><br><span class="line">filename=<span class="variable">$&#123;a:?&quot;filename missint.&quot;&#125;</span></span><br><span class="line"><span class="comment">#在脚本中可以用数字1到9表示传入脚本的参数</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="declare命令"><a href="#declare命令" class="headerlink" title="declare命令"></a><code>declare</code>命令</h3><p><code>declare</code>命令可以声明一些特殊类型的变量，比如只读类型和整数类型的变量，其语法形式为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">declare</span> OPTION VARIABLE=value</span><br></pre></td></tr></table></figure>
-
-<p>其参数有：</p>
-<ul>
-<li><code>-a</code>，数组变量</li>
-<li><code>-i</code>，整数变量</li>
-<li><code>-r</code>，只读变量</li>
-<li><code>-x</code>，环境变量</li>
-<li><code>-f</code>，输出所有函数定义</li>
-<li><code>-F</code>，输出所有函数名</li>
-<li><code>-l</code>，变量值总是会被转为小写字母</li>
-<li><code>-u</code>，变量值总是会被转为大写字母</li>
-<li><code>-p</code>，输出变量信息</li>
-</ul>
-<p>不带任何参数的<code>declare</code>命令等同于不带任何参数的<code>set</code>命令</p>
-<p><code>declare</code>命令如果用在函数中，声明的变量旨在函数内部有效，等同于<code>local</code>命令</p>
-<p>注意，一个变量声明为整数以后，依然可以被改写为字符串</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">declare</span> -i var=12</span><br><span class="line">$ var=foo</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$var</span></span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-
-<p>上面例子中，变量<code>var</code>声明为整数，覆盖以后，Bash不会报错，但会赋以不确定的值</p>
-<h3 id="readonly命令"><a href="#readonly命令" class="headerlink" title="readonly命令"></a><code>readonly</code>命令</h3><p><code>readonly</code>命令等同于<code>declare -r</code>，用来声明只读变量，有三个参数</p>
-<ul>
-<li><code>-f</code>，声明的变量为函数名</li>
-<li><code>-p</code>，打印出所有的只读变量</li>
-<li><code>-a</code>，声明的变量为数组</li>
-</ul>
-<h3 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a><code>let</code>命令</h3><p><code>let</code>命令声明变量时，可以直接执行算术表达式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">let</span> foo=1+2</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$foo</span></span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<p><code>let</code>命令的参数表达式如果包含空格，就需要使用引用</p>
-<h3 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h3><p>命令行参数通过将数据以参数的形式传递给脚本，使脚本更具动态性，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bash_script.sh parameter1 parameter2</span><br></pre></td></tr></table></figure>
-
-<h4 id="如何使用命令行参数"><a href="#如何使用命令行参数" class="headerlink" title="如何使用命令行参数"></a>如何使用命令行参数</h4><ul>
-<li><code>$0</code>，脚本名称</li>
-<li><code>$1-9</code>，存储前9个参数的名称</li>
-<li><code>$#</code>，传递给脚本的参数总数</li>
-<li><code>$@</code>， 以数组形式存储的参数列表</li>
-<li><code>$*</code>，所有参数连接在一起后的形式</li>
-</ul>
-<h4 id="Shift命令与参数移位"><a href="#Shift命令与参数移位" class="headerlink" title="Shift命令与参数移位"></a>Shift命令与参数移位</h4><p><code>shift</code>命令能够控制命令行参数整体左移，同时<code>$#</code>也会减少相应个数，默认移一位，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">while</span> [ -n <span class="string">&quot;<span class="variable">$1</span>&quot;</span> ];<span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>可以使用<code>$&#123;#varname&#125;</code>获取字符串长度</p>
-<h3 id="提取子串"><a href="#提取子串" class="headerlink" title="提取子串"></a>提取子串</h3><p>可以使用<code>$&#123;varname:offset:length&#125;</code>提取子串，可以省略<code>length</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ count=frogfootman</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;count:4:4&#125;</span></span><br><span class="line">foot</span><br></pre></td></tr></table></figure>
-
-<p><code>offset</code>和<code>length</code>都可以为负值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ foo=<span class="string">&quot;This string is long.&quot;</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;foo: -5:2&#125;</span></span><br><span class="line">lo</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;foo: -5:-2&#125;</span></span><br><span class="line">lon</span><br></pre></td></tr></table></figure>
-
-<p>上面例子中，<code>length</code>为<code>-2</code>时要排除从字符串末尾开始的2个字符，所以返回<code>lon</code></p>
-<h3 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h3><p><code>$&#123;string#pattern&#125;</code>和<code>$&#123;string##pattern&#125;</code>可以检查字符串的<strong>开头</strong>是否匹配并将匹配的部分<strong>删除</strong>，其中前者是最短匹配，后者是最长匹配</p>
-<p><code>$&#123;string/#pattern/sub&#125;</code>和<code>$&#123;string/##pattern/sub&#125;</code>可以检查字符串的<strong>开头</strong>是否匹配并将匹配的部分<strong>替换</strong>，同样的一个最短一个最长</p>
-<p>将<code>#</code>换成<code>%</code>则是检查<strong>末尾</strong>，其余同上</p>
-<p><code>$&#123;string/pattern/sub&#125;</code>替换第一个最长的匹配</p>
-<p><code>$&#123;string//pattern/sub&#125;</code>替换所有最长匹配</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将路径分隔符：换成换行符</span></span><br><span class="line">$ <span class="built_in">echo</span> -e <span class="variable">$&#123;PATH//:/\\n&#x27;&#125;</span></span><br><span class="line">/usr/<span class="built_in">local</span>/bin</span><br><span class="line">/usr/bin</span><br><span class="line">/bin</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<h3 id="改变大小写"><a href="#改变大小写" class="headerlink" title="改变大小写"></a>改变大小写</h3><p><code>$&#123;string^^&#125;</code>可以把字符串转为大写</p>
-<p><code>$&#123;string,,&#125;</code>可以把字符串转为小写</p>
-<h2 id="算术"><a href="#算术" class="headerlink" title="算术"></a>算术</h2><p><code>(())</code>语法可以进行整数的算术运算，并且会自动忽略内部的空格</p>
-<p>这个命令在算术结果不为<code>0</code>的时候执行成功，算术结果为<code>0</code>的时候就算执行失败</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ((3 - 3))</span><br><span class="line">$ <span class="built_in">echo</span> $?</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<p>这个命令本身不返回值，如果要读取算数运算的结果，需要在第一个左括号前面加上美元符号</p>
-<p>支持的算数运算符包括加减乘除、求余、递增递减、位运算、逻辑运算（包括三目运算符）、赋值运算（包括一系列复杂赋值）、逗号运算以及指数运算（<code>**</code>），注意<code>/</code>的返回结果总是整数</p>
-<p><code>++</code>与<code>--</code>的前缀后缀版本的区别与C语言中相同</p>
-<p>在算术表达式中可以使用其它进制</p>
-<ul>
-<li><code>0number</code>，八进制</li>
-<li><code>0xnumber</code>，十六进制</li>
-<li><code>bass#number</code>，<code>base</code> 进制的数</li>
-</ul>
-<h3 id="expr命令"><a href="#expr命令" class="headerlink" title="expr命令"></a><code>expr</code>命令</h3><p><code>expr</code>命令支持算术运算，可以不使用<code>(())</code>语法</p>
-<h1 id="脚本入门"><a href="#脚本入门" class="headerlink" title="脚本入门"></a>脚本入门</h1><h2 id="Shebang行"><a href="#Shebang行" class="headerlink" title="Shebang行"></a>Shebang行</h2><p>脚本的第一行通常是指定解释器，即这个脚本必须通过什么解释器执行。这一行以<code>#!</code>Shebang字符开头</p>
-<p>如果没有Shebang行，就只能手动将脚本传给解释器来执行</p>
-<h2 id="控制流语句"><a href="#控制流语句" class="headerlink" title="控制流语句"></a>控制流语句</h2><h3 id="if-elif-else-fi"><a href="#if-elif-else-fi" class="headerlink" title="if[-elif-else]-fi"></a><code>if[-elif-else]-fi</code></h3><p><code>if</code>语法如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> commands; <span class="keyword">then</span></span><br><span class="line">	commands</span><br><span class="line"><span class="keyword">elif</span> commands; <span class="keyword">then</span></span><br><span class="line">	commands...</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">	commands</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-
-<p><code>if</code>后面可以跟任意数量的命令，这时所有命令都会执行，但是判断真伪只看最后一个命令</p>
-<h3 id="case结构"><a href="#case结构" class="headerlink" title="case结构"></a><code>case</code>结构</h3><p><code>case</code>结构用于多值判断，跟包含多个<code>elif</code>的<code>if</code>结构等价，但是语义更好</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> expression <span class="keyword">in</span></span><br><span class="line">	pattern )</span><br><span class="line">		commands ;;</span><br><span class="line">	pattern )</span><br><span class="line">		commands ;;</span><br><span class="line">	...</span><br><span class="line">	* )</span><br><span class="line">		commands ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
-
-<p>如果需要匹配多个条件，可以用<code>;;&amp;</code>终止每个条件块</p>
-<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a><code>while</code>循环</h3><p>格式为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> condition; <span class="keyword">do</span></span><br><span class="line">	commands</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<p><code>condition</code>可以为命令</p>
-<h3 id="until循环"><a href="#until循环" class="headerlink" title="until循环"></a><code>until</code>循环</h3><p><code>until</code>循环与<code>while</code>循环恰好相反，只要不符合判断条件，就不断循环执行指定的语句，一旦符合判断条件就退出循环：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">until condition; <span class="keyword">do</span></span><br><span class="line">	commands</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<p><code>until</code>一般用得比较少，完全可以统一使用<code>while</code></p>
-<h3 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for...in循环"></a><code>for...in</code>循环</h3><p><code>for...in</code>循环用于遍历列表的每一项</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> variable <span class="keyword">in</span> list; <span class="keyword">do</span></span><br><span class="line">	commands</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<p>列表可以是以空格分隔的值（<code>for i in word1 word2 word3; do...</code>）</p>
-<p>也可以由通配符产生（<code>for i in *.png; do</code>）</p>
-<p>也可以通过子命令产生（<code>for i in $(cat ~/.bash_profile</code>）</p>
-<p><code>in list</code>的部分可以省略，此时<code>list </code>默认等于脚本的所有参数<code>$@</code>，但是为了可读性最好还是不要省略</p>
-<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a><code>for</code>循环</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (( expression1; expression2; expression3 )); <span class="keyword">do</span></span><br><span class="line">	commands</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<p>它等同于</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(( expression1 ))</span><br><span class="line"><span class="keyword">while</span> (( expression2 )); <span class="keyword">do</span></span><br><span class="line">	commands</span><br><span class="line">	(( expression3 ))</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="break、continue"><a href="#break、continue" class="headerlink" title="break、continue"></a><code>break</code>、<code>continue</code></h3><p>与C中相同</p>
-<h3 id="select-结构"><a href="#select-结构" class="headerlink" title="select 结构"></a><code>select</code> 结构</h3><p><code>select</code>结构用于给用户提供选择</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select element</span><br><span class="line"><span class="keyword">in</span> list</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">	commands</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<p>Bash会对<code>select</code>依次进行下面的处理</p>
-<ol>
-<li><code>select</code>打印一个菜单，内容是列表<code>list</code>的每一项，并且每一项前面还有一个数字编号</li>
-<li>Bash提示用户选择一项，输入它的编号</li>
-<li>用户输入以后，Bash会将该项的内容存在变量<code>name</code>，该项的编号存入环境变量<code>REPLY</code>。如果用户没有输入，就按回车键，Bash会重新输出菜单，让用户选择</li>
-<li>执行命令体<code>commands</code></li>
-<li>执行结束后回到第二步，重复这个过程</li>
-</ol>
-<p>下面是一个例子</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!bin/bash</span></span><br><span class="line">select brand <span class="keyword">in</span> Samsung Sony iphone</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;Youve chosen <span class="variable">$brand</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<p>执行上面的脚本，Bash会输出一个品牌的列表让用户选择</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1) Samsung</span><br><span class="line">2) Sony</span><br><span class="line">3) iphone</span><br><span class="line"><span class="comment">#?</span></span><br></pre></td></tr></table></figure>
-
-<p><code>select</code>可以与<code>case</code>结合</p>
-<h2 id="test命令"><a href="#test命令" class="headerlink" title="test命令"></a><code>test</code>命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span> expression</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">[ expression ]</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">[[ expression ]]</span><br></pre></td></tr></table></figure>
-
-<p>第三种形式还支持正则判断。如果<code>expression</code>表达式为真则<code>test</code>执行成功</p>
-<h3 id="文件判断"><a href="#文件判断" class="headerlink" title="文件判断"></a>文件判断</h3><p><code>test</code>命令有许多参数可以用来判断文件状态：</p>
-<ul>
-<li><code>[ -a file ]</code>，存在</li>
-<li><code>[ -b file ]</code>，存在且是一个块（设备）文件</li>
-<li><code>[ -c file ]</code>，存在且是一个字符（设备）文件</li>
-<li><code>[ -d file ]</code>，存在且是一个目录</li>
-<li><code>[ -e file ]</code>，存在</li>
-<li><code>[ -f file ]</code>，存在且是普通文件</li>
-<li><code>[ -g file ]</code>，存在且设置了组ID</li>
-<li><code>[ -G file ]</code>，存在且设置了有效的组ID</li>
-<li><code>[ -h file ]</code>，存在且是符号链接</li>
-<li><code>[ -k file ]</code>，存在且设置了它的“sticky bit”</li>
-<li><code>[ -L file ]</code>，存在且是符号链接</li>
-<li><code>[ -N file ]</code>，存在且自上次读取后已被修改</li>
-<li><code>[ -O file ]</code>，存在且属于有效的用户ID</li>
-<li><code>[ -p file ]</code>，存在且是命名管道</li>
-<li><code>[ -r file ]</code>，存在且当前用户可读</li>
-<li><code>[ -s file ]</code>，存在且长度大于零</li>
-<li><code>[ -S file ]</code>，存在且是一个socket</li>
-<li><code>[ -t fd ]</code>，如果<code>fd</code>是一个文件描述符且重定向到终端则为真。可以判断是否重定向了标准输入输出/错误流</li>
-<li><code>[ -u file ]</code>，存在且设置了<code>setuid</code>位</li>
-<li><code>[ -w file ]</code>，存在且当前用户可写</li>
-<li><code>[ -x file ]</code>，存在且当前用户可执行</li>
-<li><code>[ file1 -nt file2 ]</code>，<code>file1</code>比<code>file2</code>的更新时间最近，或者<code>file1</code>存在而<code>file2</code>不存在</li>
-<li><code>[ file1 -ot file2 ]</code>，<code>file2</code>比<code>file1</code>的更新时间最近，或者<code>file2</code>存在而<code>file1</code>不存在</li>
-<li><code>[ FILE1 -ef FILE2 ]</code>，<code>FILE1</code>和<code>FILE2</code>引用相同的设备和<code>inode</code>编号</li>
-</ul>
-<h3 id="字符串判断"><a href="#字符串判断" class="headerlink" title="字符串判断"></a>字符串判断</h3><ul>
-<li><p><code>[ string ]</code>，不为空</p>
-</li>
-<li><p><code>[ -n string ]</code>，不为空</p>
-</li>
-<li><p><code>[ -z string ]</code>，为空</p>
-</li>
-<li><p><code>[ string1 = string2]</code>，判断等价</p>
-</li>
-<li><p><code>[ string1 == string2]</code>，判断等价</p>
-</li>
-<li><p><code>[ string1 &#39;&gt;&#39; string2 ]</code>，判断<code>string</code>的字典序在<code>string2</code>之后</p>
-</li>
-<li><p><code>[ string1 &#39;&gt;&#39; string2 ]</code>，判断<code>string</code>的字典序在<code>string2</code>之前</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ str1=abc</span><br><span class="line">$ str2=abb</span><br><span class="line">$ <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$str1</span>&quot;</span> <span class="string">&#x27;&lt;&#x27;</span> <span class="string">&quot;<span class="variable">$str2</span>&quot;</span> ]; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">&quot;greater&quot;</span>; <span class="keyword">fi</span></span><br><span class="line">greater</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="整数判断"><a href="#整数判断" class="headerlink" title="整数判断"></a>整数判断</h3><ul>
-<li><code>[ -z num1 ]</code>，判断为空</li>
-<li><code>[ num1 -eq num2 ]</code>，判断等价</li>
-<li><code>[ num1 -ne num2 ]</code>，判断不等价</li>
-<li><code>[ num1 -le num2 ]</code>，判断小于等于</li>
-<li><code>[ num1 -lt num2 ]</code>，判断小于</li>
-<li><code>[ num1 -ge num2 ]</code>，判断大于等于</li>
-<li><code>[ num1 -gt num2 ]</code>，判断大于</li>
-</ul>
-<h3 id="算术判断"><a href="#算术判断" class="headerlink" title="算术判断"></a>算术判断</h3><p>可以包裹<code>(())</code>进行算术运算的判断</p>
-<h3 id="正则判断"><a href="#正则判断" class="headerlink" title="正则判断"></a>正则判断</h3><p><code>[[ expression ]]</code>这种判断形式支持正则表达式</p>
-<p><code> [[ string1 =~ regex ]]</code>，其中<code>=~</code>是正则比较运算符：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">INT=-5</span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">&quot;<span class="variable">$INT</span>&quot;</span> =~ ^-?[0-9]+$ ]]; <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;INT is an integer.&quot;</span></span><br><span class="line">	<span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;INT is not an integer.&quot;</span> &gt;&amp;2</span><br><span class="line">	<span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h3><p>可以用<code>&amp;&amp;</code>、<code>||</code>、<code>!</code>或<code>-a</code>、<code>-o</code>来结合多个<code>test</code>判断表达式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!bin/bash</span></span><br><span class="line">MIN_VAL=1</span><br><span class="line">MAX_VAL=100</span><br><span class="line">INT=50</span><br><span class="line"><span class="keyword">if</span> [[<span class="string">&quot;<span class="variable">$INT</span>&quot;</span> =~ ^-[0-9]+$ ]]; <span class="keyword">then</span></span><br><span class="line">	<span class="keyword">if</span> [[ <span class="variable">$INT</span> -ge <span class="variable">$MIN_VAL</span> &amp;&amp; <span class="variable">$INT</span> -le <span class="variable">$MAX_VAL</span> ]]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$INT</span> is within <span class="variable">$MIN_VAL</span> to <span class="variable">$MAX_VAL</span>.&quot;</span></span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		<span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$INT</span> is out of range.&quot;</span></span><br><span class="line">	<span class="keyword">fi</span></span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;INT is not an integer.&quot;</span> &gt;&amp;2</span><br><span class="line">	<span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-
-<p>使用<code>!</code>操作符时，最好用圆括号确定转义的范围，并且圆括号必须使用引号或者转义，否则会被Bash解释</p>
-<h2 id="脚本参数"><a href="#脚本参数" class="headerlink" title="脚本参数"></a>脚本参数</h2><p>调用脚本的时候，脚本文件名后面可以带有参数：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ script.sh word1 word2 word3</span><br></pre></td></tr></table></figure>
-
-<p> 脚本文件内部可以使用特殊变量引用这些参数</p>
-<ul>
-<li><code>$1-9</code>，脚本的第一个到第九个参数</li>
-<li><code>$#</code>，参数的总数</li>
-<li><code>$@</code>，以数组形式存储的全部的参数</li>
-<li><code>$*</code>，以<code>$IFS</code>值的第一个字符（默认为空格）分隔的全部的参数</li>
-</ul>
-<p>如果脚本的参数多于9个，那么第十个参数可以用<code>$&#123;10&#125;</code>的形式引用，以此类推</p>
-<h3 id="shift命令"><a href="#shift命令" class="headerlink" title="shift命令"></a><code>shift</code>命令</h3><p><code>shift</code> 命令可以改变脚本参数，每次执行都会移出脚本的前几个参数（默认为1），并将后面所有的参数向前移相应位数，<code>$#</code>的值也会相应减少（如果原来有参数的话）</p>
-<h3 id="getopts命令"><a href="#getopts命令" class="headerlink" title="getopts命令"></a><code>getopts</code>命令</h3><p><code>getopts</code>命令用在脚本内部，可以解析复杂的脚本命令行参数，通常与<code>while</code>循环一起使用，去除脚本所有的带有前置<code>-</code>的参数，其形式为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">getopts</span> opt name</span><br></pre></td></tr></table></figure>
-
-<p>第一个参数<code>opt</code>是字符串，给出脚本所有的连词线参数（不带连词线）。</p>
-<p>比如某个脚本可以有灿哥配置项参数<code>-l</code>、<code>h</code>、<code>-a</code>，其中只有<code>-a</code>可以带有参数值，而<code>-l</code>和<code>-h</code>是开关参数，那么<code>getopts</code>的第一个参数写成<code>lha:</code>，顺序不重要。注意，<code>a</code>后面有一个冒号表示该参数带有参数值</p>
-<p>第二个参数<code>name</code>是一个变量名，用来保存当前取到的配置项参数，即<code>l</code>、<code>h</code>、或<code>a</code></p>
-<p>以下是一个使用<code>getopts</code>获取参数的例子</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="built_in">getopts</span> <span class="string">&#x27;lha:&#x27;</span> OPTION; <span class="keyword">do</span></span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;<span class="variable">$OPTION</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">		l)</span><br><span class="line">			<span class="built_in">echo</span> <span class="string">&quot;linuxconfig&quot;</span></span><br><span class="line">			;;</span><br><span class="line">		h)</span><br><span class="line">			<span class="built_in">echo</span> <span class="string">&quot;h stands for h&quot;</span></span><br><span class="line">			;;</span><br><span class="line">		a)</span><br><span class="line">			avalue=<span class="string">&quot;<span class="variable">$OPTARG</span>&quot;</span></span><br><span class="line">			<span class="built_in">echo</span> <span class="string">&quot;The value provided is <span class="variable">$OPTARG</span>&quot;</span></span><br><span class="line">			;;</span><br><span class="line">        ?)</span><br><span class="line">        	<span class="built_in">echo</span> <span class="string">&quot;script usage: <span class="subst">$(basename $0)</span> [-l] [-h] [-a somevalue]&quot;</span> &gt;&amp;2</span><br><span class="line">        	<span class="built_in">exit</span> 1</span><br><span class="line">        	;;</span><br><span class="line">     <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">shift</span> <span class="string">&quot;<span class="subst">$(($OPTIND - 1)</span>)&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>变量<code>OPTION</code>保存的是当前处理的连词线参数（即<code>l</code>、<code>h</code>或<code>a</code>）。如果用户输入了没有指定的参数，那么<code>OPTION</code>等于<code>?</code></p>
-<p>如果某个连词线参数带有参数值，那么<code>$OPTARG</code>保存的就是参数值</p>
-<p>注意，只要遇到不带连词线的参数，<code>getopts</code>就会执行失败，从而退出<code>while</code>循环。另外，多个连词线参数写在一起的形式，比如<code>command -lh</code>，<code>getopts</code>也可以正确处理</p>
-<p>变量<code>OPTIND</code>在<code>getopts</code>开始执行前是<code>1</code>，然后每次执行就会加<code>1</code>。</p>
-<h3 id="配置项参数终止符"><a href="#配置项参数终止符" class="headerlink" title="配置项参数终止符--"></a>配置项参数终止符<code>--</code></h3><p><code>-</code>和<code>--</code>开头的参数，会被Bash当作配置项解释，但有时它们是实体参数，如果要确保某个参数不会被当作配置项解释，就要在它前面放上参数终止符<code>--</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -- <span class="variable">$myPath</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="exit命令"><a href="#exit命令" class="headerlink" title="exit命令"></a><code>exit</code>命令</h3><p><code>exit</code> 命令用于终止当前脚本的执行，并向Shell返回一个退出值（<code>0</code>表示正常，<code>1</code>表示发生错误，<code>2</code>表示用法不对，<code>126</code>表示不是可执行脚本，<code>127</code>表示命令没有发现</p>
-<p><code>exit</code>命令与<code>return</code>命令的区别是<code>return</code>命令是函数的退出</p>
-<h3 id="source命令"><a href="#source命令" class="headerlink" title="source命令"></a><code>source</code>命令</h3><p><code>source</code>命令用于执行一个脚本，但不像直接执行脚本时会新建一个子Shell，所以通常用于重新加载一个配置文件，而且<code>source</code>命令执行脚本时不需要<code>export</code>变量</p>
-<p><code>source</code>命令的另一个用途，是在脚本内部加载外部库，这样就可以在脚本里面使用这个外部库定义的函数</p>
-<p><code>source</code>命令有一个简写形式，可以使用一个点（<code>.</code>）来表示</p>
-<h2 id="alias命令"><a href="#alias命令" class="headerlink" title="alias命令"></a><code>alias</code>命令</h2><p><code>alias</code>用于为一个命令指定一个更便于记忆的命令别名，其格式为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> NAME=DEFINITION</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>NAME</code>是命令别名，<code>DEFINITION</code>是别名对应的原始命令，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> search=grep</span><br></pre></td></tr></table></figure>
-
-<p>也可以用来为长命令指定一个更短的别名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">alias</span> today=<span class="string">&#x27;date +&quot;%A, %B %-d, %Y&quot;&#x27;</span></span><br><span class="line">$ today</span><br><span class="line">星期日, 十一月 14, 2021</span><br></pre></td></tr></table></figure>
-
-<p>直接调用<code>alias</code>命令可以显示所有别名</p>
-<p><code>unalias</code>命令可以解除别名</p>
-<h2 id="获取用户输入"><a href="#获取用户输入" class="headerlink" title="获取用户输入"></a>获取用户输入</h2><p><code>read</code>命令格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> [-options] [variable...]</span><br></pre></td></tr></table></figure>
-
-<p><code>variable</code>是用来保存输入数值的一个或多个变量名。如果没有提供变量名，环境变量<code>REPLY</code>会包含用户输入的一整行数据</p>
-<p>如果用户的输入项少于<code>read</code>命令给出的变量数目，那么额外的变量值为空</p>
-<p>如果用户的输入项多于<code>read</code>命令给出的变量数目，那么多余的输入项会包含到最后一个变量中</p>
-<p><code>read</code>命令除了读取键盘输入也可以用来读入文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">filename=<span class="string">&#x27;/etc/hosts&#x27;</span></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> myline </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$myline</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span> &lt; <span class="variable">$filename</span></span><br><span class="line"><span class="comment"># 定向符&lt;将文件内容导向read命令</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p><code>-t</code>参数设置等待的秒数，环境变量<code>TMOUT</code>也可以起到同样作用</p>
-<p><code>-p</code>参数设置提示信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">&quot;Enter one or more values &gt; &quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>-a</code>参数把用户的输入赋值给一个数组，下标从<code>0</code>开始：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">read</span> -a people</span><br><span class="line">alice duchess dodo</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;people[2]&#125;</span></span><br><span class="line">dodo</span><br></pre></td></tr></table></figure>
-
-<p><code>-n</code>参数指定读取字符的个数：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">read</span> -n 3 letter</span><br><span class="line">abcdefg</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$letter</span></span><br><span class="line">abc</span><br></pre></td></tr></table></figure>
-
-<p><code>-e</code>参数允许用户输入的时候使用<code>readline</code>库提供的快捷键，比如自动补全</p>
-<p><code>-d delimiter</code>将终止符设定为<code>delimiter</code>而不是<code>\n</code></p>
-<p><code>-r</code>，raw模式，表示不把用户输入的反斜杠字符解释为转义字符</p>
-<p><code>-s</code>，使用户的输入不显示在屏幕上，用于信息保密</p>
-<p><code>-u fd</code>：使用文件描述符<code>fd</code>作为输入</p>
-<h3 id="IFS（Internal-Field-Separator）环境变量"><a href="#IFS（Internal-Field-Separator）环境变量" class="headerlink" title="IFS（Internal Field  Separator）环境变量"></a><code>IFS</code>（Internal Field  Separator）环境变量</h3><p><code>read</code> 命令读取的值默认以空格分隔。可以通过自定义环境变量<code>IFS</code>来修改分隔标志。</p>
-<p><code>IFS</code>的默认值是空格、<code>tab</code>、<code>\n</code>，通常取第一个</p>
-<p>在文件读取中经常把<code>IFS</code>定义成<code>:</code>或<code>;</code></p>
-<p>可以把IFS的赋值命令和<code>read</code>命令写在一行，这样的话<code>IFS</code>的改变仅对后面的命令生效，不然就要用到<code>OLD_IFS</code>变量来恢复<code>IFS</code></p>
-<p>使用内置的<code>read</code>命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Enter your name:&quot;</span></span><br><span class="line"><span class="built_in">read</span> user_name</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Your name is <span class="variable">$user_name</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Enter your age, phonenumber and email: &quot;</span></span><br><span class="line"><span class="built_in">read</span> age phonenumber email</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Your age is :<span class="variable">$age</span>. Your phone is: <span class="variable">$phonenumber</span>. Your email is <span class="variable">$email</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>使用<code>-p</code>参数</p>
-<h2 id="Bash函数"><a href="#Bash函数" class="headerlink" title="Bash函数"></a>Bash函数</h2><p>Bash函数定义的语法是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>() &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>function</code>可以省略</p>
-<p>下面是一个多行函数的例子，显示当前日期时间</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">today</span></span>() &#123;</span><br><span class="line">	<span class="built_in">echo</span> -n <span class="string">&quot;Today&#x27;s date is: &quot;</span></span><br><span class="line">	date +<span class="string">&quot;%A, %B %-d, %Y&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>删除一个函数可以使用<code>unset</code>命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unset</span> -f functionName</span><br></pre></td></tr></table></figure>
-
-<p>查看当前Shell已经定义的所有函数的详细信息可以使用<code>declare</code>命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">declare</span> -f</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数变量"><a href="#参数变量" class="headerlink" title="参数变量"></a>参数变量</h3><p>函数体内可以使用参数变量，与脚本参数变量是一致的</p>
-<h3 id="return命令"><a href="#return命令" class="headerlink" title="return命令"></a><code>return</code>命令</h3><p><code>return</code>命令可以返回一个值给调用者。如果命令行直接执行函数，下一个命令可以用<code>$?</code>获取返回值</p>
-<h3 id="local命令"><a href="#local命令" class="headerlink" title="local命令"></a><code>local</code>命令</h3><p>Bash函数体内直接声明的变量（包括函数体内声明的普通变量）都属于全局变量，整个脚本都可以读取</p>
-<p>如果希望声明局部变量，需要使用<code>local</code>命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># test.sh</span></span><br><span class="line"><span class="function"><span class="title">fn</span></span> ()&#123;</span><br><span class="line">	<span class="built_in">local</span> foo</span><br><span class="line">	foo=1</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;fn: foo = <span class="variable">$foo</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">fn</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;global: foo = <span class="variable">$foo</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其运行结果为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ bash test.sh</span><br><span class="line">fn: foo = 1</span><br><span class="line">global: foo =</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组是一个包含多个值的变量，成员的编号从0开始</p>
-<p>数组可以采用一次性赋值的方式创建</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">array=(val1 val2 ... valn)</span><br><span class="line"><span class="comment"># 也可以</span></span><br><span class="line">array[0]=val1</span><br><span class="line">array[1]=val2</span><br><span class="line">...</span><br><span class="line"><span class="comment"># 也可以</span></span><br><span class="line">array=([2]=val3 [0]=val1 [1]=val2)</span><br><span class="line"><span class="comment">#也可以只为某些值指定位置</span></span><br><span class="line">names=(hater [5]=duchess alice)</span><br><span class="line"><span class="comment">#上面例子中alice是6号位</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="成员读取"><a href="#成员读取" class="headerlink" title="成员读取"></a>成员读取</h3><p>数组的成员读取方式为<code>$&#123;arr[n]&#125;</code>。如果没有花括号，Bash会读取<code>arr</code>的第一个元素，再把<code>[n]</code>原样输出</p>
-<p>可以用<code>$&#123;arr[@]&#125;</code>和<code>$&#123;arr[*]&#125;</code>获取数组的所有成员</p>
-<p>将其放在双引号中时，后者会将数组元素合并成一个字符串返回</p>
-<p>所以拷贝一个数组的最方便方法就是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hobbies=( <span class="string">&quot;<span class="variable">$&#123;activities[@]&#125;</span>&quot;</span> )</span><br></pre></td></tr></table></figure>
-
-<h3 id="提取数组序号"><a href="#提取数组序号" class="headerlink" title="提取数组序号"></a>提取数组序号</h3><p><code>$&#123;!arr[@]&#125;</code>或<code>$&#123;!arr[*]&#125;</code>可以返回数组的成员序号</p>
-<p>因此可以使用这种语法循环数组的下标</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">arr=(a b c d)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$&#123;!arr[@]&#125;</span>;<span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="variable">$&#123;arr[i]&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="提取数组成员"><a href="#提取数组成员" class="headerlink" title="提取数组成员"></a>提取数组成员</h3><p><code>$&#123;arr[@]:pos:len&#125;</code>的语法可以提取一个区间内的成员</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ food=( apples bananas cucunmbers dates eggs fajitas grapes )</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;food[@]:1:3&#125;</span></span><br><span class="line">bananas cucumbers dates</span><br></pre></td></tr></table></figure>
-
-<p>如果省略<code>length</code>则返回从指定位置开始的所有成员</p>
-<h3 id="追加数组成员"><a href="#追加数组成员" class="headerlink" title="追加数组成员"></a>追加数组成员</h3><p>可以使用<code>+=</code>赋值运算符追加数组成员</p>
-<h3 id="删除数组"><a href="#删除数组" class="headerlink" title="删除数组"></a>删除数组</h3><p>使用<code>unset</code>命令删除数组或数组成员</p>
-<h3 id="关联数组"><a href="#关联数组" class="headerlink" title="关联数组"></a>关联数组</h3><p><code>declare -A</code>可以声明关联数组</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">delcare -A colors </span><br><span class="line">colors[<span class="string">&quot;red&quot;</span>]=<span class="string">&quot;#ff0000&quot;</span></span><br><span class="line">colors[<span class="string">&quot;green&quot;</span>]=<span class="string">&quot;#00ff00&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>访问关联数组成员的方法几乎与整数索引数组相同</p>
-<h2 id="set命令与shopt命令"><a href="#set命令与shopt命令" class="headerlink" title="set命令与shopt命令"></a><code>set</code>命令与<code>shopt</code>命令</h2><p><code>set</code>命令可以帮助你写出更安全的Bash脚本</p>
-<p>直接运行<code>set</code>会显示所有的环境变量和Shell函数</p>
-<h3 id="u"><a href="#u" class="headerlink" title="-u"></a><code>-u</code></h3><p>设置了<code>-u</code>参数之后，脚本遇到不存在的变量就会报错并停止执行</p>
-<p><code>-u</code>参数和<code>-o nounset</code>是等价的</p>
-<h3 id="x"><a href="#x" class="headerlink" title="-x"></a><code>-x</code></h3><p>设置了<code>-x</code>参数之后，脚本每运行一条命令就会在终端输出，用于调试，与<code>-o xtrace</code>等价</p>
-<p>如果要关闭命令输出，可以使用<code>set +x</code></p>
-<h3 id="e"><a href="#e" class="headerlink" title="-e"></a><code>-e</code></h3><p>设置了<code>-e</code>参数之后，脚本只要发生错误（返回值非<code>0</code>），就会终止执行</p>
-<p>有些命令的非零返回值可能不表示失败，这时可以使用<code>command || true</code>使得该命令即使执行失败也不会终止执行</p>
-<p>等价于<code>-o errexit</code></p>
-<h3 id="o-pipefail"><a href="#o-pipefail" class="headerlink" title="-o pipefail"></a><code>-o pipefail</code></h3><p><code>set -e</code>不适用于管道命令</p>
-<p>管道命令指多个子命令通过管道运算符<code>|</code>组合成一个大的命令。Bash会把最后一个子命令的返回值作为整个命令的返回值。</p>
-<p><code>set -o pipefail</code>用来保证只要一个子命令失败整个管道命令就失败</p>
-<h3 id="E"><a href="#E" class="headerlink" title="-E"></a><code>-E</code></h3><p>设置了<code>-e</code>参数会导致函数内的错误不会被<code>trap</code>命令捕获，加上<code>-E</code>参数后可以使得函数也能继承<code>trap</code>命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">set</span> -Eeuo pipefail</span><br><span class="line"><span class="built_in">trap</span> <span class="string">&quot;echo ERR trap fired!&quot;</span> ERR</span><br><span class="line"><span class="function"><span class="title">myfunc</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment"># &#x27;foo&#x27;是一个不存在的命令</span></span><br><span class="line">	foo</span><br><span class="line">&#125;</span><br><span class="line">myfunc</span><br></pre></td></tr></table></figure>
-
-<p>执行上面这个脚本就可以看到<code>trap</code>命令生效了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ bash test.sh</span><br><span class="line">test.sh:行9: foo：未找到命令</span><br><span class="line">ERR <span class="built_in">trap</span> fired!</span><br></pre></td></tr></table></figure>
-
-<h3 id="n"><a href="#n" class="headerlink" title="-n"></a><code>-n</code></h3><p>等同于<code>-o noexec</code>不运行命令，只检查语法是否正确</p>
-<h3 id="f"><a href="#f" class="headerlink" title="-f"></a><code>-f</code></h3><p>等同于<code>-o noglob</code>表示不对通配符进行文件名拓展</p>
-<h3 id="v"><a href="#v" class="headerlink" title="-v"></a><code>-v</code></h3><p>等同于<code>-o verbose</code>，表示打印Shell接收到的每一行输入</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>上面介绍的<code>set</code>命令的几个参数，一般都放在一起使用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -Eeuxo pipefail</span><br></pre></td></tr></table></figure>
-
-<p>这种写法建议放在所有Bash脚本的头部</p>
-<p>另一种方法是在执行Bash脚本的时候，从命令行传入这些参数</p>
-<h3 id="shopt命令-1"><a href="#shopt命令-1" class="headerlink" title="shopt命令"></a><code>shopt</code>命令</h3><p><code>shopt</code>命令用来调整Shell 的参数，跟<code>set</code>命令的作用类似</p>
-<p>直接输入<code>shopt</code>可以查看所有参数以及其状态，也可以单独查询某个参数的状态</p>
-<p><code>-s</code>用来打开某个参数</p>
-<p><code>-u</code>用来关闭某个参数</p>
-<p><code>-q</code>也用来查询某个参数是否打开，但不直接输出查询结果，而是通过<code>shopt</code>命令的返回结果<code>$?</code>表示查询结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">shopt</span> -1 globstar</span><br><span class="line">$ <span class="built_in">echo</span> $?</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<h3 id="mktemp与trap"><a href="#mktemp与trap" class="headerlink" title="mktemp与trap"></a><code>mktemp</code>与<code>trap</code></h3><p>Bash脚本有时需要创建临时文件或临时目录，常见的做法是在<code>/tmp</code>目录里面创建文件或目录，但这样做有很多问题，使用<code>mktemp</code>命令是最安全的做法</p>
-<h3 id="临时文件的安全问题"><a href="#临时文件的安全问题" class="headerlink" title="临时文件的安全问题"></a>临时文件的安全问题</h3><p><code>/tmp</code>目录是所有人可读写的，如果攻击者知道临时文件的文件名就可能导致严重的安全问题。</p>
-<p>而且脚本意外退出时往往会糊涂清理临时文件</p>
-<p>生成临时文件淫应当遵循下面的规则</p>
-<ul>
-<li>创建前检查文件是否已经存在</li>
-<li>确保临时文件已成功创建</li>
-<li>临时文件必须有权限限制</li>
-<li>临时文件名要不可预测</li>
-<li>脚本退出时要删除临时文件</li>
-</ul>
-<h3 id="mktemp"><a href="#mktemp" class="headerlink" title="mktemp"></a><code>mktemp</code></h3><p>直接运行<code>mktemp</code>命令就能生成一个临时文件，其文件名随机并且只有用户本人可读写</p>
-<p>为了保证脚本退出时临时文件被删除，可以使用<code>trap</code>命令指定退出时的清除操作</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">trap</span> <span class="string">&#x27;rm -f &quot;$TMPFILE&quot;&#x27;</span> EXIT</span><br><span class="line">TMPFILE=$(mktemp) || <span class="built_in">exit</span> 1</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Our temp file is <span class="variable">$TMPFILE</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>-d</code>参数可以创建一个临时目录</p>
-<p><code>-p</code>参数可以指定临时文件所在的目录，默认使用<code>$TMPDIR</code>环境变量指定的目录，如果这个变量没设置则使用<code>/tmp</code>目录</p>
-<p><code>-t</code>参数可以指定临时文件的文件名模板，模板末尾至少包含索格连续的<code>X</code>字符表示随机字符，默认的文件名模板是<code>tmp.</code>后接十个随机字符</p>
-<h3 id="trap命令"><a href="#trap命令" class="headerlink" title="trap命令"></a><code>trap</code>命令</h3><p><code>trap</code>命令用来在Bash脚本响应系统信号，其形式为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">trap</span> [action] [signal1] [signal2] ...</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>action</code>是一个Bash命令，常用的信号有</p>
-<ul>
-<li><code>EXIT</code>，编号<code>0</code>，退出脚本时产生</li>
-<li><code>HUP</code>，编号<code>1</code>，脚本与所在的终端脱离联系</li>
-<li><code>INT</code>，编号<code>2</code>，用户按下<code>ctrl + C</code>，意图让脚本停止运行</li>
-<li><code>QUIT</code>，编号<code>3</code>，用户按下<code>ctrl+/</code>，意图退出脚本</li>
-</ul>
-<p>注意，<code>trap</code>命令必须放在脚本的开头，否则它上方的任何命令导致脚本退出，都不会被它捕获</p>
-<h1 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h1><p>可以通过<code>ls -l</code>命令来罗列出所有文件和目录</p>
-<p><img src="https://atts.w3cschool.cn/attachments/image/20200616/1592287146504129.png" alt="img"></p>
-<p>上图七列分别是：</p>
-<ul>
-<li>文件类型（<code>-</code>常规文件，<code>c</code>特殊档案，<code>p</code>命名管道，<code>b</code>块设备，<code>s</code>套接字，<code>d</code>目录，<code>l</code>链接）及超级用户、用户组与其他用户的权限（<code>r</code>阅读权限，<code>w</code>写入权限，<code>x</code>执行权限，<code>-</code>占位）</li>
-<li>存储块的数量</li>
-<li>文件的所有者或具有管理权限的超级用户</li>
-<li>所有者、筹集用户组</li>
-<li>文件大小</li>
-<li>文件的最后修改日期</li>
-<li>文件或目录的名称</li>
-</ul>
-<p><code>chmod</code>命令可以更改不同用户类型的文件权限，其基本形式为</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod [class][operator][permission] filename</span><br><span class="line"><span class="comment">#具体为</span></span><br><span class="line">chmod [ugoa][+or-][rwx] filename</span><br></pre></td></tr></table></figure>
-
-<p><code>u</code>超级用户<code>g</code>用户组<code>o</code>其他用户<code>a</code>所有类型</p>
-<p><code>+</code>添加<code>-</code>删除权限</p>
-<p><code>r</code>读取<code>w</code>修改<code>x</code>运行</p>
-<h1 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h1><h2 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h2><p><code>&gt;</code>会以命令中的写入内容覆盖原文件内容，如果指定的文件不存在，那么它将会创建一个以指定文件名命名的新文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">writefile=WriteFile.txt</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;Ajsoabk:www.ajsoabk.xyz&quot;</span> &gt; <span class="variable">$writefile</span></span><br><span class="line"><span class="comment">#使用cat命令打印文件内容</span></span><br><span class="line">$ cat <span class="variable">$writefile</span></span><br></pre></td></tr></table></figure>
-
-<p><code>&gt;&gt;</code>则是内容附加，如果文件不存在也会新建</p>
-<h2 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h2><p><code>&lt;</code>,与<code>&lt;&lt;</code></p>
-<h2 id="深入理解"><a href="#深入理解" class="headerlink" title="深入理解"></a>深入理解</h2><ul>
-<li><code>stdin</code>：标准输入文件，其文件描述符为0，默认由此读取数据</li>
-<li><code>stdout</code>：标准输出文件，其文件描述符为1，默认向它输出数据</li>
-<li><code>stderr</code>：标准错误文件，其文件描述符为2，默认向它写入错误信息</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将stdin重定向到file1，将stdout重定向到file2</span></span><br><span class="line">$ <span class="built_in">command</span> &lt; file1 &gt; file2</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h2><p>过于简单：<code>cd</code>，<code>mkdir</code>,<code>stat</code>，<code>rmdir</code>, <code>rm</code>(删除目录或文件）</p>
-<p><code>touch</code>命令可以用来修改文件读取时间和修改时间，<code>-t</code>参数自定义修改时间</p>
-<p><img src="https://i.bmp.ovh/imgs/2021/11/c29ad154f64a600c.png"></p>
-<h2 id="cat-命令"><a href="#cat-命令" class="headerlink" title="cat 命令"></a>cat 命令</h2><p><code>cat</code>的全拼是concatenate，主要有三大功能</p>
-<h3 id="显示整个文件"><a href="#显示整个文件" class="headerlink" title="显示整个文件"></a>显示整个文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cat</span> filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="从键盘创建新文件"><a href="#从键盘创建新文件" class="headerlink" title="从键盘创建新文件"></a>从键盘创建新文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将stdout重定向到filename</span></span><br><span class="line"><span class="variable">$cat</span> &gt; filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="文件合并"><a href="#文件合并" class="headerlink" title="文件合并"></a>文件合并</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cat</span> file1 file2 &gt; file</span><br></pre></td></tr></table></figure>
-
-<p>参数：</p>
-<ul>
-<li><code>-n</code>or<code>-number</code>输出带行数</li>
-<li><code>-b</code>or<code>-number-nonblank</code>，输出带行数，但对空行不编号</li>
-<li><code>-s</code>or<code>-squeeze-blank</code>，当遇到有两行以上的空行，压缩为一行空行</li>
-<li><code>-v</code>or<code>-show-nonprinting</code>， </li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/06/%E8%AF%BB%E8%AE%BA%E6%96%87%E4%B9%8B%E9%97%AA%E7%94%B5%E7%BD%91%E7%BB%9C-%E9%AB%98%E5%AE%B9%E9%87%8F%E9%93%BE%E4%B8%8B%E5%8D%B3%E6%97%B6%E6%94%AF%E4%BB%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ajsoabk">
-      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="归因">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/06/%E8%AF%BB%E8%AE%BA%E6%96%87%E4%B9%8B%E9%97%AA%E7%94%B5%E7%BD%91%E7%BB%9C-%E9%AB%98%E5%AE%B9%E9%87%8F%E9%93%BE%E4%B8%8B%E5%8D%B3%E6%97%B6%E6%94%AF%E4%BB%98/" class="post-title-link" itemprop="url">读论文之闪电网络-可扩容链下即时支付系统</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-11-06 16:09:34 / 修改时间：17:08:53" itemprop="dateCreated datePublished" datetime="2021-11-06T16:09:34+08:00">2021-11-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://lightning.network/lightning-network-paper.pdf">闪电网络-可扩容链下即时支付系统</a></p>
-<h2 id="The-Bitcoin-Blockchain-Scalability-Problem"><a href="#The-Bitcoin-Blockchain-Scalability-Problem" class="headerlink" title="The Bitcoin Blockchain Scalability Problem"></a>The Bitcoin Blockchain Scalability Problem</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/05/%E8%AF%BB%E8%AE%BA%E6%96%87%E4%B9%8B%E6%AF%94%E7%89%B9%E5%B8%81-%E4%B8%80%E7%A7%8D%E7%82%B9%E5%AF%B9%E7%82%B9%E7%9A%84%E7%94%B5%E5%AD%90%E7%8E%B0%E9%87%91%E7%B3%BB%E7%BB%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ajsoabk">
-      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="归因">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/05/%E8%AF%BB%E8%AE%BA%E6%96%87%E4%B9%8B%E6%AF%94%E7%89%B9%E5%B8%81-%E4%B8%80%E7%A7%8D%E7%82%B9%E5%AF%B9%E7%82%B9%E7%9A%84%E7%94%B5%E5%AD%90%E7%8E%B0%E9%87%91%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">读论文之比特币-一种点对点的电子现金系统</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-05 19:59:47" itemprop="dateCreated datePublished" datetime="2021-11-05T19:59:47+08:00">2021-11-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-06 16:54:02" itemprop="dateModified" datetime="2021-11-06T16:54:02+08:00">2021-11-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> <a target="_blank" rel="noopener" href="https://bitcoin.org/bitcoin.pdf">比特币：一种点对点的电子现金系统</a></p>
-<p>比特币的经典文章必须好好研读一下</p>
-<h2 id="交易"><a href="#交易" class="headerlink" title="交易"></a>交易</h2><p>转出者将该币的前一个交易地址与转入者的公钥打包后签名</p>
-<p>首要的问题当然是转入者没法验证转出者是否双花，传统的解决方法是让可信任的权威机构或银行来检查每笔交易以防止双花，每笔交易的币都需要由转出者给到银行、再由银行给到转入者。这一方法的问题是整个系统都高度依赖于中央银行。</p>
-<p>我们需要让转入者能独立验证交易的合法性，这要求转入者知道所有的交易信息，因此每笔交易都需要在网络上公开。我们还需要让所有参与这笔交易的人对这笔钱的历史交易信息有共识。转出者需要让每笔交易都能被大部分节点承认。</p>
-<h2 id="timestamp-server"><a href="#timestamp-server" class="headerlink" title="timestamp server"></a>timestamp server</h2><p>timestamp server记录一系列的包含时间戳的区块并将其哈希值广泛公开。每个时间戳都包含了前一个区块的哈希值。在这样的一条链上，每加入一个新区块都会巩固前面的区块</p>
-<h2 id="Proof-of-Work"><a href="#Proof-of-Work" class="headerlink" title="Proof-of-Work"></a>Proof-of-Work</h2><p>为了在点对点的基础上实现这样的分布式timestamp server，我们需要使用工作量证明（Pow）机制。工作量证明机制需要通过枚举找到一个值，这个值在被某些哈希算法转换后（如SHA-256）得到的哈希值以数个连续的零开头。找这个值所需要的时间与零值的个数要求呈指数关系。但一旦找到，其他节点验证这个值的合法性则很快。（跑一遍SHA-256即可）</p>
-<p>在这样的一个时间戳网络内，我们不断枚举nonce值直到这个区块的哈希值以一连串符合要求的0值开头。有了这样的算力投入，要想篡改区块就必须付出同等的代价。由于后面的区块包含了前面区块的哈希，因此篡改单个区块后还需要篡改其后面的所有区块。</p>
-<p>Pow机制帮助大家形成对代表的共识。如果每个IP地址都有一个投票权（<strong>one-IP-address-one-vote</strong>)，那么投票肯定会被购买了大量IP地址的人所操控。Pow本质上是（<strong>one-CPU-one-vote</strong>)。系统中的最长链就是大家的共识，大家在这条链上投入了最多的算力。只要主要的算力由诚实节点所控制，那么合法的链条就一定会增长得最快。为了修改一个过去的区块，攻击者必须投入该区块以及其后所有区块上曾被投入的算力，并且必须赶超诚实节点所维护的最长合法链。我们将稍后展示一个稍慢一步的攻击者（指没来得及挖出最新区块）追上最长合法链的可能性将随着后续区块的增加指数下降</p>
-<p>为了适应增长迅速的硬件处理速度和随时间变化的挖矿收益，挖矿难度是随过去一段时间内每小时挖出区块的平均值决定的。如果区块产生的速度过快，挖矿难度将自动升高</p>
-<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><p>这个网络的运行有以下步骤：</p>
-<ol>
-<li>给所有节点广播新的交易信息</li>
-<li>每个节点将自己收到的交易信息放进区块中</li>
-<li>每个节点投入算力来找到符合工作量证明难度的哈希值（挖矿）</li>
-<li>当一个节点挖到了矿，它将其广播给其他所有节点</li>
-<li>只有一个区块内的所有交易都是合法且有效的时候，节点才会认为这个区块合法并承认它</li>
-<li>一个节点承认一个区块的表现是它在这个区块后挖矿</li>
-</ol>
-<p>节点总是承认最长合法链并一直投入算力来延长它。如果两个节点同时广播了两个不同的区块，其他节点分别会率先接收到其中一个。这样的话，这些节点就会在自己第一个接收到的区块后挖矿，这样的平衡不会维持很久，因为总会有新的区块被率先挖出来，这样的话其中一个分支就会变得更长，工作在更短分支上的节点也会立刻转入新的最长合法链</p>
-<p>新的交易信息不需要直接发送到所有节点。只要它被发送到了足够多的节点，这些信息很快就会被写入区块。这样的广播也能适应丢失消息的情况。如果一个节点没有接收到某个区块，在接收到下一个区块的时候它会发现自己少接收了一个</p>
-<h2 id="Incentive"><a href="#Incentive" class="headerlink" title="Incentive"></a>Incentive</h2><p>按照惯例，区块内的第一笔交易是一笔铸币交易，给新区块的创造者发行了新的币。这样的设计能给节点更大动力来维持比特币网络的运行，并且提供了一种发行货币并流通的方式，这样不需要任何中央机构就能发行新的比特币了</p>
-<p>交易费同样也是动力之一。如果一笔交易的输出小于输入，其差额就是支付给区块挖出者的交易费。只要一个预先确定的定量金额的比特币进入了市场，挖矿的动力就完全转换成了交易费，系统也就不会再有通胀了</p>
-<h2 id="Reclaiming-Disk-Space"><a href="#Reclaiming-Disk-Space" class="headerlink" title="Reclaiming Disk Space"></a>Reclaiming Disk Space</h2><p>只要一个币的最近一次交易被写入了足够多的区块，为了节约磁盘空间，在其之前的交易信息就可以被抛弃。为了尽量节约空间而不打破区块的哈希，交易将被以哈希形式存储在默克尔树上，只有根哈希被包含进了区块头的哈希。过去的区块能通过将除了根哈希外的所有分支都除去从而大大节约磁盘空间，因为这些分支上的哈希都没有存储的必要</p>
-<p>一个不包含具体交易信息的区块头大约是80字节。我们假设每十分钟挖出一个区块，80 bytes * 6 * 24 * 365 = 4.2MB/year。2008年的计算机基本都有2GB的内存，并且摩尔定律预测现在的增长速度可能是1.2GB/year，因而就算区块头必须被放在内存中，也并没有存储问题</p>
-<h2 id="Simplified-Payment-Verification"><a href="#Simplified-Payment-Verification" class="headerlink" title="Simplified Payment Verification"></a>Simplified Payment Verification</h2><p> 不运行一个全节点也是可以验证交易合法性的。一个用户只需要通过询问网络中的其他节点来获得最长合法链的所有区块头，并且获得这个交易所在的默克尔树的区块及其路径。用户不能自己检查交易是否正确，但只要这个区块后接了足够多的区块，他就能确定整个网络承认了这个交易</p>
-<p>实际上，只要诚实节点控制着网络，这样的验证就是可信赖的，但如果恶意节点掌控了整个网络，它就会变得很脆弱。网络上的节点可以自己验证交易合法性，但只要攻击者一直掌控着网络，上面这种简化的验证过程则很容易被攻击者所伪造的交易信息所欺骗。对抗攻击者的其中一个策略是从网络上其他节点中接收警报，这驱使用户的软件下载下全节点的信息以及危险的交易来确认警报。一些经常处理交易的公司可能会想运行自己的全节点来保证独立性和安全性，还能保证更快的验证</p>
-<h2 id="Combining-and-Splitting-Value"><a href="#Combining-and-Splitting-Value" class="headerlink" title="Combining and Splitting Value"></a>Combining and Splitting Value</h2><p>尽管控制单个币的流动是可行的，但在交易中写明每个币的流向将会很累赘。为了让价值能够被拆分与合并，每笔交易都能包含多个输入与输出。一般情况下既可以让一笔大交易的输出成为当前交易的唯一输入，也可以让多笔小交易的输出成为当前交易的多个输入。最多只能有两个输出，一个用于支付，另一个用于返还，如果需要的话，返还给转出者</p>
-<p>需要注意的是依赖于之前多笔交易的扇入过程并不麻烦，因为不需要将前向交易的完整信息复制到当前交易中来</p>
-<h2 id="Privacy"><a href="#Privacy" class="headerlink" title="Privacy"></a>Privacy</h2><p>传统的银行模式通过限制人们获取其他人的信息来实现某种程度的隐私保护。由于比特币网络天然需要公开所有交易，因而这样的方法无法复用，但是隐私仍然可以通过打破信息在某个地方的流通来实现保护：保持公钥的匿名性。公众能看到某个节点给另一个节点转了帐，但不能将这笔交易联系到任何具体的人身上。这有点像股票交易的信息流通方式-每笔买入或卖出的时间与数额都是公开的，但不能得知是谁进行了这样的交易</p>
-<p>除此之外，每笔交易都可以通过引入新的公私钥对来防止某些交易跟一个共同的拥有者相联系。在一些扇入交易中有些联系仍然是不可避免的，因为这会揭示这些输入的交易所在节点被同一个人所拥有。其中的风险在于如果某人与其公钥对应起来了，这样的联系会告诉我们其他的很多交易也是属于同一个拥有者的</p>
-<h2 id="Calculation"><a href="#Calculation" class="headerlink" title="Calculation"></a>Calculation</h2><p>数学证明略。。。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ajsoabk.xyz/2021/11/04/RSA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%9D%E8%80%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Ajsoabk">
-      <meta itemprop="description" content="我在我心的孤寂里，听见你的叹息了">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="归因">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/04/RSA%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%9D%E8%80%83/" class="post-title-link" itemprop="url">RSA学习与思考</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-04 21:35:49" itemprop="dateCreated datePublished" datetime="2021-11-04T21:35:49+08:00">2021-11-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-05 16:30:56" itemprop="dateModified" datetime="2021-11-05T16:30:56+08:00">2021-11-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><blockquote>
-<p><strong>RSA加密算法</strong>是一种非对称加密算法，在公开密钥加密和电子商业中被广泛使用。RSA是由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）在1977年一起提出的。当时他们三人都在麻省理工学院工作。RSA 就是他们三人姓氏开头字母拼在一起组成的</p>
-<p>​                                                                                                ————————-Wikipedia</p>
-</blockquote>
-<p>RSA是一种非常广泛使用的<strong>非对称加密算法</strong>，如其名，这种算法首先是一种加密算法。加密算法可不止是加密，而是包括密钥准备、加密、解密等等全过程的一种算法。那么加密解密为何如此重要呢？</p>
-<p>在网络上，信息是可以完美复制的，节点与节点在信号发送上没有区别，这就导致了一个问题，<strong>我怎么知道某段冷冰冰的01信号是谁发给我的？</strong>同样的，由于信号传递过程中难免要经过其他节点，<strong>如果我不想让其他节点知道我发送的信息我又要怎么办呢？</strong></p>
-<p>这些问题就可以通过理想的公私钥加密体系完美解决。公钥私钥的区别只在于是否公开，而两者都可以用来加密，只是用公钥加密后的信息只能被私钥解密，被私钥加密后的信息也只能被公钥解密。这就对应了上面两个问题的解决方法。</p>
-<p>首先，公钥完全公开透明，每个人都可以用公钥加密，但是产生的密文却只有私钥才能解密成明文，这样保证了有用情报只会被拥有私钥的人接收，我们就能把信息发给拥有私钥的那个人而不用担心被别人得知了。</p>
-<p>反过来呢？拥有私钥的人对某段信息用私钥加密之后，产生的密文能被所有人解密成明文，这样又有什么效果呢？为了把明文和无效信息区分开来，假设我们约定了明文中至少要包含的有效信息（比如发布时间等等），那么密文就与加密者产生了对应关系，我们只需用加密者发布的公钥做一下解密，再验证一下明文中是否有这些有效信息，就能确认这段信息是不是由私钥拥有者发布的了。这样信息就有了归属，我们就能确认某段信息是我们想要的人发给我们的了。而这种私钥加密的过程也称为<strong>签名</strong>。</p>
-<h2 id="“非对称”并非核心"><a href="#“非对称”并非核心" class="headerlink" title="“非对称”并非核心"></a>“非对称”并非核心</h2><p>“ 非对称加密 ”本身没什么厉害的，我们可以随便设计一个非对称的加密算法，就让乘私钥作为加密，乘公钥作为解密，那么整个原理就是<code>message * privatekey * publickey = message</code>，在这里，公钥与私钥的对应关系就是<code>privatekey = 1 / publickey</code>。你应该能发现，这样的加密解密似乎没啥保密性可言，任何学过小学数学的人都能很快地从公钥推出私钥，也就能随意冒充你来发布消息了。因此，“似乎”保证私钥与公钥难以互相推导是非常重要的</p>
-<p>不能让公钥简单推到私钥是显然的，但为什么说也不能让私钥简单推到公钥呢？这里我们要明确一点，公钥与私钥只是互成一对，并没有形式上的区别，我既能用公钥加密，也能用私钥加密。那如果算法保证了只知道公钥的时候难以推出私钥的话，反过来也是一样的。在<strong>只知道私钥</strong>的情况下也难以推出公钥，注意！是<strong>只知道私钥</strong>！而生成这一对公私钥的过程中是产生了很多过程变量的，这些过程变量才是算法生成公私钥对的某种依据</p>
-<p>总结来说，RSA等一众非对称加密算法通过某个数学过程产生了互成一对但难以相互推导的公钥与私钥，然后大家就能愉快地用公私钥来在网络上加密通信了。</p>
-<h1 id="取模"><a href="#取模" class="headerlink" title="取模"></a>取模</h1><p>求余，一个小学就接触到的数学运算，那时候我们把除法得到的整数后加几个点，再接上一个数表示余数:</p>
-<p>$$ 5 \div 3 = 1 \dots 2$$</p>
-<p>这样的写法中，余数表现得就像它的名字一样——有点多余。当时的我们可没想到，这么简单的一个余数及其相关的运算，竟然能在数论中爆发出那么强大的力量</p>
-<p>废话少说，让我们再多多观察观察这个运算，为了不考虑向下取整与向0取整，我们忽略负数的情况</p>
-<p>在上面的例子中，如果我们不关注商而只关注余数，那么包括2、5、8等等在内的一系列数对3求余结果都是2，包括1、4、7在内的一系列数对3求余结果都是1，类似的，如果我们只关注整数n对m求余后的结果，那么所有的n就能根据这个结果分成m个集合，我们把这样划分后在同一个集合内的两个数称为<strong>模m同余</strong>，这样的集合称为<strong>同余类</strong>，求余运算的新形式也就这么出现了</p>
-<blockquote>
-<p>两个整数a,b，若它们除以正整数m所得的余数相等，则称a，b对于模数m同余，记作:$$a \equiv b\ (\ mod\ m)$$</p>
-</blockquote>
-<p>对于一个运算符，最重要的概念是什么？</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2989,7 +2417,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -3021,7 +2449,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
